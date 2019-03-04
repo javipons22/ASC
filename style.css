@@ -2,12 +2,18 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-h1 { 
-    color: red; 
+a {
+    text-decoration:none;
+    color: #0070c9;
 }
 
+a:hover {
+    text-decoration: underline;
+}
+
+
 .cuerpo {
-    height:4000px;
+    height:500px;
 }
 
 /* --------------- CLASES EN COMUN (ver en js) --------------- */
@@ -26,7 +32,6 @@ h1 {
 .container {
     max-width: 980px;
     margin: 0 auto;
-    color: red;
 }
 
 header {
@@ -142,5 +147,90 @@ nav {
     transition-timing-function: linear;
 }
 
+
+/* --------------- FOOTER  --------------- */
+
+footer {
+    background: #F2F2F2;
+    color: #888;
+    font-size: 12px;
+}
+
+footer p {
+    padding:17px;
+}
+
+.info-footer {
+    padding: 17px;
+    border-bottom: 1px solid rgb(214, 214, 214);
+}
+
+.footer-nav {
+    padding: 17px;
+}
+
+.columna-productos h3 {
+    font-weight: 700;
+    color: #333;
+    margin-bottom:11px;
+}
+
+.columna-productos li {
+    margin-bottom:9.6px;
+}
+
+.columna-productos li a {
+    text-decoration: none;
+    color: #888;
+}
+
+.creditos {
+    border-top: 1px solid rgb(214, 214, 214);
+}
+
+.creditos ul {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: stretch;
+}
+
+
+.creditos ul li:last-child {
+    text-align:right;
+    flex-grow:1;
+}
+
+
+
+.creditos img {
+    height:16px;
+    vertical-align: middle;
+    border:1px solid rgb(214, 214, 214);
+}
+
+.creditos p {
+    padding-top: 12px;
+    display: inline-block;
+}
+
+.creditos li:last-child p {
+    padding:0;
+}
+
+
+.contacto-footer li {
+    border-right: 1px solid rgb(214, 214, 214);
+    height: 15px;
+    padding: 0 10px;
+}
+
+.contacto-footer a {
+    color: #333;
+}
+
+.contacto-footer li:last-child {
+    border-right: none;
+}
 
 
