@@ -36,6 +36,8 @@ a:hover {
 
 header {
     background: rgba(45,45,45,0.98);
+    width:100%;
+    position:fixed;
 }
 
 
@@ -49,6 +51,10 @@ header {
 .logo svg {
     height:22px;
 
+}
+
+.menu-logo h1 {
+    font-size: 10px;
 }
 
 .logo:hover ,.carrito:hover {
@@ -133,6 +139,7 @@ nav {
     padding: 45px 40px 8px 40px; 
 }
 
+
 .menu-items ul li {
     font-size: 16px;
     border-bottom:1.5px solid #282828;
@@ -154,11 +161,9 @@ footer {
     background: #F2F2F2;
     color: #888;
     font-size: 12px;
+    margin-top: 6px;
 }
 
-footer p {
-    padding:17px;
-}
 
 .info-footer {
     padding: 17px;
@@ -184,15 +189,10 @@ footer p {
     color: #888;
 }
 
-.creditos {
-    border-top: 1px solid rgb(214, 214, 214);
-}
 
 .creditos ul {
     display:flex;
     flex-direction: row;
-    align-items: center;
-    align-content: stretch;
 }
 
 
@@ -210,14 +210,23 @@ footer p {
 }
 
 .creditos p {
-    padding-top: 12px;
     display: inline-block;
 }
 
 .creditos li:last-child p {
-    padding:0;
+    padding:0 17px 0 0;
 }
 
+.creditos {
+    margin: 7px 0 0 0;
+    padding: 0 17px 20px 17px;
+}
+
+.info-contacto {
+    padding:0 17px 8px 17px;
+    margin-bottom: 7px;
+    border-bottom: 1px solid rgb(214, 214, 214);
+}
 
 .contacto-footer li {
     border-right: 1px solid rgb(214, 214, 214);
@@ -234,3 +243,54 @@ footer p {
 }
 
 
+/* --------------- BANNERS  --------------- */
+
+.banner-1 , .banner-2 , .banner-3 {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top:45px; /* hacemos un padding-top porque el nav es fixed y cubriria el contenido*/
+    background:#FAFAFA;
+    margin-bottom: 6px;
+}
+
+.banner-1-texto, .banner-2-texto , .banner-3-texto{
+    margin: 60px 0;
+}
+
+
+.banner-1 h1, .banner-2 h1, .banner-3 h1 {
+    padding: 0 10px;
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.banner-1 h3, .banner-2 h3,  .banner-3 h3 {
+    padding: 0 10px;
+    font-size: 21px;
+    font-weight: 300px;
+    margin: 15px 0;  
+}
+
+.banner-1 span {
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.banner-1 a , .banner-2 a , .banner-3 a {
+    font-size: 21px;
+    text-align:center;
+}
+
+.banner-2 img, .banner-3 img {
+    display:block;
+    height:450px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+.banner-3 img {
+    height:230px;
+    margin:30px 0;
+}
