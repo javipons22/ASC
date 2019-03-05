@@ -48,8 +48,13 @@
     .menu-logo {
         padding: 10px 0; /* Le da el tamaño a todo el nav*/
     }
-
-    .banner-1  {
-        padding-top: 66px;
+  
+    .separador-header {
+        height: 66px;
     }
+
+    .sub-menu p {
+        display:none;
+    }
+
 }

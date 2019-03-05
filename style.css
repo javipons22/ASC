@@ -40,6 +40,10 @@ header {
     position:fixed;
 }
 
+.separador-header {
+    height: 45px;
+}
+
 
 
 /* --------------- LOGO E ICONOS--------------- */
@@ -174,17 +178,17 @@ footer {
     padding: 17px;
 }
 
-.columna-productos h3 {
+.columna-1-footer h3 {
     font-weight: 700;
     color: #333;
     margin-bottom:11px;
 }
 
-.columna-productos li {
+.columna-1-footer li {
     margin-bottom:9.6px;
 }
 
-.columna-productos li a {
+.columna-1-footer li a {
     text-decoration: none;
     color: #888;
 }
@@ -249,10 +253,10 @@ footer {
     display:flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    padding-top:45px; /* hacemos un padding-top porque el nav es fixed y cubriria el contenido*/
+    text-align: center;/* hacemos un padding-top porque el nav es fixed y cubriria el contenido*/
     background:#FAFAFA;
     margin-bottom: 6px;
+    overflow: hidden;
 }
 
 .banner-1-texto, .banner-2-texto , .banner-3-texto{
@@ -294,3 +298,60 @@ footer {
     height:230px;
     margin:30px 0;
 }
+
+/* --------------- SUB NAV PRODUCTOS (pagina iphone)  --------------- */
+
+.sub-menu {
+    background: #F2F2F2;
+}
+
+.sub-menu-container {
+    overflow-x: scroll;
+    height: 120px
+}
+
+.sub-menu ul li img {
+    height: 54px;
+    
+}
+
+.sub-menu ul {
+    display:flex;
+    justify-content: space-between;
+    margin: 0 30px;
+   
+}
+
+.sub-menu ul li {
+    text-align:center;
+    padding: 18px 40px;
+}
+
+.sub-menu h5 {
+    font-size:11px;
+    font-weight: 300;
+    margin-top: 5px;
+}
+
+.sub-menu h5 span {
+    font-size:8px;
+}
+
+.sub-menu p {
+    text-align:center;
+    font-size: 11px;
+    font-weight: 500;
+    padding-bottom: 5px;
+}
+
+.sub-menu a {
+    color: #333;
+}
+
+/* Esconder el scrollbar */
+.sub-menu-container::-webkit-scrollbar { width: 0 !important }
+.sub-menu-container { overflow: -moz-scrollbars-none; }
+.sub-menu-container { -ms-overflow-style: none; }
+
+
+/*FIN esconder el scrollbar */
