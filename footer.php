@@ -38,10 +38,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- QUITAR CUANDO SE PASE A WORDPRESS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <!-- QUITAR CUANDO SE PASE A WORDPRESS -->
-    <script src="js/script.js"></script>
+    <?php wp_footer(); ?>
 </body>
 </html>

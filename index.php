@@ -1,4 +1,4 @@
-<?php include("header.php"); ?>
+<?php get_header(); ?>
     
     
 <div class="separador-header">
@@ -16,7 +16,8 @@
     <div class="banner-2-texto">
         <h1>iPhone 6, iPhone 7, iPhone 8, iPhone X o iPhone XR</h1>
         <h3>Disfruta de tu iphone al mejor precio!</h3>
-        <img src="img/iphones.png" alt="iphones">
+        <?php  get_template_directory_uri() ?>
+        <img src="/img/iphones.png" alt="iphones">
         <a href="#">Ver todos ></a>
     </div>
 </div>
@@ -31,4 +32,4 @@
 </div>
    
 
-<?php include('footer.php')?>
+<?php get_footer(); ?>

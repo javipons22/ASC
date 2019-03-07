@@ -1,3 +1,19 @@
+/*
+Theme Name: Apples
+Theme URI: 
+Author: Javier
+Author URI: 
+Description: website simil apple
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: black, brown, orange, tan, white, yellow, light, one-column, two-columns, right-sidebar, flexible-width, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, translation-ready
+Text Domain: apples
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
 html {
     height:100%;
 }
@@ -235,6 +251,7 @@ footer {
     margin: 7px 0 0 0;
     padding: 0 17px 20px 17px;
 }
+
 
 .info-contacto {
     padding:0 17px 8px 17px;
