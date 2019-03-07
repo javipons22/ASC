@@ -2,7 +2,8 @@
 /* 
 	Template Name: iPhones
 */
-get_header(); 
+    get_header(); 
+    $img_path = get_site_url() . "/wp-content/uploads";
 ?>
 
 
@@ -13,51 +14,51 @@ get_header();
         <ul>
             <li>
                 <a href="#">
-                    <img src="img/iphoneXR.svg" alt="icono iPhone XR">
+                    <img src="<?php echo $img_path; ?>/iphoneXR.svg" alt="icono iPhone XR">
                     <h5>iPhone X<span>R</span></h5>
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img src="img/iphoneX.svg" alt="icono iPhone X">
+                    <img src="<?php echo $img_path; ?>/iphoneX.svg" alt="icono iPhone X">
                     <h5>iPhone XS<span>Max</span></h5>
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img src="img/iphoneX.svg" alt="icono iPhone X">
+                    <img src="<?php echo $img_path; ?>/iphoneX.svg" alt="icono iPhone X">
                     <h5>iPhone XS</h5>
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img src="img/iphoneX.svg" alt="icono iPhone X">
+                    <img src="<?php echo $img_path; ?>/iphoneX.svg" alt="icono iPhone X">
                     <h5>iPhone X</h5>
                 </a>
             </li>
             
             <li>
                 <a href="#">
-                    <img src="img/iphone876.svg" alt="icono iPhone 8">
+                    <img src="<?php echo $img_path; ?>/iphone876.svg" alt="icono iPhone 8">
                     <h5>iPhone 8</h5>
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img src="img/iphone876.svg" alt="icono iPhone 7">
+                    <img src="<?php echo $img_path; ?>/iphone876.svg" alt="icono iPhone 7">
                     <h5>iPhone 7</h5>
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img src="img/iphone876.svg" alt="icono iPhone 6">
+                    <img src="<?php echo $img_path; ?>/iphone876.svg" alt="icono iPhone 6">
                     <h5>iPhone 6</h5>
                 </a>
             </li>
         </ul>
     </div>
     <div class="contenedor-flecha">
-        <img src="img/flecha.svg" class="flecha" alt="flecha">
+        <img src="<?php echo $img_path; ?>/flecha.svg" class="flecha" alt="flecha">
     </div>
 </div>
 
@@ -80,16 +81,18 @@ get_header();
     $categorias = array();
     
     // ------- FUNCIONES ADICIONALES
-    // funcion quitar espacios para que las categorias sean por ejemplo "iphone8" y se puedan asignar a una variable
+    // Funcion quitar espacios para que las categorias sean por ejemplo "iphone8" y se puedan asignar a una variable
     function limpia_espacios($cadena){
         $cadena = str_replace(' ', '', $cadena);
         return $cadena;
     }
 
+    // Funcion cambiar espacios por guiones para ponerlos en clases css
     function guiones_por_espacios($cadena){
         $cadena = str_replace(' ', '-', $cadena);
         return $cadena;
     }
+    // ----------
 ?>
     
     <?php 

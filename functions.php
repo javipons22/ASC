@@ -22,3 +22,26 @@ add_action( 'wp_enqueue_scripts', 'wpt_theme_js' );
 <?php
 add_theme_support ( 'post-thumbnails' );
 ?>
+
+<?php
+//FUNCION PARA AGREGAR TITULO AUTOMATICAMENTE CON LOS VALORES DEL PRODUCTO (ej . iPhone XS MAX - 32GB - Gold)
+
+//Auto add and update Title field:
+  function my_post_title_updater( $post_id ) {
+
+    $my_post = array();
+    $my_post['ID'] = $post_id;
+
+    if ( get_post_type() == 'iphone' ) {
+      $my_post['post_title'] = get_field('iphone') . " - " . get_field("capacidad") . " - " . get_field("color");
+    } 
+
+    // Update the post into the database
+    wp_update_post( $my_post );
+
+  }
+   
+  // run after ACF saves the $_POST['fields'] data
+  add_action('acf/save_post', 'my_post_title_updater', 20);
+
+  ?>
