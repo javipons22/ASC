@@ -48,3 +48,6 @@
         </div>
     </header>
     <div class="contenido">
+    <div class="separador-header">
+
+    </div>

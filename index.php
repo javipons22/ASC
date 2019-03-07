@@ -4,9 +4,7 @@
 ?>
     
     
-<div class="separador-header">
 
-</div>
 <div class="banner-1">
     <div class="banner-1-texto">
         <h1>iPhone X<span>R</span> desde $47999. o 12 cuotas de $6373.*</h1>

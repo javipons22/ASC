@@ -7,8 +7,6 @@
 ?>
 
 
-<div class="separador-header">
-</div>
 <div class="sub-menu">
     <div class="container sub-menu-container">
         <ul>
@@ -204,7 +202,7 @@
                                                 }
                                             ?>
                                         </span>
-                                        <p>o 12 cuotas , 6 cuotas o 3 cuotas**</p>
+                                        <p>en 12 cuotas , 6 cuotas o 3 cuotas**</p>
                                     </div>
                                 </ul> 
                             </li>

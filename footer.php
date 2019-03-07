@@ -1,3 +1,4 @@
+<?php $img_path = get_site_url() . "/wp-content/uploads"; ?>
     </div>
     <footer>
         <div class="container">
@@ -34,7 +35,7 @@
                         </ul>
                     </li>
                     <li>
-                        <img src="img/argentina.png" alt="bandera">
+                        <img src="<?php echo $img_path; ?>/argentina.png" alt="bandera">
                         <p>Argentina</p>
                     </li>
                 </ul>
