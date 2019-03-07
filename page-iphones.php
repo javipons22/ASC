@@ -198,13 +198,13 @@
                                                 if(sizeof(${ $cat ."_precio" }) > 1){
                                                     $precio_minimo = min(${ $cat ."_precio" });
                                                     $precio_maximo = max(${ $cat ."_precio" });
-                                                    echo "$" . $precio_minimo . " - $" . $precio_maximo;
+                                                    echo "$" . $precio_minimo . "* - $" . $precio_maximo . "*";
                                                 }  else {
-                                                    echo "$" . ${ $cat ."_precio" }[0];
+                                                    echo "$" . ${ $cat ."_precio" }[0] . "*";
                                                 }
                                             ?>
                                         </span>
-                                        <p>o 12 cuotas (click en ver producto) </p>
+                                        <p>o 12 cuotas , 6 cuotas o 3 cuotas**</p>
                                     </div>
                                 </ul> 
                             </li>
