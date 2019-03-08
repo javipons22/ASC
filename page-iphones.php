@@ -68,7 +68,8 @@
 <?php
     // Argumentos para el query del loop de wordpress
 	$args = array(
-	    'post_type' => 'iphone',
+        'post_type' => 'iphone',
+        'posts_per_page'=> -1
     );
     
     // Query
@@ -137,7 +138,7 @@
             sort(${$trimmed_cat . "_capacidad" });
 
     
-        endwhile; endif; wp_reset_postdata(); 
+        endwhile; endif; wp_reset_postdata();
     ?>
 
 
@@ -152,7 +153,7 @@
                 </div>
                 <div class="producto-info">
                     <div>
-                        <img src="<?php echo ${ $cat ."_imagen" }[0]; ?>" height="225px" alt="iPhoneX">
+                        <img src="<?php echo ${ $cat ."_imagen" }[0]; ?>" height="225px" alt="<?php echo ${ $cat ."_iphone" }[0]; ?>">
                     </div>
                     <div class="info">
                         <ul>
