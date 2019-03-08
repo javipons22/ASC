@@ -45,3 +45,14 @@ add_theme_support ( 'post-thumbnails' );
   add_action('acf/save_post', 'my_post_title_updater', 20);
 
   ?>
+
+  <?php 
+    function wpse_category_set_post_types( $query ){
+        if( $query->is_category ):
+        $query->set( 'post_type', array( 'post', 'iphone' ) );
+        endif;
+        return $query;
+      }
+
+      add_action( 'pre_get_posts', 'wpse_category_set_post_types' );
+  ?>

@@ -100,6 +100,12 @@
             // Obtener categoria del post (asi se obtiene en wordpress)
             $cat = get_the_category()[0]->cat_name;
 
+            // Obtener link de categoria para link de Ver productos
+            // Primero obtener el ID para pasar a funcion get_category_link
+            $id = get_cat_ID( $cat );
+
+            $link = get_category_link( $id );
+
             // Trimmear la categoria (quitar espacios) para que se pueda asignar a variables
             $trimmed_cat = limpia_espacios($cat);
             
@@ -112,6 +118,7 @@
                 ${$trimmed_cat . "_precio"} = array();
                 ${$trimmed_cat . "_color"} = array();
                 ${$trimmed_cat . "_imagen"} = array();
+                ${$trimmed_cat . "_link"} = array();
             }
             
     
@@ -132,6 +139,9 @@
             }
             if (!in_array( get_field("imagen"),${$trimmed_cat . "_imagen"})) {
                 ${$trimmed_cat . "_imagen" }[] = get_field("imagen");
+            }
+            if (!in_array( $link,${$trimmed_cat . "_link"})) {
+                ${$trimmed_cat . "_link" }[] = $link;
             }
         
             // Ordenamos los datos de capacidad para que aparezcan ordenados (ej. 16GB 64GB)
@@ -201,7 +211,7 @@
                     </div>
                 </div>
                 <div class="producto-boton">
-                    <a href="#">
+                    <a href="<?php echo ${ $cat ."_link" }[0]; ?>">
                         <h4>Ver Producto</h4>
                     </a>
                 </div>

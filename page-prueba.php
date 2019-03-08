@@ -23,6 +23,7 @@
         // Argumentos para el query del loop de wordpress
         $args = array(
             'post_type' => 'iphone',
+            'posts_per_page'=> -1
         );
         
         // Query
@@ -151,7 +152,8 @@
         }
         for ( $x = 1 ;$x <= sizeof($csv); $x++){
             
-            
+            if(!empty(${'iphone' . $x})){
+                
             $titulo = ${'iphone' . $x} . " - " . ${'color' . $x} . " - " . ${'capacidad' . $x};
             $iphone = ${'iphone' . $x};
             $capacidad = ${'capacidad' . $x};
@@ -197,7 +199,8 @@
             $cat = array($cat_id);
 
             crear_iphone($titulo, $cat, $iphone, $precio, $capacidad, $color);
-        
+
+            }
         }
     } 
     
