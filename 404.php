@@ -1,4 +1,7 @@
 <?php 
+/* 
+	Template Name: 404
+*/
 get_header(); 
 $img_path = get_site_url() . "/wp-content/uploads";
 ?>

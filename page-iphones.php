@@ -34,7 +34,6 @@
                     <h5>iPhone X</h5>
                 </a>
             </li>
-            
             <li>
                 <a href="#">
                     <img src="<?php echo $img_path; ?>/iphone876.svg" alt="icono iPhone 8">
@@ -140,15 +139,6 @@
     
         endwhile; endif; wp_reset_postdata(); 
     ?>
-
-<?php  
-    // PRUEBAS;
-    //var_dump($iphonexsmax_color_clase);
-    // FIN PRUEBAS;
-
-    
-?>
-
 
 
 <div class="productos">
