@@ -53,6 +53,10 @@ a:hover {
     overflow: hidden;
 }
 
+.flex {
+    display:flex;
+}
+
 /* --------------- HEADER  --------------- */
 
 .container {
@@ -410,6 +414,7 @@ footer {
     margin: 15px 0;
     border-radius: 14px;
     min-width: 370px;
+    overflow: hidden;
 }
 
 .producto-titulo {
@@ -421,7 +426,11 @@ footer {
 }
 
 .producto-info img {
-    width: 100%;
+    max-width:225px;
+    max-height:225px;
+    width: auto;
+    height: auto;
+    
 }
 
 .producto-info {
@@ -511,6 +520,10 @@ footer {
     background: #980110;
 }
 
+.jet-black {
+    background: #000;
+}
+
 .producto-boton {
     text-align: center;
     color: #fff;
@@ -542,3 +555,77 @@ footer {
     width: 200px;
     margin-top: 100px;
 }
+
+/* --------------- (pagina iphones (por cada iphone. CATEGORIAS))  --------------- */
+.iphone-cat {
+    margin-top:50px;
+    flex-wrap: wrap;
+}
+.imagen-cat {
+    display:inline-block;
+    flex-basis: 50%;
+}
+
+.datos-iphone-cat {
+    padding:12px 0 0 30px;
+    flex-grow:1;
+    max-width: 583px;
+}
+
+.datos-iphone-cat h1 {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.datos-iphone-cat h2 {
+    font-size: 20px;
+    width: 65%;
+}
+
+.datos-iphone-cat h3 {
+    margin-bottom:15px;
+}
+
+.datos-iphone-cat ul li {
+    display:block;
+    margin-top: 26px;
+    padding-bottom: 20px;
+    font-size: 17px;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(136,136,136,.4);
+    width:100%;
+}
+
+.datos-iphone-cat ul li:last-child {
+    border-bottom: none;
+}
+
+.box {
+    display:block;
+    font-weight: 300;
+    width: 100%;
+    height: 83px;
+    border: 1px solid rgba(136,136,136,.4);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+}
+
+.box:hover {
+
+    border: 1px solid rgba(136,136,136,.9);
+   
+}
+
+.box:focus {
+
+    border: 1px solid red;
+   
+}
+
+#cb {
+    /*display:none; /* esconde la caja del checkbox*/
+}
+

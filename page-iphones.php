@@ -155,15 +155,13 @@
 <div class="productos">
     <div class="container productos-flex">
         <?php foreach ($categorias as $cat): ?>
-
-
             <div class="producto">
                 <div class="producto-titulo">
                     <h2><?php echo ${ $cat ."_iphone" }[0]; ?></h2>
                 </div>
                 <div class="producto-info">
                     <div>
-                        <img src="<?php echo ${ $cat ."_imagen" }[0]; ?>" height="225px" alt="<?php echo ${ $cat ."_iphone" }[0]; ?>">
+                        <img src="<?php echo $img_path . "/" . limpia_espacios(${ $cat ."_iphone" }[0]) . ".png"; ?>" height="225px" alt="<?php echo ${ $cat ."_iphone" }[0]; ?>">
                     </div>
                     <div class="info">
                         <ul>

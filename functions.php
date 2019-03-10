@@ -1,4 +1,5 @@
 <?php 
+
 function wpt_theme_styles() { //wpt es un nombre dado por nosotros para diferenciar con otros plugins
     wp_enqueue_style( 'reset', get_template_directory_uri() . '/css/reset.css' );
     
@@ -9,21 +10,16 @@ function wpt_theme_styles() { //wpt es un nombre dado por nosotros para diferenc
 }
 add_action( 'wp_enqueue_scripts', 'wpt_theme_styles' );
 
-?>
 
-<?php
 function wpt_theme_js() {
     wp_enqueue_script('main_js', get_template_directory_uri() . '/js/script.js', array('jquery') , '' , true);
 }
 add_action( 'wp_enqueue_scripts', 'wpt_theme_js' );
 
-?>
 
-<?php
 add_theme_support ( 'post-thumbnails' );
-?>
 
-<?php
+
 //FUNCION PARA AGREGAR TITULO AUTOMATICAMENTE CON LOS VALORES DEL PRODUCTO (ej . iPhone XS MAX - 32GB - Gold)
 
 //Auto add and update Title field:
@@ -44,15 +40,19 @@ add_theme_support ( 'post-thumbnails' );
   // run after ACF saves the $_POST['fields'] data
   add_action('acf/save_post', 'my_post_title_updater', 20);
 
-  ?>
 
-  <?php 
-    function wpse_category_set_post_types( $query ){
-        if( $query->is_category ):
-        $query->set( 'post_type', array( 'post', 'iphone' ) );
-        endif;
-        return $query;
-      }
+  function wpse_category_set_post_types( $query ){
+      if( $query->is_category ):
+      $query->set( 'post_type', array( 'post', 'iphone' ) );
+      endif;
+      return $query;
+    }
 
-      add_action( 'pre_get_posts', 'wpse_category_set_post_types' );
+    add_action( 'pre_get_posts', 'wpse_category_set_post_types' );
+
+  function register_my_menu() {
+    register_nav_menu('header-menu',__( 'Menu Principal' ));
+  }
+  add_action( 'init', 'register_my_menu' );
+
   ?>

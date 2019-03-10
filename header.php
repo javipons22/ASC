@@ -28,14 +28,15 @@
                         </a>
                     </li>
                     <li class="menu-items">
-                        <ul>
-                            <li><a href="#">iPhone</a></li>
-                            <li><a href="#">Mac</a></li>
-                            <li><a href="#">Watch</a></li>
-                            <li><a href="#">Accesorios</a></li>
-                            <li><a href="#">PlayStation</a></li>
-                            <li><a href="#">Contacto</a></li>
-                        </ul>
+                        <?php 
+
+                            $args = array(
+                            'container'       => 'ul',
+                            );
+
+                            wp_nav_menu( $args ); 
+                            
+                        ?>
                     </li>
                     <li class="carrito">
                         <a href="#">
