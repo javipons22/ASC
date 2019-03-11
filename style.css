@@ -559,18 +559,21 @@ footer {
 
 /* --------------- (pagina iphones (por cada iphone. CATEGORIAS))  --------------- */
 .iphone-cat {
+    margin: 0 auto;
     margin-top:50px;
+    display:flex;
+    flex-direction: row;
     flex-wrap: wrap;
+    max-width: 980px;
+    flex: 0 1 200px;
 }
 .imagen-cat {
-    display:inline-block;
     flex-basis: 50%;
 }
 
 .datos-iphone-cat {
-    padding:12px 0 0 30px;
-    flex-grow:1;
-    max-width: 583px;
+    flex-grow: 1;
+    margin: 20px;
 }
 
 .datos-iphone-cat h1 {
@@ -588,13 +591,18 @@ footer {
 }
 
 .datos-iphone-cat ul li {
-    display:block;
-    margin-top: 26px;
-    padding-bottom: 20px;
+    
+    margin-bottom: 26px;
+    padding-top: 20px;
     font-size: 17px;
     font-weight: 700;
-    border-bottom: 1px solid rgba(136,136,136,.4);
+    border-top: 1px solid rgba(136,136,136,.4);
     width:100%;
+}
+
+.datos-iphone-cat ul li:first-child {
+    
+    border:none;
 }
 
 .datos-iphone-cat ul li:last-child {
@@ -602,18 +610,21 @@ footer {
 }
 
 .box {
-    display:block;
+    display: inline-block;
     font-weight: 300;
     width: 100%;
-    height: 83px;
     border: 1px solid rgba(136,136,136,.4);
     border-radius: 4px;
     display: flex;
     align-items: center;
     cursor: pointer;
     width: 100%;
+    margin-bottom: 14px;
 }
 
+.box span {
+    padding: 30px 8px;
+}
 .box:hover {
 
     border: 1px solid rgba(136,136,136,.9);
@@ -630,3 +641,10 @@ footer {
     /*display:none; /* esconde la caja del checkbox*/
 }
 
+.radio {
+    opacity: 0;
+}
+
+input[type=radio]:checked + label {
+    color: red;
+  }

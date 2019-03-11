@@ -68,6 +68,14 @@ endwhile; endif;
 // JSON_FORCE_OBJECT es para que los arrays se conviertan en {} en vez de []
 $myJSON = json_encode($array_final,JSON_FORCE_OBJECT);
 
+// Obtenemos el slug de la categoria para seleccionar imagen
+function quita_guiones($cadena){
+    $cadena = str_replace('-', '', $cadena);
+    return $cadena;
+}
+
+$term = get_queried_object();
+$slug = quita_guiones($term->slug);
 ?>
 
 
@@ -79,9 +87,9 @@ $myJSON = json_encode($array_final,JSON_FORCE_OBJECT);
 
 <section>
 
-    <div class="container flex iphone-cat">
+    <div class="flex iphone-cat">
         <div class="imagen-cat">
-            <img src="<?php echo $img_path; ?>/iphoneXR.png" alt="iphone">
+            <img src="<?php echo $img_path . "/" . $slug . ".png"; ?>" alt="iphone">
         </div>
         <div class="datos-iphone-cat">
             
@@ -90,23 +98,13 @@ $myJSON = json_encode($array_final,JSON_FORCE_OBJECT);
                 <h2>De $39000 a $59300 <br>o en 12, 6 o 3 cuotas**</h2>
             </span>
             <ul>
-                <li>
-                    <h3>Elige tu modelo</h3>
-                    
+                <li id="modelo">
+                    <h3>Elige tu modelo</h3>   
                 </li>
-                <li>
-                    <h3>Elige la capacidad</h3>
-                    <label for="cb2" class="box">
-                        iPhone 8
-                        <input name="cb2" id="cb" type="radio" value="iPhone9"/>   
-                    </label>
-                    <label for="cb2" class="box">
-                        iPhone 8
-                        <input name="cb2" id="cb" type="radio" value="iPhoneX"/>
-                    </label>
-                    
+                <li id="capacidad">
+                    <h3>Elige la capacidad</h3>  
                 </li>
-                <li>
+                <li id="color">
                     <h3>Elige color</h3>
                     
                 </li>
@@ -116,60 +114,151 @@ $myJSON = json_encode($array_final,JSON_FORCE_OBJECT);
 
 </section>
 
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post();    
-
-//echo the_field('iphone'); $prueba = "esto es una prueba";
-
-endwhile; endif; 
-?>
 
 <script>
+// VARIABLES
+var jsonPhp = <?php echo $myJSON; ?>;
+var capacidadesExistentes = [];
+var coloresExistentes = [];
+var indexModeloSeleccionado = 0;
 
-//document.addEventListener("DOMContentLoaded", function(event) { 
-// Probablemente necesario cuando se pase a node js
+// ESCONDER CIERTOS DIV
+jQuery("#capacidad, #color").hide();
 
+    
+    function showNext(val,tipo){
+        if (tipo == 'iphone'){
+            // Si reseleccionamos iphone quitar el field de color
+            jQuery("#color").hide();
+            capacidadMatcher(val);
+            jQuery("#capacidad").show(); 
+        } else if (tipo == 'capacidad'){
+            colorMatcher(val, indexModeloSeleccionado);
+            jQuery("#color").show();
 
-    jQuery( "input" ).change(function() {
+        }
+        
+    }
 
-    var opcion = this;
-    var value = opcion.value;
-
-    console.log(value);
-    jQuery(this).css('border','3px solid gray');
-
-    }); 
-
-    var jsonPhp = <?php echo $myJSON; ?>;
+   
 
     console.log(jsonPhp);
 
-    function crearHTML(iphone) {
+    function crearHTMLModelo(iphone,id) {
 
         htmlString =`
-        <label for="cb1" class="box">    
-                        ${iphone}
-                        <input name="cb1" id="cb" type="radio" value="${iphone}"/>
+        <label for="iphone${id}">
+        <div class="box modelo-iphone">    
+                        <span>${iphone}</span>
+                        <input id="iphone${id}" name="iphone" type="radio" class="radio" value="${iphone}" onclick="showNext(this.value, this.name)"/>
+        </div>
         </label>`;
         return htmlString;
 
     }
 
-    // iteramos en el objeto
-    for (var property in jsonPhp) {
-        if (jsonPhp.hasOwnProperty(property)) {
-            // obtenemos variable para el html
-            var iphone = jsonPhp[property].modelo;
-            // aplicamos la funcion creada con el template para insertarlo en el html
-            var htmlString = crearHTML(iphone);
+    function crearHTMLCapacidad(capacidad,id) {
 
-            jQuery( ".datos-iphone-cat ul > li:first-child" ).append( htmlString );
+        htmlString =`
+        <label for="capacidad${id}" class="box capacidad-iphone">    
+                        <span>${capacidad}</span>
+                        <input id="capacidad${id}" name="capacidad" class="radio" type="radio" value="${capacidad}" onclick="showNext(this.value,this.name)"/>
+        </label>`;
+        return htmlString;
+
+    }
+
+    function crearHTMLColor(color,id) {
+
+        htmlString =`
+        <label for="color${id}" class="box color-iphone">    
+                        <span>${color}</span>
+                        <input id="color${id}" name="color" class="radio" type="radio" value="${color}"/>
+        </label>`;
+        return htmlString;
+
+    }
+    
+    function displayModelos() {
+        var i = 0;
+        for (var property in jsonPhp) {
+            if (jsonPhp.hasOwnProperty(property)) {
+
+                // ELIGE TU MODELO
+                // obtenemos variable para el html
+                var iphone = jsonPhp[property].modelo;
+                // aplicamos la funcion creada con el template para insertarlo en el html
+                var htmlString = crearHTMLModelo(iphone, i);
+                jQuery( "#modelo" ).append( htmlString );
+                i++;
+            }
         }
     }
 
+    function displayCapacidades(htmlString) {
+        jQuery( "#capacidad" ).append( htmlString );
+    }
+    
+    // La funcion hace display de la seccion capacidades para el producto seleccionado
+    function capacidadMatcher(value) {
 
-//});
+        // iteramos en los distintos index del objeto
+        for (var property in jsonPhp){
 
 
+            // Chequeamos si el valor pasado a la funcion desde el radio button coincide con el modelo de celular en ese index - si coincide proseguimos
+            if (jsonPhp[property].modelo == value){
+                // Guardamos el modelo seleccionado para hacer query del color y precio 
+                indexModeloSeleccionado = property;
+                // Seteamos una variable para que en la iteracion , si es el primer elemento iterado ( i == 0) borre los datos anteriores
+                var i = 0;
+
+                // iteramos en las capacidades del modelo matcheado
+                for (var val in jsonPhp[property].capacidad){
+                    if (i == 0) {
+                        //Borra los datos anteriores
+                        jQuery(".capacidad-iphone").remove();
+                        var htmlString = crearHTMLCapacidad(val,i);
+                        displayCapacidades(htmlString);
+                        i++;
+                    } else { // Si no es el primero , agrega la capacidad
+                        var htmlString = crearHTMLCapacidad(val,i);
+                        displayCapacidades(htmlString);
+                        i++;
+                    }   
+                }
+            }    
+        }
+    }
+
+    
+
+    // jsonPhp[0].capacidad['32 GB'][0].color
+    function colorMatcher(capacidad, index) {
+        
+        var i = 0;
+        for (var val in jsonPhp[index].capacidad[capacidad]) {
+            if (i == 0) {
+                jQuery(".color-iphone").remove();
+                var color = jsonPhp[index].capacidad[capacidad][val].color;
+
+                var htmlString = crearHTMLColor(color,i);
+                jQuery( "#color" ).append( htmlString );
+                i++;
+
+            } else {
+                var color = jsonPhp[index].capacidad[capacidad][val].color;
+
+                var htmlString = crearHTMLColor(color,i);
+                jQuery( "#color" ).append( htmlString );
+                i++;
+            }
+            
+        }
+
+    }
+
+    displayModelos();
 
 </script>
 <?php get_footer(); ?>
