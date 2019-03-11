@@ -2,60 +2,71 @@
     get_header(); 
     $img_path = get_site_url() . "/wp-content/uploads";
 
-?>
-
-<?php
-
-
-
-
-
 
 //echo $myJSON;
 // Guardamos los valores existentes en un array para poder utilizar los condicionales viendo si hay valores repetidos
-$valores_existentes = array();
+$iphones_existentes = array();
+$capacidades_existentes = array();
 $array_final = array();
+
+// Comienza el loop
 if ( have_posts() ) : while ( have_posts() ) : the_post();    
 
-   
+    $data = array();
+    /*
+    MODELO DE ARRAY PARA PASAR A JSON
+
     $data = array('modelo'=> 'iPhone 7 Plus',
     'capacidad'=> array('32GB' => array( 'color'=> 'Space Gray',
                                         'precio' => 12999),
                         '128GB' => array('color'=> 'Green',
                                         'precio' => 59999)));
-
+    */
     $modelo = get_field('iphone');
     $capacidad = get_field('capacidad');
     $color = get_field('color');
     $precio = get_field('precio');
 
+    $color_precio = array('color'=> $color, 'precio'=> $precio);
+
     // Si no esta el modelo de iphone , agregar al nombre del array data y despues agregar al array_final 
-    if(!in_array(get_field('iphone') ,$valores_existentes)){
-        $valores_existentes[] = $modelo;
-        $data['modelo'] = $modelo;
-        // Si la capacidad del loop no esta subida agregar
-            $data['capacidad'] = array();
-            $data['capacidad'][] = $capacidad;
-            $array_final[] = $data;
-    } else { // Si esta
-        // Ver en que elemento colocar los siguientes valores (capacidad , precio y color)
+    if(!in_array($modelo ,$iphones_existentes)){
+
+        $iphones_existentes[] = $modelo;
+        $capacidades_existentes[] = $capacidad;
         $data['modelo'] = $modelo;
         
+        // agrega array associative
+        $data['capacidad'] = array( $capacidad => array($color_precio));
+        
+
+        $array_final[] = $data;
+
+    } else { // Si está
+        // Ver en que elemento colocar los siguientes valores (capacidad , precio y color)
+
+                for ($i = 0; $i < sizeof($array_final); $i++) {
+                    if ($array_final[$i]['modelo'] == $modelo){
+                        $index = $i; // Es el index del producto actual donde esta el modelo que nos paso wordpress (en el caso de iphone 7 hay 2 , iphone 7 y iphone 7 plus)
+                    }
+                }
+
+                if(!in_array($capacidad ,$capacidades_existentes)){
+                    //Pasamos el index donde esta el elemento actual
+                    $array_final[$index]['capacidad'][$capacidad] = array($color_precio);
+                    $capacidades_existentes[] = $capacidad;
+
+                } else {
+                    // si ya estaba la capacidad subida , agregamos un array color precio a la capacidad repetida
+                    $array_final[$index]['capacidad'][$capacidad][] = $color_precio;
+                }    
     }
-
-/*
-    $data['capacidad'] = array( get_field('capacidad'));
-    $data['capacidad'][] = array( 'color'=> 'Space Gray',
-    'precio' => 12999);
-    */
-    
-
-
-
 endwhile; endif; 
 
-//var_dump($modelos_existentes);
-$myJSON = json_encode($array_final);
+
+// Pasamos los datos del objeto al script de javascript
+// JSON_FORCE_OBJECT es para que los arrays se conviertan en {} en vez de []
+$myJSON = json_encode($array_final,JSON_FORCE_OBJECT);
 
 ?>
 
@@ -81,14 +92,7 @@ $myJSON = json_encode($array_final);
             <ul>
                 <li>
                     <h3>Elige tu modelo</h3>
-                    <label for="cb1" class="box">    
-                        iPhone 8
-                        <input name="cb1" id="cb" type="radio" value="iphone10"/>
-                    </label>
-                    <label for="cb1" class="box">
-                        iPhone 8
-                        <input name="cb1" id="cb" type="radio" value="iphone10"/>
-                    </label>
+                    
                 </li>
                 <li>
                     <h3>Elige la capacidad</h3>
@@ -135,9 +139,32 @@ endwhile; endif;
 
     }); 
 
-    var jsonPrueba = <?php echo $myJSON; ?>;
+    var jsonPhp = <?php echo $myJSON; ?>;
 
-    console.log(jsonPrueba);
+    console.log(jsonPhp);
+
+    function crearHTML(iphone) {
+
+        htmlString =`
+        <label for="cb1" class="box">    
+                        ${iphone}
+                        <input name="cb1" id="cb" type="radio" value="${iphone}"/>
+        </label>`;
+        return htmlString;
+
+    }
+
+    // iteramos en el objeto
+    for (var property in jsonPhp) {
+        if (jsonPhp.hasOwnProperty(property)) {
+            // obtenemos variable para el html
+            var iphone = jsonPhp[property].modelo;
+            // aplicamos la funcion creada con el template para insertarlo en el html
+            var htmlString = crearHTML(iphone);
+
+            jQuery( ".datos-iphone-cat ul > li:first-child" ).append( htmlString );
+        }
+    }
 
 
 //});

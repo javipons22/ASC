@@ -136,7 +136,7 @@ nav {
     order:4;
     flex-basis: 100%;
     height: 100vh;
-    display:none;/* Version mobil solo hace display a traves del js cuando se apreta el boton */
+    display:none;/* Version movil solo hace display a traves del js cuando se apreta el boton */
 }
 
 .carrito {
@@ -175,6 +175,7 @@ nav {
 
 
 .menu-items ul li {
+    display: block;
     font-size: 16px;
     border-bottom:1.5px solid #282828;
     padding:10px 0px;

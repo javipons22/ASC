@@ -30,11 +30,14 @@
                     <li class="menu-items">
                         <?php 
 
-                            $args = array(
-                            'container'       => 'ul',
-                            );
-
-                            wp_nav_menu( $args ); 
+                            wp_nav_menu( [
+                                'menu' => 'Menu1',
+                                'menu_class' => 'this-is-the-menu-class',
+                                'menu_id' => 'this-is-the-menu-id',
+                                'container' => 'ul',
+                                'container_class' => 'this-is-the-container-class',
+                                'container_id' => 'this-is-the-container-ID',
+                            ] ); 
                             
                         ?>
                     </li>
