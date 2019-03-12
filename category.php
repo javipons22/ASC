@@ -8,6 +8,7 @@
 $iphones_existentes = array();
 $capacidades_existentes = array();
 $array_final = array();
+$precio_max_min = array();
 
 // Comienza el loop
 if ( have_posts() ) : while ( have_posts() ) : the_post();    
@@ -28,6 +29,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     $precio = get_field('precio');
 
     $color_precio = array('color'=> $color, 'precio'=> $precio);
+
+    // Precio max min para el subtitulo de la pagina
+    $precio_max_min[] = (int)$precio;
 
     // Si no esta el modelo de iphone , agregar al nombre del array data y despues agregar al array_final 
     if(!in_array($modelo ,$iphones_existentes)){
@@ -63,7 +67,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     }
 endwhile; endif; 
 
-
 // Pasamos los datos del objeto al script de javascript
 // JSON_FORCE_OBJECT es para que los arrays se conviertan en {} en vez de []
 $myJSON = json_encode($array_final,JSON_FORCE_OBJECT);
@@ -86,7 +89,6 @@ $slug = quita_guiones($term->slug);
 </div>
 
 <section>
-
     <div class="flex iphone-cat">
         <div class="imagen-cat">
             <img src="<?php echo $img_path . "/" . $slug . ".png"; ?>" alt="iphone">
@@ -95,17 +97,32 @@ $slug = quita_guiones($term->slug);
             
             <h1>Compra <?php single_cat_title() ?></h1>
             <span>
-                <h2>De $39000 a $59300 <br>o en 12, 6 o 3 cuotas**</h2>
+                <h2><?php
+                
+                if (sizeof($precio_max_min) > 1) {
+                    echo "De $" . min($precio_max_min) . " a $" . max($precio_max_min);
+                } else {
+                    echo "A solo $" . min($precio_max_min);
+                }
+
+                 
+                 ?> <br>También en 12, 6 o 3 cuotas**</h2>
             </span>
             <ul>
                 <li id="modelo">
-                    <h3>Elige tu modelo</h3>   
+                    <h3>Elige tu modelo</h3>
+                    <ul>
+                    </ul>   
                 </li>
                 <li id="capacidad">
-                    <h3>Elige la capacidad</h3>  
+                    <h3>Elige la capacidad</h3>
+                    <ul>
+                    </ul>  
                 </li>
                 <li id="color">
                     <h3>Elige color</h3>
+                    <ul>
+                    </ul>  
                     
                 </li>
             </ul>
@@ -126,13 +143,21 @@ var indexModeloSeleccionado = 0;
 jQuery("#capacidad, #color").hide();
 
     
-    function showNext(val,tipo){
+    function showNext(val,tipo,el){
         if (tipo == 'iphone'){
+            // Reseteamos el css de todos los labels de iphone cuando se haga click en otro elemento
+            jQuery(".modelo-iphone").css("border","1px solid rgba(136,136,136,.9)");
+            var id = el.id;
             // Si reseleccionamos iphone quitar el field de color
             jQuery("#color").hide();
+
+            jQuery("." + id).css("border","1.5px solid #5e9bff");
             capacidadMatcher(val);
             jQuery("#capacidad").show(); 
         } else if (tipo == 'capacidad'){
+            var id = el.id;
+            jQuery(".capacidad-iphone label").css("border","1px solid rgba(136,136,136,.9)");
+            jQuery("." + id).css("border","1.5px solid #5e9bff");
             colorMatcher(val, indexModeloSeleccionado);
             jQuery("#color").show();
 
@@ -147,12 +172,14 @@ jQuery("#capacidad, #color").hide();
     function crearHTMLModelo(iphone,id) {
 
         htmlString =`
-        <label for="iphone${id}">
-        <div class="box modelo-iphone">    
-                        <span>${iphone}</span>
-                        <input id="iphone${id}" name="iphone" type="radio" class="radio" value="${iphone}" onclick="showNext(this.value, this.name)"/>
-        </div>
-        </label>`;
+        <li>
+            <label for="iphone${id}" class="box modelo-iphone iphone${id}">
+            
+                            <span>${iphone}</span>
+                            <input id="iphone${id}" name="iphone" type="radio" class="radio" value="${iphone}" onclick="showNext(this.value, this.name,this)"/>
+        
+            </label>
+        </li>`;
         return htmlString;
 
     }
@@ -160,21 +187,26 @@ jQuery("#capacidad, #color").hide();
     function crearHTMLCapacidad(capacidad,id) {
 
         htmlString =`
-        <label for="capacidad${id}" class="box capacidad-iphone">    
-                        <span>${capacidad}</span>
-                        <input id="capacidad${id}" name="capacidad" class="radio" type="radio" value="${capacidad}" onclick="showNext(this.value,this.name)"/>
-        </label>`;
+        <li class="capacidad-iphone">
+            <label for="capacidad${id}" class="box capacidad${id}">    
+                            <span>${capacidad}</span>
+                            <input id="capacidad${id}" name="capacidad" class="radio" type="radio" value="${capacidad}" onclick="showNext(this.value,this.name,this)"/>
+            </label>
+        </li>`;
         return htmlString;
 
     }
 
-    function crearHTMLColor(color,id) {
+    function crearHTMLColor(color,id,colorClase) {
 
         htmlString =`
-        <label for="color${id}" class="box color-iphone">    
-                        <span>${color}</span>
-                        <input id="color${id}" name="color" class="radio" type="radio" value="${color}"/>
-        </label>`;
+        <li class="color-iphone">
+            <label for="color${id}" class="box">
+                            <div class="${colorClase} circulo-color"></div>    
+                            <span>${color}</span>
+                            <input id="color${id}" name="color" class="radio" type="radio" value="${color}"/>
+            </label>
+        </li>`;
         return htmlString;
 
     }
@@ -189,14 +221,14 @@ jQuery("#capacidad, #color").hide();
                 var iphone = jsonPhp[property].modelo;
                 // aplicamos la funcion creada con el template para insertarlo en el html
                 var htmlString = crearHTMLModelo(iphone, i);
-                jQuery( "#modelo" ).append( htmlString );
+                jQuery( "#modelo ul" ).append( htmlString );
                 i++;
             }
         }
     }
 
     function displayCapacidades(htmlString) {
-        jQuery( "#capacidad" ).append( htmlString );
+        jQuery( "#capacidad ul" ).append( htmlString );
     }
     
     // La funcion hace display de la seccion capacidades para el producto seleccionado
@@ -242,15 +274,17 @@ jQuery("#capacidad, #color").hide();
                 jQuery(".color-iphone").remove();
                 var color = jsonPhp[index].capacidad[capacidad][val].color;
 
-                var htmlString = crearHTMLColor(color,i);
-                jQuery( "#color" ).append( htmlString );
+                var colorParsed = color.replace(/\s+/g, '-').toLowerCase();
+                var htmlString = crearHTMLColor(color,i,colorParsed);
+                jQuery( "#color ul" ).append( htmlString );
                 i++;
 
             } else {
                 var color = jsonPhp[index].capacidad[capacidad][val].color;
-
-                var htmlString = crearHTMLColor(color,i);
-                jQuery( "#color" ).append( htmlString );
+                // Color-id para hacer el circulo con el color en el input , pasamos una clase por ejemplo rose-gold y esa matchea con el css
+                var colorParsed = color.replace(/\s+/g, '-').toLowerCase();
+                var htmlString = crearHTMLColor(color, i ,colorParsed);
+                jQuery( "#color ul" ).append( htmlString );
                 i++;
             }
             

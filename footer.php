@@ -23,18 +23,21 @@
                     
                 </div>
             </div>
-            <p class="info-contacto">Más formas de comprar: Visita <a href="#contacto">nuestro negocio</a>, llama al 3512140570 o contactanos por <a href="https://www.facebook.com/AppleStoreCBA/">Facebook</a>.</p>
+            
             <div class="creditos">
                 <ul>
-                    <li><p>Copyright © 2019</p></li>
-                    <li>
-                        <ul class="contacto-footer">
+                    <li class="info-contacto">
+                        <p>Formas de comprar: Visita <a href="#contacto">nuestro negocio</a>, llama al 3512140570 o contactanos por <a href="https://www.facebook.com/AppleStoreCBA/">Facebook</a>.</p>
+                    </li>
+                    <li class="copyright"><p>Copyright © 2019</p></li>
+                    <li class="contacto-footer">
+                        <ul>
                             <li><a href="#">Contacto</a></li>
                             <li><a href="#">Reclamos</a></li>
                             <li><a href="#">Preguntas Frecuentes</a></li>
                         </ul>
                     </li>
-                    <li>
+                    <li class="pais">
                         <img src="<?php echo $img_path; ?>/argentina.png" alt="bandera">
                         <p>Argentina</p>
                     </li>

@@ -227,15 +227,30 @@ footer {
 
 .creditos ul {
     display:flex;
-    flex-direction: row;
+    flex-wrap: wrap;
+    flex-direction: column;
 }
 
 
 .creditos ul li:last-child {
-    text-align:right;
     flex-grow:1;
 }
 
+
+.creditos ul li {
+    margin-bottom : 8px;
+
+}
+
+.pais {
+    display:flex;
+    align-items: center;
+
+}
+
+.pais p {
+    margin-left:3px;
+}
 
 
 .creditos img {
@@ -244,9 +259,6 @@ footer {
     border:1px solid rgb(214, 214, 214);
 }
 
-.creditos p {
-    display: inline-block;
-}
 
 .creditos li:last-child p {
     padding:0 17px 0 0;
@@ -258,17 +270,30 @@ footer {
 }
 
 
-.info-contacto {
-    padding:0 17px 8px 17px;
+.info-contacto p {
+    padding:0 17px 8px 0;
     margin-bottom: 7px;
     border-bottom: 1px solid rgb(214, 214, 214);
 }
 
-.contacto-footer li {
+.contacto-footer ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.contacto-footer ul li {
     border-right: 1px solid rgb(214, 214, 214);
     height: 15px;
     padding: 0 10px;
 }
+
+.contacto-footer ul li:first-child {
+    border-right: 1px solid rgb(214, 214, 214);
+    height: 15px;
+    padding: 0 10px 0 0;
+}
+
 
 .contacto-footer a {
     color: #333;
@@ -278,6 +303,22 @@ footer {
     border-right: none;
 }
 
+/* - Orden de elementos en footer flex - */
+.info-contacto {
+    order:1;
+}
+
+.contacto-footer {
+    order: 2;
+}
+
+.pais {
+    order:3;
+}
+
+.copyright {
+    order:4;
+}
 
 /* --------------- BANNERS  --------------- */
 
@@ -557,6 +598,11 @@ footer {
     margin-top: 100px;
 }
 
+.error-404 h1 {
+    margin-top:50px;
+    font-size:30px;
+}
+
 /* --------------- (pagina iphones (por cada iphone. CATEGORIAS))  --------------- */
 .iphone-cat {
     margin: 0 auto;
@@ -590,7 +636,7 @@ footer {
     margin-bottom:15px;
 }
 
-.datos-iphone-cat ul li {
+.datos-iphone-cat > ul > li {
     
     margin-bottom: 26px;
     padding-top: 20px;
@@ -601,13 +647,9 @@ footer {
 }
 
 .datos-iphone-cat ul li:first-child {
-    
     border:none;
 }
 
-.datos-iphone-cat ul li:last-child {
-    border-bottom: none;
-}
 
 .box {
     display: inline-block;
@@ -626,25 +668,64 @@ footer {
     padding: 30px 8px;
 }
 .box:hover {
-
     border: 1px solid rgba(136,136,136,.9);
-   
 }
 
-.box:focus {
-
-    border: 1px solid red;
-   
-}
-
-#cb {
-    /*display:none; /* esconde la caja del checkbox*/
-}
 
 .radio {
-    opacity: 0;
+    display:none;;
 }
 
-input[type=radio]:checked + label {
-    color: red;
-  }
+#capacidad ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#capacidad ul li{
+    flex-basis: 48%;
+}
+
+#capacidad .box {
+    display:flex;
+    justify-content: center;
+}
+
+#capacidad .box span {
+    display:block;
+    padding:40px 0;
+    font-weight: 400;
+}
+
+#color .box {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#color ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#color ul li{
+    flex-basis: 48%;
+}
+
+#color .box span {
+    font-size: 13px;
+    margin-bottom: 0;
+    padding:0;
+    margin-bottom: 30px;
+    margin-top:5px;
+}
+
+.circulo-color {
+    border-radius: 50%;
+    margin-top:30px;
+    height: 30px;
+    width: 30px;
+}
