@@ -123,7 +123,16 @@ $slug = quita_guiones($term->slug);
                     <h3>Elige color</h3>
                     <ul>
                     </ul>  
-                    
+                </li>
+                <li id="cuotas">
+                    <h3>Elige cuotas</h3>
+                    <ul>
+                    </ul>  
+                </li>
+                <li id="precio">
+                    <h3>Precio final</h3>
+                    <ul>
+                    </ul>  
                 </li>
             </ul>
         </div>
@@ -138,9 +147,10 @@ var jsonPhp = <?php echo $myJSON; ?>;
 var capacidadesExistentes = [];
 var coloresExistentes = [];
 var indexModeloSeleccionado = 0;
+var capacidadModeloSeleccionado;
 
 // ESCONDER CIERTOS DIV
-jQuery("#capacidad, #color").hide();
+jQuery("#capacidad, #color, #cuotas, #precio").hide();
 
     
     function showNext(val,tipo,el){
@@ -154,12 +164,26 @@ jQuery("#capacidad, #color").hide();
             jQuery("." + id).css("border","1.5px solid #5e9bff");
             capacidadMatcher(val);
             jQuery("#capacidad").show(); 
+
         } else if (tipo == 'capacidad'){
+
             var id = el.id;
+            jQuery("#precio").hide();
+            // Reseteamos el css de todos los labels de iphone cuando se haga click en otro elemento
             jQuery(".capacidad-iphone label").css("border","1px solid rgba(136,136,136,.9)");
             jQuery("." + id).css("border","1.5px solid #5e9bff");
             colorMatcher(val, indexModeloSeleccionado);
             jQuery("#color").show();
+
+        } else if (tipo == 'color'){
+
+            var id = el.id;
+               // Reseteamos el css de todos los labels de iphone cuando se haga click en otro elemento
+            
+            jQuery(".color-iphone label").css("border","1px solid rgba(136,136,136,.9)");
+            jQuery("." + id).css("border","1.5px solid #5e9bff");
+            precioMatcher(val,indexModeloSeleccionado, capacidadModeloSeleccionado);
+            jQuery("#precio").show();
 
         }
         
@@ -201,10 +225,24 @@ jQuery("#capacidad, #color").hide();
 
         htmlString =`
         <li class="color-iphone">
-            <label for="color${id}" class="box">
+            <label for="color${id}" class="box color${id}">
                             <div class="${colorClase} circulo-color"></div>    
                             <span>${color}</span>
-                            <input id="color${id}" name="color" class="radio" type="radio" value="${color}"/>
+                            <input id="color${id}" name="color" class="radio" type="radio" value="${color}" onclick="showNext(this.value,this.name,this)"/>
+            </label>
+        </li>`;
+        return htmlString;
+
+    }
+
+    function crearHTMLPrecio(precio) {
+
+        htmlString =`
+        <li class="precio-iphone">
+            <label for="precio" class="box precio">
+                            <div class="precio" circulo-color"></div>    
+                            <span>${precio}</span>
+                            <input id="precio" name="precio" class="radio" type="radio" value="${precio}" onclick="showNext(this.value,this.name,this)"/>
             </label>
         </li>`;
         return htmlString;
@@ -269,6 +307,7 @@ jQuery("#capacidad, #color").hide();
     function colorMatcher(capacidad, index) {
         
         var i = 0;
+        capacidadModeloSeleccionado = capacidad;
         for (var val in jsonPhp[index].capacidad[capacidad]) {
             if (i == 0) {
                 jQuery(".color-iphone").remove();
@@ -291,6 +330,34 @@ jQuery("#capacidad, #color").hide();
         }
 
     }
+
+
+    function precioMatcher(color, index, capacidad) {
+
+        var i = 0;
+        for (var val in jsonPhp[index].capacidad[capacidad]) {
+            if(jsonPhp[index].capacidad[capacidad][val].color == color){
+                    if (i == 0) {
+                    jQuery(".precio-iphone").remove();
+                    var precio = jsonPhp[index].capacidad[capacidad][val].precio;
+
+                    var htmlString = crearHTMLPrecio(precio);
+                    jQuery( "#precio ul" ).append( htmlString );
+                    i++;
+
+                } else {
+                    var precio = jsonPhp[index].capacidad[capacidad][val].precio;
+
+                    var htmlString = crearHTMLPrecio(precio);
+                    jQuery( "#precio ul" ).append( htmlString );
+                    i++;
+                }
+            }
+            
+        }
+    }
+
+    
 
     displayModelos();
 

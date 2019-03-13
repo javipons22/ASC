@@ -615,6 +615,7 @@ footer {
 }
 .imagen-cat {
     flex-basis: 50%;
+    display:sticky;
 }
 
 .datos-iphone-cat {

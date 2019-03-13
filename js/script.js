@@ -10,3 +10,16 @@ jQuery(document).ready(function($){
         })
     })();
 });
+
+function splitScroll() {
+    const controller =new ScrollMagic.Controller();
+
+    new ScrollMagic.Scene({
+        duration: '100%',
+        triggerElement: '',
+        triggerHook: 0
+    })
+    .setPin('')
+    .addIndicators()
+    .addTo(controller);
+}
