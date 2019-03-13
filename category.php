@@ -91,7 +91,7 @@ $slug = quita_guiones($term->slug);
 <section>
     <div class="flex iphone-cat">
         <div class="imagen-cat">
-            <img src="<?php echo $img_path . "/" . $slug . ".png"; ?>" alt="iphone">
+            <img src="<?php echo $img_path . "/" . strtolower($slug) . ".png"; ?>" alt="iphone">
         </div>
         <div class="datos-iphone-cat">
             
@@ -159,21 +159,21 @@ jQuery("#capacidad, #color, #cuotas, #precio").hide();
             jQuery(".modelo-iphone").css("border","1px solid rgba(136,136,136,.9)");
             var id = el.id;
             // Si reseleccionamos iphone quitar el field de color
-            jQuery("#color").hide();
+            jQuery("#color").fadeOut("fast");
 
             jQuery("." + id).css("border","1.5px solid #5e9bff");
             capacidadMatcher(val);
-            jQuery("#capacidad").show(); 
+            jQuery("#capacidad").fadeIn("fast"); 
 
         } else if (tipo == 'capacidad'){
 
             var id = el.id;
-            jQuery("#precio").hide();
+            jQuery("#precio").fadeOut("fast");
             // Reseteamos el css de todos los labels de iphone cuando se haga click en otro elemento
             jQuery(".capacidad-iphone label").css("border","1px solid rgba(136,136,136,.9)");
             jQuery("." + id).css("border","1.5px solid #5e9bff");
             colorMatcher(val, indexModeloSeleccionado);
-            jQuery("#color").show();
+            jQuery("#color").fadeIn("fast");
 
         } else if (tipo == 'color'){
 
@@ -183,15 +183,13 @@ jQuery("#capacidad, #color, #cuotas, #precio").hide();
             jQuery(".color-iphone label").css("border","1px solid rgba(136,136,136,.9)");
             jQuery("." + id).css("border","1.5px solid #5e9bff");
             precioMatcher(val,indexModeloSeleccionado, capacidadModeloSeleccionado);
-            jQuery("#precio").show();
+            jQuery("#precio").fadeIn("fast");
 
         }
         
     }
 
    
-
-    console.log(jsonPhp);
 
     function crearHTMLModelo(iphone,id) {
 
