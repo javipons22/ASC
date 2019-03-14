@@ -130,7 +130,7 @@ $slug = quita_guiones($term->slug);
                     </ul>  
                 </li>
                 <li id="precio">
-                    <h3>Precio final</h3>
+                    <h3>TOTAL</h3>
                     <ul>
                     </ul>  
                 </li>
@@ -158,8 +158,10 @@ jQuery("#capacidad, #color, #cuotas, #precio").hide();
             // Reseteamos el css de todos los labels de iphone cuando se haga click en otro elemento
             jQuery(".modelo-iphone").css("border","1px solid rgba(136,136,136,.9)");
             var id = el.id;
-            // Si reseleccionamos iphone quitar el field de color
+            // Si reseleccionamos iphone quitar el field de color y de precio
+            jQuery("#precio").fadeOut("fast");
             jQuery("#color").fadeOut("fast");
+            
 
             jQuery("." + id).css("border","1.5px solid #5e9bff");
             capacidadMatcher(val);
@@ -237,9 +239,8 @@ jQuery("#capacidad, #color, #cuotas, #precio").hide();
 
         htmlString =`
         <li class="precio-iphone">
-            <label for="precio" class="box precio">
-                            <div class="precio" circulo-color"></div>    
-                            <span>${precio}</span>
+            <label for="precio" class="box precio-box">   
+                            <span>$${precio}</span>
                             <input id="precio" name="precio" class="radio" type="radio" value="${precio}" onclick="showNext(this.value,this.name,this)"/>
             </label>
         </li>`;

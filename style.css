@@ -730,3 +730,14 @@ footer {
     height: 30px;
     width: 30px;
 }
+
+.precio-box{
+    border:none;
+    background : #f2f2f2;
+    font-weight: 500;
+    cursor: inherit;
+}
+
+.precio-box:hover {
+    border:none;
+}
