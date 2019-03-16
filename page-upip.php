@@ -1,6 +1,6 @@
 <?php
 /* 
-	Template Name: Test
+	Template Name: UP 
 */
     get_header(); 
     
@@ -195,7 +195,8 @@
                     $cat_id = 9;
                     break;
             }
-            
+        
+            // La categoria tiene que ser un array para que wordpress la acepte
             $cat = array($cat_id);
 
             crear_iphone($titulo, $cat, $iphone, $precio, $capacidad, $color);

@@ -99,11 +99,14 @@
 <?php 
     $orden_categorias = array("iPhone XR" , "iPhone XS Max", "iPhone XS", "iPhone X", "iPhone 8", "iPhone 7", "iPhone 6");
     $categorias_ordenadas = array();
+    $categorias_ordenadas_trim = array();
     foreach ($orden_categorias as $val){
         if (in_array($val, $cat_no_trim)){
             array_push($categorias_ordenadas ,$val); 
+            array_push($categorias_ordenadas_trim , limpia_espacios($val));
         }
     }
+
 
 ?>
 
@@ -163,7 +166,7 @@
 
 <div class="productos">
     <div class="container productos-flex">
-        <?php foreach ($categorias as $cat): ?>
+        <?php foreach ($categorias_ordenadas_trim as $cat): ?>
             <div class="producto">
                 <div class="producto-titulo">
                     <h2><?php echo ${ $cat ."_iphone" }[0]; ?></h2>

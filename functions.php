@@ -13,6 +13,7 @@ add_action( 'wp_enqueue_scripts', 'wpt_theme_styles' );
 
 function wpt_theme_js() {
     wp_enqueue_script('main_js', get_template_directory_uri() . '/js/script.js', array('jquery') , '' , true);
+    //wp_enqueue_script('iphone_js', get_template_directory_uri() . '/js/iphone.js', array('jquery') , '' , true);
 }
 add_action( 'wp_enqueue_scripts', 'wpt_theme_js' );
 
