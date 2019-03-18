@@ -137,18 +137,18 @@ return $cadena;
                 <ul>
                 </ul>   
             </li>
+            <li id="pantalla">
+                <h3>Elige la pantalla</h3>
+                <ul>
+                </ul>  
+            </li>
             <li id="capacidad">
-                <h3>Elige la capacidad</h3>
+                <h3>Elige capacidad</h3>
                 <ul>
                 </ul>  
             </li>
-            <li id="color">
-                <h3>Elige color</h3>
-                <ul>
-                </ul>  
-            </li>
-            <li id="cuotas">
-                <h3>Elige cuotas</h3>
+            <li id="ram">
+                <h3>Elige RAM</h3>
                 <ul>
                 </ul>  
             </li>
@@ -167,6 +167,7 @@ return $cadena;
 <script type="text/javascript">
 // VARIABLES PHP A JS
 var jsonPhp = <?php echo $myJSON; ?>;
+console.log(jsonPhp);
 </script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri()?>/js/mac.js";></script>
 <?php get_footer(); ?>

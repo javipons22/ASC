@@ -1,5 +1,4 @@
-var capacidadesExistentes = [];
-var coloresExistentes = [];
+
 var indexModeloSeleccionado = 0;
 var capacidadModeloSeleccionado;
 
@@ -163,6 +162,7 @@ jQuery("#capacidad, #color, #cuotas, #precio").hide();
         capacidadModeloSeleccionado = capacidad;
         for (var val in jsonPhp[index].capacidad[capacidad]) {
             if (i == 0) {
+                // Borra los elementos de color previamente mostrados cuando se selecciona otra capacidad
                 jQuery(".color-iphone").fadeOut().remove();
                 var color = jsonPhp[index].capacidad[capacidad][val].color;
 

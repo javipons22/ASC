@@ -680,23 +680,23 @@ footer {
     display:none;;
 }
 
-#capacidad ul {
+#capacidad ul, #ram ul  {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
-#capacidad ul li{
+#capacidad ul li, #ram ul li{
     flex-basis: 48%;
 }
 
-#capacidad .box {
+#capacidad .box, #ram .box {
     display:flex;
     justify-content: center;
 }
 
-#capacidad .box span {
+#capacidad .box span, #ram .box span {
     display:block;
     padding:40px 0;
     font-weight: 400;
