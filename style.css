@@ -614,12 +614,10 @@ footer {
 }
 .imagen-cat {
     flex-basis: 100%;
-    display:flex;
-    justify-content: center;
 }
 
 .imagen-cat img {
-    height:350px;
+    width:100%;
 }
 
 .datos-iphone-cat {

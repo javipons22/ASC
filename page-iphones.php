@@ -173,7 +173,7 @@
                 </div>
                 <div class="producto-info">
                     <div>
-                        <img src="<?php echo $img_path . "/iphone/" . limpia_espacios(strtolower(${ $cat ."_iphone" }[0])) . ".png"; ?>" height="225px" alt="<?php echo ${ $cat ."_iphone" }[0]; ?>">
+                        <img src="<?php echo $img_path . "/" . limpia_espacios(strtolower(${ $cat ."_iphone" }[0])) . ".png"; ?>" height="225px" alt="<?php echo ${ $cat ."_iphone" }[0]; ?>">
                     </div>
                     <div class="info">
                         <ul>
