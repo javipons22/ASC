@@ -112,4 +112,12 @@
         order:2;
     }
 
+    .imagen-cat {
+        flex-basis: 50%;
+    }
+
+    .imagen-cat img {
+        height:500px;
+    }
+
 }

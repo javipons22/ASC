@@ -9,12 +9,11 @@ jQuery("#capacidad, #color, #cuotas, #precio").hide();
     function showNext(val,tipo,el){
         if (tipo == 'iphone'){
             // Reseteamos el css de todos los labels de iphone cuando se haga click en otro elemento
-            jQuery(".modelo-iphone").css("border","1px solid rgba(136,136,136,.9)");
+            jQuery(".modelo-iphone").css("border","1px solid rgba(136,136,136,.4)");
             var id = el.id;
+            iPhoneSeleccionado = val;
             // Si reseleccionamos iphone quitar el field de color y de precio
-            jQuery("#precio").fadeOut("fast");
-            jQuery("#color").fadeOut("fast");
-            
+            jQuery("#precio, #color").fadeOut("fast");
 
             jQuery("." + id).css("border","1.5px solid #5e9bff");
             capacidadMatcher(val);
@@ -25,7 +24,7 @@ jQuery("#capacidad, #color, #cuotas, #precio").hide();
             var id = el.id;
             jQuery("#precio").fadeOut("fast");
             // Reseteamos el css de todos los labels de iphone cuando se haga click en otro elemento
-            jQuery(".capacidad-iphone label").css("border","1px solid rgba(136,136,136,.9)");
+            jQuery(".capacidad-iphone label").css("border","1px solid rgba(136,136,136,.4)");
             jQuery("." + id).css("border","1.5px solid #5e9bff");
             colorMatcher(val, indexModeloSeleccionado);
             jQuery("#color").fadeIn("fast");
@@ -34,9 +33,17 @@ jQuery("#capacidad, #color, #cuotas, #precio").hide();
 
             var id = el.id;
                // Reseteamos el css de todos los labels de iphone cuando se haga click en otro elemento
-            
-            jQuery(".color-iphone label").css("border","1px solid rgba(136,136,136,.9)");
+            jQuery(".color-iphone label").css("border","1px solid rgba(136,136,136,.4)");
             jQuery("." + id).css("border","1.5px solid #5e9bff");
+
+            // Cambiamos imagen al cambiar color de iphone
+            var str1 = iPhoneSeleccionado.replace(/\s/g, '');
+            var str = val.replace(/\s/g, '');
+            var imagen = imgPath + "/iphone/"+ str1.toLowerCase() + str.toLowerCase() + ".png";
+            jQuery("#imagen").attr('src', imagen);
+            jQuery("#imagen").attr('alt', iPhoneSeleccionado + " " + str);
+
+
             precioMatcher(val,indexModeloSeleccionado, capacidadModeloSeleccionado);
             jQuery("#precio").fadeIn("fast");
 

@@ -114,7 +114,7 @@ return $cadena;
 <section>
 <div class="flex iphone-cat">
     <div class="imagen-cat">
-        <img src="<?php echo $img_path . "/macbook-page.png"; ?>" alt="MacBook">
+        <img id="imagen" src="<?php echo $img_path . "/mac/macbookprotouchbar.png"; ?>" alt="MacBook">
     </div>
     <div class="datos-iphone-cat">
         
@@ -167,7 +167,7 @@ return $cadena;
 <script type="text/javascript">
 // VARIABLES PHP A JS
 var jsonPhp = <?php echo $myJSON; ?>;
-console.log(jsonPhp);
+var imgPath = "<?php echo $img_path; ?>";
 </script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri()?>/js/mac.js";></script>
 <?php get_footer(); ?>

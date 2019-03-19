@@ -91,7 +91,7 @@ $slug = quita_guiones($term->slug);
 <section>
     <div class="flex iphone-cat">
         <div class="imagen-cat">
-            <img src="<?php echo $img_path . "/" . strtolower($slug) . ".png"; ?>" alt="iphone">
+            <img id="imagen" src="<?php echo $img_path . "/iphone/" . strtolower($slug) . ".png"; ?>" alt="iphone">
         </div>
         <div class="datos-iphone-cat">
             
@@ -144,6 +144,7 @@ $slug = quita_guiones($term->slug);
 <script>
 // VARIABLES PHP A JS
 var jsonPhp = <?php echo $myJSON; ?>;
+var imgPath = "<?php echo $img_path; ?>";
 </script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri()?>/js/iphone.js";></script>
 <?php get_footer(); ?>

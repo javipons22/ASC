@@ -12,10 +12,16 @@ jQuery("#pantalla, #capacidad, #ram, #precio").hide();
     function showNext(val,tipo,el,indexRam){ // El ultimo es id es para el index de la ram
         if (tipo == 'mac'){
             // Reseteamos el css de todos los labels de mac cuando se haga click en otro elemento
-            jQuery(".modelo-mac").css("border","1px solid rgba(136,136,136,.9)");
+            jQuery(".modelo-mac").css("border","1px solid rgba(136,136,136,.4)");
             var id = el.id;
+
+            // cambiar imagen al seleccionar tipo de mac
+            var str = val.replace(/\s/g, '');
+            var imagen = imgPath + "/mac/" + str.toLowerCase() + ".png";
+            jQuery("#imagen").attr('src', imagen);
             // Si reseleccionamos mac quitar el field de color y de precio
             jQuery("#ram, #capacidad,#precio").fadeOut("fast");
+            console.log(imagen);
             
 
             jQuery("." + id).css("border","1.5px solid #5e9bff");
@@ -27,7 +33,7 @@ jQuery("#pantalla, #capacidad, #ram, #precio").hide();
             var id = el.id;
             jQuery("#ram,#precio").fadeOut("fast");
             // Reseteamos el css de todos los labels de macs cuando se haga click en otro elemento
-            jQuery(".pantalla-mac label").css("border","1px solid rgba(136,136,136,.9)");
+            jQuery(".pantalla-mac label").css("border","1px solid rgba(136,136,136,.4)");
             jQuery("." + id).css("border","1.5px solid #5e9bff");
             pantallaModeloSeleccionado = val;
             capacidadMatcher(val, indexModeloSeleccionado);
@@ -38,8 +44,8 @@ jQuery("#pantalla, #capacidad, #ram, #precio").hide();
             var id = el.id;
                // Reseteamos el css de todos los labels de macs cuando se haga click en otro elemento
             //console.log(val);
-            jQuery("#ram,#precio").fadeOut("fast");
-            jQuery(".capacidad-mac label").css("border","1px solid rgba(136,136,136,.9)");
+            jQuery("#precio").fadeOut("fast");
+            jQuery(".capacidad-mac label").css("border","1px solid rgba(136,136,136,.4)");
             jQuery("." + id).css("border","1.5px solid #5e9bff");
             //console.log(val);
             capacidadModeloSeleccionado = val;
@@ -48,8 +54,7 @@ jQuery("#pantalla, #capacidad, #ram, #precio").hide();
 
         } else if (tipo == 'ram'){
             var id = el.id;
-            jQuery("#precio").fadeOut("fast");
-            jQuery(".ram-mac label").css("border","1px solid rgba(136,136,136,.9)");
+            jQuery(".ram-mac label").css("border","1px solid rgba(136,136,136,.4)");
             jQuery("." + id).css("border","1.5px solid #5e9bff");
             var ramSeleccionada = indexRam;
             //console.log(indexModeloSeleccionado, pantallaModeloSeleccionado, capacidadModeloSeleccionado, ramSeleccionada);
