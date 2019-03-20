@@ -68,6 +68,7 @@ header {
     background: rgba(45,45,45,0.98);
     width:100%;
     position:fixed;
+    z-index: 1000;
 }
 
 .separador-header {
@@ -614,10 +615,12 @@ footer {
 }
 .imagen-cat {
     flex-basis: 100%;
+    text-align:center;
 }
 
 .imagen-cat img {
     width:100%;
+    max-width: 350px;
 }
 
 .datos-iphone-cat {

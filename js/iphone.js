@@ -1,6 +1,7 @@
 
 var indexModeloSeleccionado = 0;
 var capacidadModeloSeleccionado;
+console.log(jsonPhp);
 
 // ESCONDER CIERTOS DIV
 jQuery("#capacidad, #color, #cuotas, #precio").hide();
@@ -40,8 +41,13 @@ jQuery("#capacidad, #color, #cuotas, #precio").hide();
             var str1 = iPhoneSeleccionado.replace(/\s/g, '');
             var str = val.replace(/\s/g, '');
             var imagen = imgPath + "/iphone/"+ str1.toLowerCase() + str.toLowerCase() + ".png";
-            jQuery("#imagen").attr('src', imagen);
+            jQuery("#imagen").fadeOut();
+            setTimeout(function(){ jQuery("#imagen").attr('src', imagen); }, 300);
+            jQuery("#imagen").fadeIn();
+            
+
             jQuery("#imagen").attr('alt', iPhoneSeleccionado + " " + str);
+            
 
 
             precioMatcher(val,indexModeloSeleccionado, capacidadModeloSeleccionado);

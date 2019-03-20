@@ -66,7 +66,7 @@
             ${$trimmed_cat . "_link"} = array();
         }
         
-
+        ${$trimmed_cat . "_category"} = $cat;
 
         // Agregar valores disponibles a variables de titulo , capacidad, precio y color
         // Si el valor no existe agregar al array ej $iphone8_titulo (se expecifica con variable dinamica) y si ya existe no hacer nada
@@ -169,11 +169,11 @@
         <?php foreach ($categorias_ordenadas_trim as $cat): ?>
             <div class="producto">
                 <div class="producto-titulo">
-                    <h2><?php echo ${ $cat ."_iphone" }[0]; ?></h2>
+                    <h2><?php echo ${ $cat ."_category" }; ?></h2>
                 </div>
                 <div class="producto-info">
                     <div>
-                        <img src="<?php echo $img_path . "/" . limpia_espacios(strtolower(${ $cat ."_iphone" }[0])) . ".png"; ?>" height="225px" alt="<?php echo ${ $cat ."_iphone" }[0]; ?>">
+                        <img src="<?php echo $img_path . "/iphone/" . limpia_espacios(strtolower(${ $cat ."_category" })) . ".png"; ?>" height="225px" alt="<?php echo ${ $cat ."_category" }; ?>">
                     </div>
                     <div class="info">
                         <ul>

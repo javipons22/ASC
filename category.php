@@ -27,6 +27,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     $capacidad = get_field('capacidad');
     $color = get_field('color');
     $precio = get_field('precio');
+    
 
     $color_precio = array('color'=> $color, 'precio'=> $precio);
 
