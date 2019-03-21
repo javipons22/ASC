@@ -469,8 +469,8 @@ footer {
 }
 
 .producto-info img {
-    max-width:225px;
-    max-height:225px;
+    max-height:160px;
+    padding: 0 15px;
     width: auto;
     height: auto;
     
@@ -483,7 +483,13 @@ footer {
 }
 
 .producto-info > div{
-    flex-basis: 47%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 40%;
+}
+.producto-info .info{
+    flex-basis: 55%;
 }
 
 .producto-info h3 {
@@ -619,8 +625,8 @@ footer {
 }
 
 .imagen-cat img {
-    width:100%;
-    max-width: 350px;
+    max-height: 430px;
+
 }
 
 .datos-iphone-cat {
