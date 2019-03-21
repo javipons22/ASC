@@ -43,13 +43,14 @@ jQuery("#capacidad, #color, #cuotas, #precio").hide();
             var imagen = imgPath + "/iphone/"+ str1.toLowerCase() + str.toLowerCase() + ".png";
             jQuery("#imagen").fadeOut();
             setTimeout(function(){ jQuery("#imagen").attr('src', imagen); }, 300);
-            jQuery("#imagen").fadeIn();
-            
 
+            // solo mostrar cuando termina de cargar la imagen 
+            jQuery("#imagen").on('load', function(){
+                jQuery("#imagen").fadeIn();
+            });
+            
             jQuery("#imagen").attr('alt', iPhoneSeleccionado + " " + str);
             
-
-
             precioMatcher(val,indexModeloSeleccionado, capacidadModeloSeleccionado);
             jQuery("#precio").fadeIn("fast");
 

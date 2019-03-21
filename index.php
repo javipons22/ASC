@@ -17,7 +17,7 @@
     <div class="banner-2-texto">
         <h1>iPhone 6, iPhone 7, iPhone 8, iPhone X o iPhone XR</h1>
         <h3>Disfruta de tu iPhone al mejor precio!</h3>
-        <img src="<?php echo $img_path; ?>/iphones.png" alt="iphones">
+        <img src="<?php echo $img_path; ?>/iphone/iphones.png" alt="iphones">
         <a href="#">Ver todos ></a>
     </div>
 </div>

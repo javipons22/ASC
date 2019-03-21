@@ -20,7 +20,12 @@ jQuery("#pantalla, #capacidad, #ram, #precio").hide();
             var imagen = imgPath + "/mac/" + str.toLowerCase() + ".png";
             jQuery("#imagen").fadeOut();
             setTimeout(function(){ jQuery("#imagen").attr('src', imagen); }, 300);
-            jQuery("#imagen").fadeIn();
+
+            // solo mostrar cuando termina de cargar la imagen 
+            jQuery("#imagen").on('load', function(){
+                jQuery("#imagen").fadeIn();
+            });
+            
             // Si reseleccionamos mac quitar el field de color y de precio
             jQuery("#ram, #capacidad,#precio").fadeOut("fast");
             console.log(imagen);
