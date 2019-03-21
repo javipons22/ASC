@@ -189,7 +189,7 @@
 
                             <li>
                                 <h3>Colores Disponibles</h3>
-                                <ul class="info-items">
+                                <ul class="info-items info-colores">
                                     <?php foreach (${ $cat ."_color" } as $color): ?>
                                         <li>
                                             <div class="color <?php echo guiones_por_espacios(strtolower($color)); ?>">

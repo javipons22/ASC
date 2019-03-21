@@ -3,7 +3,7 @@
     <footer>
         <div class="container">
             <p class="info-footer">
-                Todos nuestros equipos son libres de fabrica en caja sellada y tienen un año de Garantía Apple Oficial en Cordoba, Rosario y Buenos Aires a diferencia de nuestras competencias.
+                Todos nuestros equipos son libres de fábrica en caja sellada y tienen un año de Garantía Apple Oficial en Cordoba, Rosario y Buenos Aires a diferencia de nuestras competencias.
                 <br>
                 <br>
                 *Precios en pesos ARS
