@@ -6,6 +6,37 @@ console.log(jsonPhp);
 // ESCONDER CIERTOS DIV
 jQuery("#capacidad, #color, #cuotas, #precio").hide();
 
+ 
+    function cargarImagen(link,modelo) {
+        var img = new Image();
+        jQuery(img).load(function(){
+            console.log(`imagen de ${modelo} cargada`);
+        }).attr('src',link);
+    }
+
+    cargarImagen("http://localhost/www/ASCwordpress/wp-content/uploads/iphone/iphonexryellow.png");
+
+    function iteradorLoaderImagenes() {
+        for (var property in jsonPhp) {
+            if (jsonPhp.hasOwnProperty(property)) {
+                var iphone = jsonPhp[property].modelo;
+                var str = iphone.replace(/\s/g, '');
+                var nombreModelo = str.toLowerCase();
+                
+                for (var val in jsonPhp[property].capacidad){
+                    for (var key in jsonPhp[property].capacidad[val]){
+                        var str2 = jsonPhp[property].capacidad[val][key].color;
+                        var color = str2.toLowerCase();
+                        var color = color.replace(/\s/g, '');
+                        var nombreImagen = nombreModelo + color;
+                        cargarImagen(`${imgPath}/iphone/${nombreImagen}.png`,nombreImagen);
+                    }
+                }    
+            }
+        }
+    }
+
+    iteradorLoaderImagenes();
     
     function showNext(val,tipo,el){
         if (tipo == 'iphone'){

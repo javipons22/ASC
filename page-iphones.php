@@ -222,7 +222,7 @@
                 </div>
                 <div class="producto-boton">
                     <a href="<?php echo ${ $cat ."_link" }[0]; ?>">
-                        <h4>Ver Producto</h4>
+                        <h4>Ver Productos</h4>
                     </a>
                 </div>
             </div>
