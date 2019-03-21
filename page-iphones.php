@@ -172,7 +172,7 @@
                     <h2><?php echo ${ $cat ."_category" }; ?></h2>
                 </div>
                 <div class="producto-info">
-                    <div>
+                    <div class="producto-info-imagen">
                         <img src="<?php echo $img_path . "/iphone/" . limpia_espacios(strtolower(${ $cat ."_category" })) . ".png"; ?>" height="225px" alt="<?php echo ${ $cat ."_category" }; ?>">
                     </div>
                     <div class="info">

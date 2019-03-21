@@ -39,8 +39,8 @@ jQuery("#capacidad, #color, #cuotas, #precio").hide();
 
             // Cambiamos imagen al cambiar color de iphone
             var str1 = iPhoneSeleccionado.replace(/\s/g, '');
-            var str = val.replace(/\s/g, '');
-            var imagen = imgPath + "/iphone/"+ str1.toLowerCase() + str.toLowerCase() + ".png";
+            var str2 = val.replace(/\s/g, '');
+            var imagen = imgPath + "/iphone/"+ str1.toLowerCase() + str2.toLowerCase() + ".png";
             jQuery("#imagen").fadeOut();
             setTimeout(function(){ jQuery("#imagen").attr('src', imagen); }, 300);
 
@@ -49,7 +49,7 @@ jQuery("#capacidad, #color, #cuotas, #precio").hide();
                 jQuery("#imagen").fadeIn();
             });
             
-            jQuery("#imagen").attr('alt', iPhoneSeleccionado + " " + str);
+            jQuery("#imagen").attr('alt', iPhoneSeleccionado + " " + str2);
             
             precioMatcher(val,indexModeloSeleccionado, capacidadModeloSeleccionado);
             jQuery("#precio").fadeIn("fast");

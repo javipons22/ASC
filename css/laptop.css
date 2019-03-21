@@ -120,4 +120,24 @@
         width: 49%;
     }
 
+    .banner-1 h1, .banner-2 h1, .banner-3 h1 {
+        padding: 0 10px;
+        font-size: 32px;
+        font-weight: 500;
+    }
+    
+    .banner-1 h3, .banner-2 h3,  .banner-3 h3 {
+        padding: 0 10px;
+        font-size: 21px;
+        font-weight: 300px;
+        margin: 15px 0;  
+    }
+
+    .banner-2 img {
+        max-width:65%;
+    }
+
+    .banner-3 img {
+        max-width:100%
+    }
 }

@@ -335,19 +335,23 @@ footer {
 
 .banner-1-texto, .banner-2-texto , .banner-3-texto{
     margin: 60px 0;
+    padding: 0 50px;
+    display: flex;
+    flex-basis:100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     
 }
 
 
 .banner-1 h1, .banner-2 h1, .banner-3 h1 {
-    padding: 0 10px;
-    font-size: 32px;
+    font-size: 27px;
     font-weight: 500;
 }
 
 .banner-1 h3, .banner-2 h3,  .banner-3 h3 {
-    padding: 0 10px;
-    font-size: 21px;
+    font-size: 19px;
     font-weight: 300px;
     margin: 15px 0;  
 }
@@ -363,16 +367,11 @@ footer {
 }
 
 .banner-2 img, .banner-3 img {
-    display:block;
-    height:450px;
-    margin: 0 auto;
+    max-width:350px;
+    object-fit: contain;
     margin-bottom: 30px;
 }
 
-.banner-3 img {
-    height:230px;
-    margin:30px 0;
-}
 
 /* --------------- SUB NAV PRODUCTOS (pagina iphone)  --------------- */
 
@@ -468,13 +467,18 @@ footer {
     padding-bottom: 5px;
     margin: 10px 15px 0 15px;
 }
+.producto-info-imagen {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 40%;
+    overflow:hidden;
+   
+}
 
-.producto-info img {
-    max-height:160px;
-    padding: 0 15px;
-    width: auto;
-    height: auto;
-    
+.producto-info-imagen img {
+    max-width:100%;
+    object-fit: contain;
 }
 
 .producto-info {
@@ -487,12 +491,7 @@ footer {
     padding: 0 7px;
 }
 
-.producto-info > div{
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    flex-basis: 40%;
-}
+
 .producto-info .info{
     flex-basis: 55%;
 }
@@ -618,7 +617,7 @@ footer {
     justify-content: center;
     flex-wrap: wrap;
     margin: 0 auto;
-    padding: 0 5px;
+    padding: 0 10px;
 }
 
 /* --------------- (pagina 404)  --------------- */
@@ -650,11 +649,13 @@ footer {
 }
 .imagen-cat {
     flex-basis: 100%;
+    max-height: 450px;
     text-align:center;
 }
 
 .imagen-cat img {
-    max-height: 430px;
+    object-fit: contain;
+    height:100%;
 
 }
 
