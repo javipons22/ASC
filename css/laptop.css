@@ -112,8 +112,16 @@
         order:2;
     }
 
+    .iphone-cat {
+        flex-direction: row;
+    }
+
     .imagen-cat {
-        flex-basis: 49%;
+        flex-basis: 45%;
+    }
+
+    .datos-iphone-cat {
+        flex-basis:45%;
     }
 
     .producto {
@@ -139,5 +147,17 @@
 
     .banner-3 img {
         max-width:100%
+    }
+
+    .contacto {
+        padding:0;
+    }
+
+    .info-pagina-contacto {
+        order:1;
+    }
+    
+    .maps {
+        order:2;
     }
 }

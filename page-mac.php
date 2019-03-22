@@ -112,7 +112,7 @@ return $cadena;
 </div>
 
 <section>
-<div class="flex iphone-cat">
+<div class="iphone-cat">
     <div class="imagen-cat">
         <img id="imagen" src="<?php echo $img_path . "/mac/macbookprotouchbar.png"; ?>" alt="MacBook">
     </div>

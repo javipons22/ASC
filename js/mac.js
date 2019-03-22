@@ -28,7 +28,6 @@ jQuery("#pantalla, #capacidad, #ram, #precio").hide();
             
             // Si reseleccionamos mac quitar el field de color y de precio
             jQuery("#ram, #capacidad,#precio").fadeOut("fast");
-            console.log(imagen);
             
 
             jQuery("." + id).css("border","1.5px solid #5e9bff");

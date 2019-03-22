@@ -14,6 +14,7 @@ This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
 
+
 html {
     height:100%;
 }
@@ -638,30 +639,33 @@ footer {
 }
 
 /* --------------- (pagina iphones (por cada iphone. CATEGORIAS))  --------------- */
+
 .iphone-cat {
     margin: 0 auto;
-    margin-top:50px;
+    margin-top: 30px;
+
     display:flex;
     flex-direction: row;
+    justify-content: space-between;
     flex-wrap: wrap;
     max-width: 980px;
-    flex: 0 1 200px;
 }
 .imagen-cat {
-    flex-basis: 100%;
-    max-height: 450px;
+    width:100%;
     text-align:center;
+    max-height: 450px;
 }
 
 .imagen-cat img {
     object-fit: contain;
-    height:100%;
+    width:100%;
+    max-height: 450px;
 
 }
 
 .datos-iphone-cat {
-    flex-grow: 1;
     margin: 20px;
+    width:100%;
 }
 
 .datos-iphone-cat h1 {
@@ -782,4 +786,63 @@ footer {
 
 .precio-box:hover {
     border:none;
+}
+
+/* --------------- (pagina contacto)  --------------- */
+
+.contacto {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 10px;
+}
+
+.info-pagina-contacto {
+    height:100%;
+    padding:15px 15px 15px 8px;
+    border: 1px solid rgba(136,136,136,.4);
+    border-radius: 10px 10px 10px 0;
+}
+
+.datos li > p{
+    width:50%;
+    font-size: 13px;
+    flex-grow:1;
+    margin-left:7px;
+}
+
+.contacto h2 {
+    display:block;
+    margin-right: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(136,136,136,.4);
+}
+
+
+
+.datos > li {
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.datos > li > div {
+    width:26px;
+    height: 26px;
+    text-align: center;
+}
+
+.datos > li img {
+    height:100%;
+}
+
+.info-pagina-contacto {
+    order:2;
+    margin: 30px 0;
+}
+
+.maps {
+    order:1;
+    margin-top:30px;
 }
