@@ -33,6 +33,14 @@ add_theme_support ( 'post-thumbnails' );
       $my_post['post_title'] = get_field('iphone') . " - " . get_field("capacidad") . " - " . get_field("color");
     } 
 
+    if ( get_post_type() == 'macs' ) {
+      $my_post['post_title'] = get_field('macbook') . " - " . get_field("pantalla") . " - " . get_field("capacidad") . " - " . get_field("ram");
+    } 
+
+    if ( get_post_type() == 'apple_watch' ) {
+      $my_post['post_title'] = get_field('modelo') . " - " . get_field("color") . " - " . get_field("tamano");
+    } 
+
     // Update the post into the database
     wp_update_post( $my_post );
 

@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $img_path; ?>/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $img_path; ?>/favicon-16x16.png">
     <!-- FIN FAVICON -->
-    <title><?php bloginfo('name'); ?> | <?php is_front_page() ? bloginfo('description') : wp_title(''); ?></title>
+    <title><?php bloginfo('name'); is_front_page() ? bloginfo('description') :  wp_title('|'); ?></title>
     <?php wp_head(); ?>
     
 </head>
