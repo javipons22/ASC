@@ -91,11 +91,7 @@ $slug = quita_guiones($term->slug);
 
 <section>
     <div class="flex iphone-cat">
-        <div class="imagen-cat">
-            <img id="imagen" src="<?php echo $img_path . "/iphone/" . strtolower($slug) . ".png"; ?>" alt="iphone">
-        </div>
-        <div class="datos-iphone-cat">
-            
+        <div class="titulo-iphone-movil">
             <h1>Compra <?php single_cat_title() ?></h1>
             <span>
                 <h2><?php
@@ -109,6 +105,26 @@ $slug = quita_guiones($term->slug);
                  
                  ?> <br>También en 12, 6 o 3 cuotas**</h2>
             </span>
+        </div>
+        <div class="imagen-cat">
+            <img id="imagen" src="<?php echo $img_path . "/iphone/" . strtolower($slug) . ".png"; ?>" alt="iphone">
+        </div>
+        <div class="datos-iphone-cat">
+            <div class="titulo-iphone-cat">
+                <h1>Compra <?php single_cat_title() ?></h1>
+                <span>
+                    <h2><?php
+                    
+                    if (sizeof($precio_max_min) > 1) {
+                        echo "De $" . min($precio_max_min) . " a $" . max($precio_max_min);
+                    } else {
+                        echo "A solo $" . min($precio_max_min);
+                    }
+
+                    
+                    ?> <br>También en 12, 6 o 3 cuotas**</h2>
+                </span>
+            </div>
             <ul>
                 <li id="modelo">
                     <h3>Elige tu modelo</h3>
@@ -133,6 +149,7 @@ $slug = quita_guiones($term->slug);
                 <li id="precio">
                     <h3>TOTAL</h3>
                     <ul>
+                        
                     </ul>  
                 </li>
             </ul>

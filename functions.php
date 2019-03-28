@@ -41,6 +41,10 @@ add_theme_support ( 'post-thumbnails' );
       $my_post['post_title'] = get_field('modelo') . " - " . get_field("color") . " - " . get_field("tamano");
     } 
 
+    if ( get_post_type() == 'accesorio' ) {
+      $my_post['post_title'] = get_field('nombre');
+    } 
+
     // Update the post into the database
     wp_update_post( $my_post );
 
@@ -60,7 +64,7 @@ add_theme_support ( 'post-thumbnails' );
     add_action( 'pre_get_posts', 'wpse_category_set_post_types' );
 
   function register_my_menu() {
-    register_nav_menu('header-menu',__( 'Menu Principal' ));
+    register_nav_menus(array('header_menu' => 'Header Menu','footer_menu' => 'Footer Menu'));
   }
   add_action( 'init', 'register_my_menu' );
 

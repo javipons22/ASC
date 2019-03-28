@@ -176,8 +176,9 @@ nav {
 }
 
 
-.menu-items ul li {
+.menu-items > ul > li {
     display: block;
+    width:100%;
     font-size: 16px;
     border-bottom:1.5px solid #282828;
     padding:10px 0px;
@@ -449,6 +450,10 @@ footer {
     border-bottom:1px solid rgba(136,136,136,.4);
     font-size: 24px;
     padding: 14px 17px;
+    position:sticky;
+    top: 45px;
+    background-color: rgba(255,255,255,0.95);
+    z-index:999;
 }
 
 .producto {
@@ -641,8 +646,7 @@ footer {
 /* --------------- (pagina iphones (por cada iphone. CATEGORIAS))  --------------- */
 
 .iphone-cat {
-    margin: 0 auto;
-    margin-top: 30px;
+    margin: auto;
 
     display:flex;
     flex-direction: row;
@@ -664,16 +668,17 @@ footer {
 }
 
 .datos-iphone-cat {
-    margin: 20px;
+    margin: 0 20px;
     width:100%;
 }
 
-.datos-iphone-cat h1 {
+.datos-iphone-cat > .titulo-iphone-cat h1 {
     font-size: 40px;
+    margin-bottom:5px;
     font-weight: 700;
 }
 
-.datos-iphone-cat h2 {
+.datos-iphone-cat > .titulo-iphone-cat h2 {
     font-size: 20px;
     width: 65%;
 }
@@ -692,8 +697,9 @@ footer {
     width:100%;
 }
 
-.datos-iphone-cat ul li:first-child {
-    border:none;
+.datos-iphone-cat > ul > li:first-child {
+    border-top:1px solid rgba(136,136,136,.4);
+    margin-top:25px;
 }
 
 
@@ -713,13 +719,18 @@ footer {
 .box span {
     padding: 30px 8px;
 }
+
+.modelo-accesorio span{
+    padding: 15px 8px;
+}
+
 .box:hover {
     border: 1px solid rgba(136,136,136,.9);
 }
 
 
 .radio {
-    display:none;;
+    display:none;
 }
 
 #capacidad ul, #ram ul  {
@@ -776,17 +787,83 @@ footer {
     width: 30px;
 }
 
+.pagos {
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+
+.pagos li {
+    flex-basis:23%;
+    font-size: 15px;
+    font-weight: 300;
+    text-align:center;
+    height:100%;
+    
+}
+
+.pagos li label{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    border: 1px solid rgba(136, 136, 136, 0.4);
+    border-radius:4px;
+}
+
+.pagos li:first-child label {
+    border: 1.5px solid rgb(94, 155, 255)
+}
+
+
 .precio-box{
     border:none;
     background : #f2f2f2;
     font-size: 30px;
     font-weight: 500;
     cursor: inherit;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding:20px 10px;
+    border-radius:4px;
 }
 
 .precio-box:hover {
     border:none;
 }
+
+.precio-box span:first-child {
+    font-size:13px;
+    margin-bottom:3px;
+    font-weight:300;
+}
+
+.cuotas {
+    height:46px;
+    width:100%;
+    cursor:pointer;
+}
+
+.titulo-iphone-movil {
+    flex-basis:100%;
+    text-align:center;
+    margin: 35px 0;
+}
+
+.titulo-iphone-movil > h1 {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.titulo-iphone-cat {
+    display:none;
+}
+
+
+
 
 /* --------------- (pagina contacto)  --------------- */
 

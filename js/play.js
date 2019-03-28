@@ -1,10 +1,10 @@
 
 var indexModeloSeleccionado = 0;
-var colorModeloSeleccionado;
+var imagenModeloSeleccionado;
 console.log(jsonPhp);
 
 // ESCONDER CIERTOS DIV
-jQuery("#color, #tamaño, #precio").hide();
+jQuery("#capacidad, #tamaño, #precio").hide();
 
  
     function cargarImagen(link,modelo) {
@@ -35,47 +35,22 @@ jQuery("#color, #tamaño, #precio").hide();
         }
     }
 
-    iteradorLoaderImagenes();
+    //iteradorLoaderImagenes();
     
     function showNext(val,tipo,el){
-        if (tipo == 'watch'){
+        if (tipo == 'play'){
             // Reseteamos el css de todos los labels de iphone cuando se haga click en otro elemento
-            jQuery(".modelo-watch").css("border","1px solid rgba(136,136,136,.4)");
+            jQuery(".modelo-play").css("border","1px solid rgba(136,136,136,.4)");
             var id = el.id;
-            watchSeleccionado = val;
-
-            // Cambiamos imagen al cambiar color de iphone
-            var str1 = watchSeleccionado.replace(/\s/g, '');
-            var imagen = imgPath + "/watch/"+ str1.toLowerCase() + ".png";
-            jQuery("#imagen").fadeOut();
-            setTimeout(function(){ jQuery("#imagen").attr('src', imagen); }, 300);
-
-            // solo mostrar cuando termina de cargar la imagen 
-            jQuery("#imagen").on('load', function(){
-                jQuery("#imagen").fadeIn();
-            });
-            // ejemplo imagen = applewatch4gpssilver.png
-            jQuery("#imagen").attr('alt', watchSeleccionado);
-
+            playSeleccionado = val;
+          
             // Si reseleccionamos iphone quitar el field de color y de precio
             jQuery("#precio,#tamaño").fadeOut("fast");
 
             jQuery("." + id).css("border","1.5px solid #5e9bff");
-            colorMatcher(val);
-            jQuery("#color").fadeIn("fast"); 
-
-        } else if (tipo == 'color'){
-
-            var id = el.id;
-            jQuery("#precio").fadeOut("fast");
-            // Reseteamos el css de todos los labels de iphone cuando se haga click en otro elemento
-            jQuery(".color-watch label").css("border","1px solid rgba(136,136,136,.4)");
-            jQuery("." + id).css("border","1.5px solid #5e9bff");
-
-            // Cambiamos imagen al cambiar color de iphone
-            var str1 = watchSeleccionado.replace(/\s/g, '');
-            var str2 = val.replace(/\s/g, '');
-            var imagen = imgPath + "/watch/"+ str1.toLowerCase() + str2.toLowerCase() + ".png";
+            capacidadMatcher(val);
+            var imagen = imagenModeloSeleccionado;
+            
             jQuery("#imagen").fadeOut();
             setTimeout(function(){ jQuery("#imagen").attr('src', imagen); }, 300);
 
@@ -83,12 +58,20 @@ jQuery("#color, #tamaño, #precio").hide();
             jQuery("#imagen").on('load', function(){
                 jQuery("#imagen").fadeIn();
             });
-            // ejemplo imagen = applewatch4gpssilver.png
-            jQuery("#imagen").attr('alt', watchSeleccionado + " " + str2);
 
 
-            tamañoMatcher(val, indexModeloSeleccionado);
-            jQuery("#tamaño").fadeIn("fast");
+            jQuery("#capacidad").fadeIn("fast"); 
+
+        } else if (tipo == 'capacidad'){
+
+            var id = el.id;
+            // Reseteamos el css de todos los labels de iphone cuando se haga click en otro elemento
+            jQuery(".capacidad-play label").css("border","1px solid rgba(136,136,136,.4)");
+            jQuery("." + id).css("border","1.5px solid #5e9bff");
+
+
+            precioMatcher(val, indexModeloSeleccionado);
+            jQuery("#precio").fadeIn("fast");
 
         } else if (tipo == 'tamaño'){
 
@@ -121,14 +104,14 @@ jQuery("#color, #tamaño, #precio").hide();
 
    
 
-    function crearHTMLModelo(watch,id) {
+    function crearHTMLModelo(play,id) {
 
         htmlString =`
         <li>
-            <label for="watch${id}" class="box modelo-watch watch${id}">
+            <label for="play${id}" class="box modelo-play play${id}">
             
-                            <span>${watch}</span>
-                            <input id="watch${id}" name="watch" type="radio" class="radio" value="${watch}" onclick="showNext(this.value, this.name,this)"/>
+                            <span>${play}</span>
+                            <input id="play${id}" name="play" type="radio" class="radio" value="${play}" onclick="showNext(this.value, this.name,this)"/>
         
             </label>
         </li>`;
@@ -137,27 +120,14 @@ jQuery("#color, #tamaño, #precio").hide();
     }
 
     
-    function crearHTMLColor(color,id,colorClase) {
+   
+    function crearHTMLCapacidad(capacidad,id) {
 
         htmlString =`
-        <li class="color-watch">
-            <label for="color${id}" class="box color${id}">
-                            <div class="${colorClase} circulo-color"></div>    
-                            <span>${color}</span>
-                            <input id="color${id}" name="color" class="radio" type="radio" value="${color}" onclick="showNext(this.value,this.name,this)"/>
-            </label>
-        </li>`;
-        return htmlString;
-
-    }
-
-    function crearHTMLTamaño(tamaño,id) {
-
-        htmlString =`
-        <li class="tamaño-watch">
-            <label for="tamaño${id}" class="box tamaño${id}">    
-                            <span>${tamaño}</span>
-                            <input id="tamaño${id}" name="tamaño" class="radio" type="radio" value="${tamaño}" onclick="showNext(this.value,this.name,this)"/>
+        <li class="capacidad-play">
+            <label for="capacidad${id}" class="box capacidad${id}">    
+                            <span>${capacidad}</span>
+                            <input id="capacidad${id}" name="capacidad" class="radio" type="radio" value="${capacidad}" onclick="showNext(this.value,this.name,this)"/>
             </label>
         </li>`;
         return htmlString;
@@ -168,7 +138,7 @@ jQuery("#color, #tamaño, #precio").hide();
     function crearHTMLPrecio(precio) {
 
         htmlString =`
-        <li class="precio-watch">
+        <li class="precio-play">
             <label for="precio" class="precio-box">
                             <span>Precio de contado </span>    
                             <span>$${precio}</span>
@@ -186,21 +156,21 @@ jQuery("#color, #tamaño, #precio").hide();
 
                 // ELIGE TU MODELO
                 // obtenemos variable para el html
-                var iphone = jsonPhp[property].modelo;
+                var play = jsonPhp[property].modelo;
                 // aplicamos la funcion creada con el template para insertarlo en el html
-                var htmlString = crearHTMLModelo(iphone, i);
+                var htmlString = crearHTMLModelo(play, i);
                 jQuery( "#modelo ul" ).append( htmlString );
                 i++;
             }
         }
     }
 
-    function displayColores(htmlString) {
-        jQuery( "#color ul" ).append( htmlString );
+    function displayCapacidades(htmlString) {
+        jQuery( "#capacidad ul" ).append( htmlString );
     }
     
     // La funcion hace display de la seccion capacidades para el producto seleccionado
-    function colorMatcher(value) {
+    function capacidadMatcher(value) {
 
         // iteramos en los distintos index del objeto
         for (var property in jsonPhp){
@@ -212,25 +182,22 @@ jQuery("#color, #tamaño, #precio").hide();
                 indexModeloSeleccionado = property;
                 // Seteamos una variable para que en la iteracion , si es el primer elemento iterado ( i == 0) borre los datos anteriores
                 var i = 0;
+                imagenModeloSeleccionado = jsonPhp[property].imagen;
 
                 // iteramos en las capacidades del modelo matcheado
-                for (var val in jsonPhp[property].color){
+                for (var val in jsonPhp[property].capacidad){
                     if (i == 0) {
                         //Borra los datos anteriores
-                        jQuery(".color-watch").fadeOut().remove();
-
-                        var color = val;
-                        var colorParsed = color.replace(/\s+/g, '-').toLowerCase();
-
-                        var htmlString = crearHTMLColor(val,i,colorParsed);
-                        displayColores(htmlString);
+                        jQuery(".capacidad-play").fadeOut().remove();
+                        var capacidad = val;
+                        var htmlString = crearHTMLCapacidad(capacidad,i);
+                        displayCapacidades(htmlString);
                         i++;
                     } else { // Si no es el primero , agrega la capacidad
-                        var color = val;
-                        var colorParsed = color.replace(/\s+/g, '-').toLowerCase();
-
-                        var htmlString = crearHTMLColor(val,i,colorParsed);
-                        displayColores(htmlString);
+                     
+                        var capacidad = val;
+                        var htmlString = crearHTMLCapacidad(capacidad,i);
+                        displayCapacidades(htmlString);
                         i++;
                     }   
                 }
@@ -241,55 +208,29 @@ jQuery("#color, #tamaño, #precio").hide();
     
 
     // jsonPhp[0].capacidad['32 GB'][0].color
-    function tamañoMatcher(color, index) {
+    function precioMatcher(capacidad, index) {
         
         var i = 0;
-        colorModeloSeleccionado = color;
-        for (var val in jsonPhp[index].color[color]) {
+        for (var val in jsonPhp[index].capacidad[capacidad]) {
             if (i == 0) {
                 // Borra los elementos de color previamente mostrados cuando se selecciona otra capacidad
-                jQuery(".tamaño-watch").fadeOut().remove();
-                var tamaño = jsonPhp[index].color[color][val].tamaño;
+                jQuery(".precio-play").fadeOut().remove();
+                var precio = jsonPhp[index].capacidad[capacidad][val].precio;
 
-                var htmlString = crearHTMLTamaño(tamaño,i);
-                jQuery( "#tamaño ul" ).append( htmlString );
+                var htmlString = crearHTMLPrecio(precio,i);
+                jQuery( "#precio ul" ).append( htmlString );
                 i++;
 
             } else {
-                var tamaño = jsonPhp[index].color[color][val].tamaño;
+                var precio = jsonPhp[index].capacidad[capacidad][val].precio;
                 
-                var htmlString = crearHTMLTamaño(tamaño, i);
-                jQuery( "#tamaño ul" ).append( htmlString );
+                var htmlString = crearHTMLPrecio(precio,i);
+                jQuery( "#precio ul" ).append( htmlString );
                 i++;
             }
             
         }
 
-    }
-
-
-    function precioMatcher(tamaño, index, color) {
-
-        var i = 0;
-        for (var val in jsonPhp[index].color[color]) {
-            if(jsonPhp[index].color[color][val].tamaño == tamaño){
-                    if (i == 0) {
-                    jQuery(".precio-watch").remove();
-                    var precio = jsonPhp[index].color[color][val].precio;
-
-                    var htmlString = crearHTMLPrecio(precio);
-                    jQuery( "#precio ul" ).append( htmlString );
-                    i++;
-
-                } else {
-                    var precio = jsonPhp[index].color[color][val].precio;
-                    var htmlString = crearHTMLPrecio(precio);
-                    jQuery( "#precio ul" ).append( htmlString );
-                    i++;
-                }
-            }
-            
-        }
     }
 
     

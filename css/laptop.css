@@ -37,10 +37,11 @@
         justify-content: space-evenly;
     }
 
-    .menu-items ul li {
+    .menu-items > ul > li {
         font-size: 14px;
         border:none;
         display:inline-block;
+        width:auto;
     
     }
 
@@ -160,4 +161,23 @@
     .maps {
         order:2;
     }
+
+    .titulo-pagina {
+        position:sticky;
+        top: 66px;
+    }
+
+    .titulo-iphone-movil{
+        display:none;
+    }
+    
+    .titulo-iphone-cat {
+        display:block;
+    }
+
+    .datos-iphone-cat > ul > li:first-child {
+        border:none;
+        margin-top:0;
+    }
+    
 }

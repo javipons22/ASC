@@ -130,7 +130,8 @@ jQuery("#pantalla, #capacidad, #ram, #precio").hide();
 
         htmlString =`
         <li class="precio-mac">
-            <label for="precio" class="box precio-box">   
+            <label for="precio" class="precio-box">
+                            <span>Precio de contado </span>    
                             <span>$${precio}</span>
                             <input id="precio" name="precio" class="radio" type="radio" value="${precio}" onclick="showNext(this.value,this.name,this)"/>
             </label>

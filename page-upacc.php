@@ -1,6 +1,6 @@
 <?php
 /* 
-	Template Name: UP 
+	Template Name: UP Ac
 */
     get_header(); 
     
@@ -8,7 +8,7 @@
 
 <section>
     <form name="CSV" id="CSV" method="POST" enctype="multipart/form-data">
-        <h2>UP</h2>
+        <h2>Subir archivo CSV</h2>
         <p><input name="CSV" type="file" name="file"></p>
         <p><input type="submit" name="upload" value="Enviar archivo"></p>
 
@@ -19,10 +19,10 @@
 </section>
 <?php 
 
-    function borrar_iphones_previos() {
+    function borrar_accesorios_previos() {
         // Argumentos para el query del loop de wordpress
         $args = array(
-            'post_type' => 'iphone',
+            'post_type' => 'accesorio',
             'posts_per_page'=> -1
         );
         
@@ -47,7 +47,7 @@
     }
 
     if (isset($_POST['upload'])) {
-        $cantidad_borrados = borrar_iphones_previos();
+        $cantidad_borrados = borrar_accesorios_previos();
         $mensaje = 'Se borraron ' . $cantidad_borrados . 'iPhones del sistema';
     }
 
@@ -74,13 +74,13 @@
                 $count = "0";
                 $today = getdate();
                 // se agrego fecha nombre para organizar archivos por fecha
-                $fecha_nombre = ( $today['mday'] . "-" . $today['mon'] . "-" . $today['year']);
+                $fecha_nombre = ( $today['mday'] . "-" . $today['mon'] . "-" . $today['year'] . " - Mac" );
 
                 while ( file_exists($uploadfile) ) {
                 $count++;
                 $exten = 'csv';
                 
-                $uploadfile = $uploaddir.'/'.$fecha_nombre.'-'.$count.'.'.$exten;
+                $uploadfile = $uploaddir.'/'.$fecha_nombre.'1-'.$count.'.'.$exten;
                 }
         } // fin if file_exists
     
@@ -152,90 +152,37 @@
         }
         for ( $x = 1 ;$x <= sizeof($csv); $x++){
             
-            if(!empty(${'iphone' . $x})){
+            if(!empty(${'accesorio' . $x})){
                 
-            $titulo = ${'iphone' . $x} . " - " . ${'color' . $x} . " - " . ${'capacidad' . $x};
-            $iphone = ${'iphone' . $x};
-            $capacidad = ${'capacidad' . $x};
+            $titulo = ${'accesorio' . $x};
+            $accesorio = ${'accesorio' . $x};
             $precio = ${'precio' . $x};
-            $color = ${'color' . $x};
             
-            switch ($iphone) {
-                case "iPhone 6":
-                    $cat_id = 2;
-                    break;
-                case "iPhone 6s":
-                    $cat_id = 2;
-                    break;
-                case "iPhone 6s Plus":
-                    $cat_id = 2;
-                    break;
-                case "iPhone 7":
-                    $cat_id = 4;
-                    break;
-                case "iPhone 7 Plus":
-                    $cat_id = 4;
-                    break;
-                case "iPhone 8":
-                    $cat_id = 5;
-                    break;
-                case "iPhone 8 Plus":
-                    $cat_id = 5;
-                    break;
-                case "iPhone X":
-                    $cat_id = 6;
-                    break;
-                case "iPhone XS":
-                    $cat_id = 7;
-                    break;
-                case "iPhone XS Max":
-                    $cat_id = 7;
-                    break;
-                case "iPhone XR":
-                    $cat_id = 9;
-                    break;
-            }
         
             // La categoria tiene que ser un array para que wordpress la acepte
-            $cat = array($cat_id);
+            $cat = array(14);
 
-            crear_iphone($titulo, $cat, $iphone, $precio, $capacidad, $color);
+            crear_accesorio($titulo, $accesorio, $precio);
 
             }
         }
     } 
     
 
-
-
-
-
-
-
-/*
-    $titulo = 'iPhone 2';
-    $iphone = 'iPhone X Max';
-    $precio = 2500;
-    $capacidad = '128 GB';
-    $color = 'RED';
-    $cat = array(7); // tiene que ser si o si array
-*/
-        function crear_iphone($titulo, $cat , $iphone , $precio , $capacidad , $color){
+        function crear_accesorio($titulo, $accesorio, $precio){
 
             $my_post = array(
                 'post_title'    => $titulo,
                 'post_category' => $cat,
-                'post_type' => 'iphone',
+                'post_type' => 'accesorio',
                 'post_status' => 'publish'
             );
                
               // Insert the post into the database
             $post_id = wp_insert_post( $my_post );
             
-            update_field('iphone', $iphone, $post_id);
+            update_field('nombre', $accesorio, $post_id);
             update_field('precio', $precio, $post_id);
-            update_field('capacidad', $capacidad, $post_id);
-            update_field('color', $color, $post_id);
         
         }
         

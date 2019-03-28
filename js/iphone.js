@@ -37,7 +37,7 @@ jQuery("#capacidad, #color, #cuotas, #precio").hide();
 
     iteradorLoaderImagenes();
     
-    function showNext(val,tipo,el){
+    function showNext(val,tipo,el,precio){
         if (tipo == 'iphone'){
             // Reseteamos el css de todos los labels de iphone cuando se haga click en otro elemento
             jQuery(".modelo-iphone").css("border","1px solid rgba(136,136,136,.4)");
@@ -84,6 +84,22 @@ jQuery("#capacidad, #color, #cuotas, #precio").hide();
             precioMatcher(val,indexModeloSeleccionado, capacidadModeloSeleccionado);
             jQuery("#precio").fadeIn("fast");
 
+        } else if (tipo === 'cuotas'){
+            var id = el.id;
+            jQuery(".pagos > li > label").css("border","1px solid rgba(136,136,136,.4)");
+            jQuery("." + id).css("border","1.5px solid #5e9bff");
+            
+            var interes = (val === "1" ? 1 : (val === "3" ? 1.20 : (val === "6" ? 1.30 : 1.60)));
+            console.log(interes);
+
+            var nuevoPrecio = parseInt(precio * interes / val);
+            var textoCuotas = `Pago en ${val} cuotas de`;
+            var textoEfectivo = 'Precio de contado';
+
+            var textoRendered = val === "1" ? textoEfectivo : textoCuotas;
+
+            jQuery(".precio-box > span:first-child").text(textoRendered);
+            jQuery(".precio-box > span:nth-child(2)").text('$' + nuevoPrecio);
         }
         
     }
@@ -136,12 +152,64 @@ jQuery("#capacidad, #color, #cuotas, #precio").hide();
 
         htmlString =`
         <li class="precio-iphone">
-            <label for="precio" class="box precio-box">   
+            <label for="precio" class="precio-box">
+                            <span>Precio de contado</span>   
                             <span>$${precio}</span>
                             <input id="precio" name="precio" class="radio" type="radio" value="${precio}" onclick="showNext(this.value,this.name,this)"/>
             </label>
         </li>`;
         return htmlString;
+
+    }
+
+    function crearHTMLCuotas(soloEfectivo,precio) {
+
+        if(soloEfectivo){
+            htmlString =`
+            <ul class="pagos">
+                <li>
+                    <label for="cuotas1" class="cuotas cuotas1">    
+                        <span>Solo Contado</span>
+                        <input id="cuotas1" name="cuotas" class="radio" type="radio" value="1" onclick="showNext(this.value,this.name,this,${precio})"/>
+                    </label>
+                </li>
+            </ul>
+            `;
+
+            return htmlString;
+        } else {
+            htmlString =`
+            <ul class="pagos">
+                    <li>
+                        <label for="cuotas1" class="cuotas cuotas1">    
+                            <span>Contado</span>
+                            <input id="cuotas1" name="cuotas" class="radio" type="radio" value="1" onclick="showNext(this.value,this.name,this,${precio})"/>
+                        </label>
+                    </li>
+                    <li>
+                        <label for="cuotas2" class="cuotas cuotas2">    
+                            <span>3 Cuotas</span>
+                            <input id="cuotas2" name="cuotas" class="radio" type="radio" value="3" onclick="showNext(this.value,this.name,this,${precio})"/>
+                        </label>
+                    </li>
+                    <li>
+                        <label for="cuotas3" class="cuotas cuotas3">    
+                            <span>6 Cuotas</span>
+                            <input id="cuotas3" name="cuotas" class="radio" type="radio" value="6" onclick="showNext(this.value,this.name,this,${precio})"/>
+                        </label>
+                    </li>
+                    <li>
+                        <label for="cuotas4" class="cuotas cuotas4">    
+                            <span>12 Cuotas</span>
+                            <input id="cuotas4" name="cuotas" class="radio" type="radio" value="12" onclick="showNext(this.value,this.name,this,${precio})"/>
+                        </label>
+                    </li>
+            </ul>
+            `;  
+            return htmlString;          
+        }
+
+        
 
     }
     
@@ -235,18 +303,22 @@ jQuery("#capacidad, #color, #cuotas, #precio").hide();
         for (var val in jsonPhp[index].capacidad[capacidad]) {
             if(jsonPhp[index].capacidad[capacidad][val].color == color){
                     if (i == 0) {
-                    jQuery(".precio-iphone").remove();
+                    jQuery(".precio-iphone, .pagos").remove();
                     var precio = jsonPhp[index].capacidad[capacidad][val].precio;
 
                     var htmlString = crearHTMLPrecio(precio);
-                    jQuery( "#precio ul" ).append( htmlString );
+                    var htmlString2 = crearHTMLCuotas(false,precio);
+                    jQuery( "#precio > ul" ).append( htmlString );
+                    jQuery( "#precio > ul" ).prepend( htmlString2 );
                     i++;
 
                 } else {
                     var precio = jsonPhp[index].capacidad[capacidad][val].precio;
 
                     var htmlString = crearHTMLPrecio(precio);
-                    jQuery( "#precio ul" ).append( htmlString );
+                    var htmlString2 = crearHTMLCuotas(false,precio);
+                    jQuery( "#precio > ul" ).append( htmlString );
+                    jQuery( "#precio > ul" ).prepend( htmlString2 );
                     i++;
                 }
             }

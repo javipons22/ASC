@@ -97,7 +97,7 @@
 ?>
 
 <?php 
-    $orden_categorias = array("iPhone XR" , "iPhone XS Max", "iPhone XS", "iPhone X", "iPhone 8", "iPhone 7", "iPhone 6");
+    $orden_categorias = array("iPhone XS","iPhone XR", "iPhone X", "iPhone 8", "iPhone 7", "iPhone 6");
     $categorias_ordenadas = array();
     $categorias_ordenadas_trim = array();
     foreach ($orden_categorias as $val){
@@ -126,16 +126,7 @@
                     </a>
                 </li>
 
-            <?php
-
-                elseif($val == "iPhone XS Max"):
-            ?>
-                <li>
-                    <a href="<?php echo ${$val_trim . "_link"}[0];?>">
-                        <img src="<?php echo $img_path . "/" . $val_trim ?>.svg" alt="icono <?php echo $val;?>">
-                        <h5>iPhone XS<span>Max</span></h5>
-                    </a>
-                </li>
+           
             <?php
                 else :
             ?>

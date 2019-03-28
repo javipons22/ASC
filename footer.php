@@ -8,17 +8,21 @@
                 <br>
                 *Precios en pesos ARS
                 <br>
-                **Todos los productos en 12 cuotas con 60% de interés, en 6 cuotas con 30% de interés o en 3 cuotas con 20% de interés.
+                **Productos en 12 cuotas con 60% de interés, en 6 cuotas con 30% de interés o en 3 cuotas con 20% de interés.
             </p>
             <div class="footer-nav">
                 <div class="columna-1-footer">
                     <ul>
                         <h3>Productos</h3>
-                        <li><a href="#">iPhone</a></li>
-                        <li><a href="#">Mac</a></li>
-                        <li><a href="#">Watch</a></li>
-                        <li><a href="#">Accesorios</a></li>
-                        <li><a href="#">PlayStation</a></li>
+                        <?php 
+
+                        wp_nav_menu( [
+                            'menu' => 'Menu2',
+                            'container' => false,
+                            'items_wrap' => '%3$s'
+                        ] ); 
+
+                        ?>
                     </ul>
                     
                 </div>
@@ -27,7 +31,7 @@
             <div class="creditos">
                 <ul>
                     <li class="info-contacto">
-                        <p>Formas de comprar: Visita <a href="#contacto">nuestro negocio</a>, llama al 3512140570 o contactanos por <a href="https://www.facebook.com/AppleStoreCBA/">Facebook</a>.</p>
+                        <p>Formas de comprar: Visita <a href="<?php echo get_site_url() . '/contacto/'?>">nuestro negocio</a>, llama al 3512140570 o contactanos por <a href="https://www.facebook.com/AppleStoreCBA/">Facebook</a>.</p>
                     </li>
                     <li class="copyright"><p>Copyright © 2019</p></li>
                     <li class="contacto-footer">
