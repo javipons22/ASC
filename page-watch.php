@@ -96,11 +96,7 @@ $myJSON = json_encode($array_final,JSON_FORCE_OBJECT);
 
 <section>
     <div class="flex iphone-cat">
-        <div class="imagen-cat">
-            <img id="imagen" src="<?php echo $img_path . "/watch/applewatch4gps.png"; ?>" alt="watch">
-        </div>
-        <div class="datos-iphone-cat">
-            
+        <div class="titulo-iphone-movil">
             <h1>Compra un Apple Watch</h1>
             <span>
                 <h2><?php
@@ -111,9 +107,29 @@ $myJSON = json_encode($array_final,JSON_FORCE_OBJECT);
                     echo "A solo $" . min($precio_max_min);
                 }
 
-                 
-                 ?> <br>También en 12, 6 o 3 cuotas**</h2>
+                
+                ?> <br>También en 12, 6 o 3 cuotas**</h2>
             </span>
+        </div>
+        <div class="imagen-cat">
+            <img id="imagen" src="<?php echo $img_path . "/watch/applewatch4gps.png"; ?>" alt="watch">
+        </div>
+        <div class="datos-iphone-cat">
+            <div class="titulo-iphone-cat">
+                <h1>Compra un Apple Watch</h1>
+                <span>
+                    <h2><?php
+                    
+                    if (sizeof($precio_max_min) > 1) {
+                        echo "De $" . min($precio_max_min) . " a $" . max($precio_max_min);
+                    } else {
+                        echo "A solo $" . min($precio_max_min);
+                    }
+
+                    
+                    ?> <br>También en 12, 6 o 3 cuotas**</h2>
+                </span>
+            </div>
             <ul>
                 <li id="modelo">
                     <h3>Elige tu modelo</h3>

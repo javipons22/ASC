@@ -646,7 +646,7 @@ footer {
 /* --------------- (pagina iphones (por cada iphone. CATEGORIAS))  --------------- */
 
 .iphone-cat {
-    margin: auto;
+    margin: 35px auto;
 
     display:flex;
     flex-direction: row;
@@ -658,6 +658,8 @@ footer {
     width:100%;
     text-align:center;
     max-height: 450px;
+    min-height: 450px;
+    margin: 40px 0;
 }
 
 .imagen-cat img {
@@ -850,12 +852,12 @@ footer {
 .titulo-iphone-movil {
     flex-basis:100%;
     text-align:center;
-    margin: 35px 0;
 }
 
 .titulo-iphone-movil > h1 {
-    font-size: 30px;
+    font-size: 35px;
     font-weight: 700;
+    margin-bottom:5px;
 }
 
 .titulo-iphone-cat {

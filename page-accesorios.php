@@ -100,13 +100,16 @@ return $cadena;
 
 <section>
 <div class="iphone-cat">
+    <div class="titulo-iphone-movil">
+        <h1>Todos los accesorios</h1>
+    </div>
     <div class="imagen-cat">
         <img id="imagen" src="<?php echo $img_path . "/airpods.png"; ?>" alt="Airpods">
     </div>
     <div class="datos-iphone-cat">
-        
-        <h1>Todos los accesorios</h1>
-       
+        <div class="titulo-iphone-cat">
+            <h1>Todos los accesorios</h1>
+        </div>
         <ul>
             <li id="modelo">
                 <h3>Elige tu accesorio</h3>

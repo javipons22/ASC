@@ -113,11 +113,7 @@ return $cadena;
 
 <section>
 <div class="iphone-cat">
-    <div class="imagen-cat">
-        <img id="imagen" src="<?php echo $img_path . "/mac/macbookprotouchbar.png"; ?>" alt="MacBook">
-    </div>
-    <div class="datos-iphone-cat">
-        
+    <div class="titulo-iphone-movil">
         <h1>Compra una MacBook</h1>
         <span>
             <h2><?php
@@ -128,9 +124,29 @@ return $cadena;
                 echo "A solo $" . min($precio_max_min);
             }
 
-             
-             ?> <br>También en 12, 6 o 3 cuotas**</h2>
+            
+            ?> <br>También en 12, 6 o 3 cuotas**</h2>
         </span>
+    </div>
+    <div class="imagen-cat">
+        <img id="imagen" src="<?php echo $img_path . "/mac/macbookprotouchbar.png"; ?>" alt="MacBook">
+    </div>
+    <div class="datos-iphone-cat">
+        <div class="titulo-iphone-cat">
+            <h1>Compra una MacBook</h1>
+            <span>
+                <h2><?php
+                
+                if (sizeof($precio_max_min) > 1) {
+                    echo "De $" . min($precio_max_min) . " a $" . max($precio_max_min);
+                } else {
+                    echo "A solo $" . min($precio_max_min);
+                }
+
+                
+                ?> <br>También en 12, 6 o 3 cuotas**</h2>
+            </span>
+        </div>
         <ul>
             <li id="modelo">
                 <h3>Elige tu modelo</h3>
