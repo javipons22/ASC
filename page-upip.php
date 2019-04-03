@@ -119,7 +119,8 @@
     
     //var_dump($csv_parsed);
 
-    
+    $subidos_correctos = array();
+    $subidos_error = array();
 
     function iterador_csv($csv){
         // Variables a usar
@@ -159,6 +160,7 @@
             $capacidad = ${'capacidad' . $x};
             $precio = ${'precio' . $x};
             $color = ${'color' . $x};
+            $stock = ${'stock' . $x};
             
             switch ($iphone) {
                 case "iPhone 6":
@@ -199,13 +201,25 @@
             // La categoria tiene que ser un array para que wordpress la acepte
             $cat = array($cat_id);
 
-            crear_iphone($titulo, $cat, $iphone, $precio, $capacidad, $color);
-
+                if ($stock > 0){
+                    crear_iphone($titulo, $cat, $iphone, $precio, $capacidad, $color);
+                    $subidos_correctos[] = $titulo;
+                } else {
+                    $subidos_error[] = $titulo;
+                }
             }
+        }
+
+        foreach($subidos_correctos as $subido){
+            echo "<p class='success'>" . $subido . "</p>";
+        }
+    
+        foreach($subidos_error as $error){
+            echo "<p class='error'>" . $error . " (Stock 0)</p>";
         }
     } 
     
-
+    
 
 
 

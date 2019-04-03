@@ -70,6 +70,7 @@ header {
     width:100%;
     position:fixed;
     z-index: 1000;
+    min-height:45px;
 }
 
 .separador-header {
@@ -182,6 +183,7 @@ nav {
     font-size: 16px;
     border-bottom:1.5px solid #282828;
     padding:10px 0px;
+    margin: 5px 0px;
 
 }
 
@@ -304,6 +306,43 @@ footer {
 
 .contacto-footer li:last-child {
     border-right: none;
+}
+
+.boton-contacto {
+    display:flex;
+    justify-content: space-between;
+    color: #fff;
+    align-items: center;
+    height:40px;
+    background: #0798fc;
+    border-radius:7px;
+    position: relative;
+    bottom:25px;
+    right:25px;
+    z-index:100;
+    padding:5px 15px;
+}
+
+.boton-contacto img {
+    color: #fff;
+    margin-right: 10px;
+}
+
+
+.boton-contacto:hover > span {
+    text-decoration: none;
+}
+
+.container-boton-footer {
+    position:fixed;
+    display:flex;
+    justify-content: flex-end;
+    margin:0 auto;
+    left:0;
+    right:0;
+    bottom:0;
+    max-width: 980px;
+    width:100%;
 }
 
 /* - Orden de elementos en footer flex - */
@@ -924,4 +963,18 @@ footer {
 .maps {
     order:1;
     margin-top:30px;
+}
+
+/* --------------- (pagina upload)  --------------- */
+
+.error, .success {
+    font-weight:700;
+}
+
+.error {
+    background-color:#f9ba9d;
+}
+
+.success {
+    background-color:#d1ffd1;
 }

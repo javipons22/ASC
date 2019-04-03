@@ -34,7 +34,7 @@
     .menu-items > ul {
         text-align:left;
         display:flex;
-        justify-content: space-evenly;
+        justify-content: space-around;
     }
 
     .menu-items > ul > li {
@@ -188,4 +188,8 @@
         margin: 0;
     }
     
+    header {
+        min-height:66px;
+    }
+
 }

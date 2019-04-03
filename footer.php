@@ -1,5 +1,14 @@
 <?php $img_path = get_site_url() . "/wp-content/uploads"; ?>
+    <div class="container-boton-footer">
+            <a href="http://m.me/applestorecba" class="boton-contacto" style="text-decoration:none">
+                <img src="<?php echo $img_path;?>/whatsapp.svg" alt="facebook messenger">
+                <span>Envianos tu Mensaje</span>
+            </a>
+        
     </div>
+    
+    </div>
+    
     <footer>
         <div class="container">
             <p class="info-footer">
