@@ -308,7 +308,7 @@ footer {
     border-right: none;
 }
 
-.boton-contacto {
+.boton-msg {
     display:flex;
     justify-content: space-between;
     color: #fff;
@@ -317,32 +317,39 @@ footer {
     background: #0798fc;
     border-radius:7px;
     position: relative;
-    bottom:25px;
-    right:25px;
+    bottom:0;
     z-index:100;
     padding:5px 15px;
+    margin: 0 5px;
 }
 
-.boton-contacto img {
-    color: #fff;
+.boton-msg img {
     margin-right: 10px;
+    height:25px;
+    width:25px;
 }
 
 
-.boton-contacto:hover > span {
+.boton-msg:hover > span {
     text-decoration: none;
 }
 
+.whatsapp {
+    background:#01e676;
+}
+
 .container-boton-footer {
-    position:fixed;
+    position:sticky;
     display:flex;
     justify-content: flex-end;
     margin:0 auto;
+    top: 0;
     left:0;
     right:0;
     bottom:0;
     max-width: 980px;
     width:100%;
+    padding-bottom:15px;
 }
 
 /* - Orden de elementos en footer flex - */

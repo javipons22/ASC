@@ -1,11 +1,17 @@
 <?php $img_path = get_site_url() . "/wp-content/uploads"; ?>
-    <div class="container-boton-footer">
-            <a href="http://m.me/applestorecba" class="boton-contacto" style="text-decoration:none">
-                <img src="<?php echo $img_path;?>/whatsapp.svg" alt="facebook messenger">
-                <span>Envianos tu Mensaje</span>
-            </a>
-        
-    </div>
+
+        <div class="container-boton-footer">
+                <a href="http://m.me/applestorecba" class="boton-msg" style="text-decoration:none">
+                    <img src="<?php echo $img_path;?>/messenger.svg" alt="facebook messenger">
+                    <span>Envianos tu Mensaje</span>
+                </a>
+                <a href="https://wa.me/5493512140570" class="boton-msg whatsapp" style="text-decoration:none">
+                    <img src="<?php echo $img_path;?>/messenger.svg" alt="facebook messenger">
+                    <span>Envianos un WhatsApp</span>
+                </a>
+            
+        </div>
+
     
     </div>
     
