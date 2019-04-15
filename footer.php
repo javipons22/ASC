@@ -6,7 +6,7 @@
                     <span>Envianos tu Mensaje</span>
                 </a>
                 <a href="https://wa.me/5493512140570" class="boton-msg whatsapp" style="text-decoration:none">
-                    <img src="<?php echo $img_path;?>/messenger.svg" alt="facebook messenger">
+                    <img src="<?php echo $img_path;?>/whatsapp2.svg" alt="facebook messenger">
                     <span>Envianos un WhatsApp</span>
                 </a>
             

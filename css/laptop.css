@@ -164,6 +164,7 @@
 
     .titulo-pagina {
         position:sticky;
+        position:-webkit-sticky;
         top: 66px;
     }
 

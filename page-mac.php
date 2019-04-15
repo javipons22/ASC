@@ -51,8 +51,9 @@ $pantalla = get_field('pantalla');
 $capacidad = get_field('capacidad');
 $ram = get_field('ram');
 $precio = get_field('precio');
+$solo_efectivo = get_field('solo_efectivo');
 
-$ram_precio = array('ram'=> $ram, 'precio'=> $precio);
+$ram_precio = array('ram'=> $ram, 'precio'=> $precio , 'soloEfectivo' => $solo_efectivo);
 
 
 // Precio max min para el subtitulo de la pagina

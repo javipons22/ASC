@@ -10,6 +10,18 @@
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $img_path; ?>/favicon-16x16.png">
     <!-- FIN FAVICON -->
     <title><?php bloginfo('name'); is_front_page() ? bloginfo('description') :  wp_title('|'); ?></title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138352969-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-138352969-1');
+    </script>
+    <!-- FIN - Google Analytics -->
+
     <?php wp_head(); ?>
     
 </head>

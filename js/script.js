@@ -23,3 +23,10 @@ function splitScroll() {
     .addIndicators()
     .addTo(controller);
 }
+
+
+var show = typeof showButtons == 'undefined' ? true : false;
+
+if (!show){
+    jQuery(".container-boton-footer").css('display','none');
+}
