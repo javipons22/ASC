@@ -11,5 +11,6 @@ $img_path = get_site_url() . "/wp-content/uploads";
    <img src="<?php echo $img_path;?>/error-404.svg">
    <h1>OOPS! No se encontró esa página</h1>
 </div>
-    
+
+<script>var showButtons = false;</script>
 <?php get_footer(); ?>
