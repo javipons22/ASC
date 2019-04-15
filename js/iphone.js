@@ -4,7 +4,7 @@ var capacidadModeloSeleccionado;
 console.log(jsonPhp);
 
 // ESCONDER CIERTOS DIV
-jQuery("#capacidad, #color, #cuotas, #precio").hide();
+jQuery("#cuotas, #precio").hide();
 
 
 function cargarImagen(link, modelo) {
@@ -37,6 +37,30 @@ function iteradorLoaderImagenes() {
 
 iteradorLoaderImagenes();
 
+// Creamos una funcion para mostrar color y capacidad al cargar la pagina , con opacidad baja
+function mostrarDefault() {
+    // Seleccionamos el primer modelo y lo agregamos a una variable para usar en capacidad Matcher
+    var iphoneDefault = jsonPhp[0].modelo;
+
+    // Seleccionamos las capacidades disponibles para mostrar en colorMatcher
+    var capacidades = jsonPhp[0].capacidad;
+    // Iteramos en las capacidades del primer modelo para pasar variable a colorMatcher
+    for (var capacidad in capacidades){
+        var capacidadDefault = capacidad;
+    }
+    capacidadMatcher(iphoneDefault);
+    colorMatcher(capacidadDefault, 0);
+
+    // Mostramos capacidad y color con opacidad baja
+    jQuery("#capacidad, #color").css('opacity', '0.25');
+
+    // Desactivamos el link para que no se pueda hacer click en las capacidades y colores hasta que se seleccione el modelo
+    jQuery("#capacidad ul li label, #color ul li label").css('pointer-events', 'none');
+    
+}
+
+mostrarDefault();
+
 function showNext(val, tipo, el, precio) {
     if (tipo == 'iphone') {
         // Reseteamos el css de todos los labels de iphone cuando se haga click en otro elemento
@@ -45,6 +69,7 @@ function showNext(val, tipo, el, precio) {
         iPhoneSeleccionado = val;
         // Si reseleccionamos iphone quitar el field de color y de precio
         jQuery("#precio, #color").fadeOut("fast");
+        jQuery("#capacidad").css('opacity', '1');
 
         jQuery("." + id).css("border", "1.5px solid #5e9bff");
         capacidadMatcher(val);
@@ -57,6 +82,7 @@ function showNext(val, tipo, el, precio) {
         // Reseteamos el css de todos los labels de iphone cuando se haga click en otro elemento
         jQuery(".capacidad-iphone label").css("border", "1px solid rgba(136,136,136,.4)");
         jQuery("." + id).css("border", "1.5px solid #5e9bff");
+        jQuery("#color").css('opacity', '1');
         colorMatcher(val, indexModeloSeleccionado);
         jQuery("#color").fadeIn("fast");
 

@@ -68,5 +68,4 @@
     </div>
 </div>
    
-<script>var showButtons = false;</script>
 <?php get_footer(); ?>
