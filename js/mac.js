@@ -96,7 +96,7 @@ function showNext(val, tipo, el, indexRam) { // El ultimo es id es para el index
         jQuery(".pagos > li > label").css("border", "1px solid rgba(136,136,136,.4)");
         jQuery("." + id).css("border", "1.5px solid #5e9bff");
 
-        var interes = (val === "1" ? 1 : (val === "3" ? 1.20 : (val === "6" ? 1.30 : 1.60)));
+        var interes = (val === "1" ? 1 : (val === "3" ? 1.225 : (val === "6" ? 1.35 : 1.70)));
 
         var nuevoPrecio = parseInt(indexRam * interes / val);
         var textoCuotas = `Pago en ${val} cuotas de`;
