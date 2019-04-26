@@ -150,7 +150,7 @@ return $cadena;
         </div>
         <ul>
             <li id="modelo">
-                <h3>Elige tu modelo</h3>
+                <h3>Elige modelo</h3>
                 <ul>
                 </ul>   
             </li>

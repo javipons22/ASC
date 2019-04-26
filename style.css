@@ -431,7 +431,7 @@ footer {
 .sub-menu-container {
     overflow-x: scroll;
     overflow-y: hidden;
-    height: 120px
+    height: 120px;
 }
 
 .sub-menu ul li img {
@@ -481,7 +481,7 @@ footer {
 
 .sub-menu a {
     color: #333;
-}s
+}
 
 /* Esconder el scrollbar */
 .sub-menu-container::-webkit-scrollbar { width: 0 !important }
@@ -598,7 +598,9 @@ footer {
 }
 
 
-
+#modelo {
+    padding-top:40px;
+}
 
 .precio {
     margin-top:10px;

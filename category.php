@@ -124,7 +124,7 @@ if (sizeof($precio_max_min) > 1) {
             </div>
             <ul>
                 <li id="modelo">
-                    <h3>Elige tu modelo</h3>
+                    <h3>Elige modelo</h3>
                     <ul>
                     </ul>
                 </li>

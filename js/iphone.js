@@ -52,7 +52,7 @@ function mostrarDefault() {
     colorMatcher(capacidadDefault, 0);
 
     // Mostramos capacidad y color con opacidad baja
-    jQuery("#capacidad, #color").css('opacity', '0.25');
+    jQuery("#capacidad, #color").css('opacity', '0.20');
 
     // Desactivamos el link para que no se pueda hacer click en las capacidades y colores hasta que se seleccione el modelo
     jQuery("#capacidad ul li label, #color ul li label").css('pointer-events', 'none');
@@ -68,7 +68,7 @@ function showNext(val, tipo, el, precio) {
         var id = el.id;
         iPhoneSeleccionado = val;
         // Si reseleccionamos iphone quitar el field de color y de precio
-        jQuery("#precio, #color").fadeOut("fast");
+        jQuery("#precio").fadeOut("fast");
         jQuery("#capacidad").css('opacity', '1');
 
         jQuery("." + id).css("border", "1.5px solid #5e9bff");
