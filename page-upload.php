@@ -161,6 +161,7 @@ function iterador_csv($csv)
                 $iphone = ${'iphone' . $x};
                 $capacidad = ${'capacidad' . $x};
                 $precio = ${'precio' . $x};
+                $precio_promocion = ${'promocion' . $x};
                 $color = ${'color' . $x};
                 $stock = ${'stock' . $x};
                 
@@ -210,7 +211,7 @@ function iterador_csv($csv)
                 $cat = array($cat_id);
 
                 if ($stock > 0) {
-                    crear_iphone($titulo, $cat, $iphone, $precio, $capacidad, $color, $solo_efectivo);
+                    crear_iphone($titulo, $cat, $iphone, $precio, $capacidad, $color, $solo_efectivo, $precio_promocion);
                     $subidos_correctos[] = $titulo;
                 } else {
                     $subidos_error[] = $titulo ;
@@ -342,7 +343,7 @@ function iterador_csv($csv)
     }
 }
 
-function crear_iphone($titulo, $cat, $iphone, $precio, $capacidad, $color, $solo_efectivo)
+function crear_iphone($titulo, $cat, $iphone, $precio, $capacidad, $color, $solo_efectivo, $precio_promocion)
 {
 
     $my_post = array(
@@ -360,6 +361,7 @@ function crear_iphone($titulo, $cat, $iphone, $precio, $capacidad, $color, $solo
     update_field('capacidad', $capacidad, $post_id);
     update_field('color', $color, $post_id);
     update_field('solo_efectivo', $solo_efectivo, $post_id);
+    update_field('precio_promocion', $precio_promocion, $post_id);
 
 }
 

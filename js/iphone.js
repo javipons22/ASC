@@ -115,13 +115,18 @@ function showNext(val, tipo, el, precio) {
         jQuery(".pagos > li > label").css("border", "1px solid rgba(136,136,136,.4)");
         jQuery("." + id).css("border", "1.5px solid #5e9bff");
 
-        var interes = (val === "1" ? 1 : (val === "3" ? 1.20 : (val === "6" ? 1.30 : 1.60)));
+        var interes = (val === "1" ? 1 : (val === "3" ? 1.225 : (val === "6" ? 1.35 : 1.70)));
 
         var nuevoPrecio = parseInt(precio * interes / val);
         var textoCuotas = `Pago en ${val} cuotas de`;
         var textoEfectivo = 'Precio de contado';
 
         var textoRendered = val === "1" ? textoEfectivo : textoCuotas;
+
+        // Si se selecciona la cuota se borra el texto tachado de la promocion (pero el valor de la cuota corresponde a la promocion)
+        jQuery(".precio-tachado").css('text-decoration','none');
+        jQuery(".precio-tachado").css('color','black');
+        jQuery(".precio-promocion").hide();
 
         jQuery(".precio-box > span:first-child").text(textoRendered);
         jQuery(".precio-box > span:nth-child(2)").text('$' + nuevoPrecio);
@@ -173,29 +178,37 @@ function crearHTMLColor(color, id, colorClase) {
 
 }
 
-function crearHTMLPrecio(precio) {
+function crearHTMLPrecio(precio, promocion) {
 
+    var promocionString = promocion == 0 ? `<span>$${precio}</span>` : `<span class="precio-tachado">$${precio}</span><span class="precio-promocion">  $${promocion}</span>`;
+    var precioFinal = promocion == 0 ? precio : promocion;
+    var hotSale = promocion == 0 ? 'Precio de contado' : 'PROMOCION HOTSALE!!';
     htmlString = `
         <li class="precio-iphone">
             <label for="precio" class="precio-box">
-                            <span>Precio de contado</span>   
-                            <span>$${precio}</span>
-                            <input id="precio" name="precio" class="radio" type="radio" value="${precio}" onclick="showNext(this.value,this.name,this)"/>
+                            <span>${hotSale}</span>   
+                            
+                            ` 
+    htmlString += promocionString;                   
+    htmlString += `
+                            
+                            <input id="precio" name="precio" class="radio" type="radio" value="${precioFinal}" onclick="showNext(this.value,this.name,this)"/>
             </label>
         </li>`;
+
     return htmlString;
 
 }
 
-function crearHTMLCuotas(soloEfectivo, precio) {
-
+function crearHTMLCuotas(soloEfectivo, precio, promocion) {
+    var precioFinal = promocion == 0 ? precio : promocion;
     if (soloEfectivo) {
         htmlString = `
             <ul class="pagos">
                 <li id="solo-efectivo">
                     <label for="cuotas1" class="cuotas cuotas1">    
                         <span>Solo Contado</span>
-                        <input id="cuotas1" name="cuotas" class="radio" type="radio" value="1" onclick="showNext(this.value,this.name,this,${precio})"/>
+                        <input id="cuotas1" name="cuotas" class="radio" type="radio" value="1" onclick="showNext(this.value,this.name,this,${precioFinal})"/>
                     </label>
                 </li>
             </ul>
@@ -208,25 +221,25 @@ function crearHTMLCuotas(soloEfectivo, precio) {
                     <li>
                         <label for="cuotas1" class="cuotas cuotas1">    
                             <span>Contado</span>
-                            <input id="cuotas1" name="cuotas" class="radio" type="radio" value="1" onclick="showNext(this.value,this.name,this,${precio})"/>
+                            <input id="cuotas1" name="cuotas" class="radio" type="radio" value="1" onclick="showNext(this.value,this.name,this,${precioFinal})"/>
                         </label>
                     </li>
                     <li>
                         <label for="cuotas2" class="cuotas cuotas2">    
                             <span>3 Cuotas</span>
-                            <input id="cuotas2" name="cuotas" class="radio" type="radio" value="3" onclick="showNext(this.value,this.name,this,${precio})"/>
+                            <input id="cuotas2" name="cuotas" class="radio" type="radio" value="3" onclick="showNext(this.value,this.name,this,${precioFinal})"/>
                         </label>
                     </li>
                     <li>
                         <label for="cuotas3" class="cuotas cuotas3">    
                             <span>6 Cuotas</span>
-                            <input id="cuotas3" name="cuotas" class="radio" type="radio" value="6" onclick="showNext(this.value,this.name,this,${precio})"/>
+                            <input id="cuotas3" name="cuotas" class="radio" type="radio" value="6" onclick="showNext(this.value,this.name,this,${precioFinal})"/>
                         </label>
                     </li>
                     <li>
                         <label for="cuotas4" class="cuotas cuotas4">    
                             <span>12 Cuotas</span>
-                            <input id="cuotas4" name="cuotas" class="radio" type="radio" value="12" onclick="showNext(this.value,this.name,this,${precio})"/>
+                            <input id="cuotas4" name="cuotas" class="radio" type="radio" value="12" onclick="showNext(this.value,this.name,this,${precioFinal})"/>
                         </label>
                     </li>
             </ul>
@@ -330,20 +343,22 @@ function precioMatcher(color, index, capacidad) {
             if (i == 0) {
                 jQuery(".precio-iphone, .pagos").remove();
                 var precio = jsonPhp[index].capacidad[capacidad][val].precio;
+                var promocion = jsonPhp[index].capacidad[capacidad][val].precioPromocion;
                 var soloEfectivo = jsonPhp[index].capacidad[capacidad][val].soloEfectivo;
 
-                var htmlString = crearHTMLPrecio(precio);
-                var htmlString2 = crearHTMLCuotas(soloEfectivo, precio);
+                var htmlString = crearHTMLPrecio(precio,promocion);
+                var htmlString2 = crearHTMLCuotas(soloEfectivo, precio,promocion);
                 jQuery("#precio > ul").append(htmlString);
                 jQuery("#precio > ul").prepend(htmlString2);
                 i++;
 
             } else {
                 var precio = jsonPhp[index].capacidad[capacidad][val].precio;
+                var promocion = jsonPhp[index].capacidad[capacidad][val].precioPromocion;
                 var soloEfectivo = jsonPhp[index].capacidad[capacidad][val].soloEfectivo;
 
-                var htmlString = crearHTMLPrecio(precio);
-                var htmlString2 = crearHTMLCuotas(soloEfectivo, precio);
+                var htmlString = crearHTMLPrecio(precio,promocion);
+                var htmlString2 = crearHTMLCuotas(soloEfectivo, precio,promocion);
                 jQuery("#precio > ul").append(htmlString);
                 jQuery("#precio > ul").prepend(htmlString2);
                 i++;

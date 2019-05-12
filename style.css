@@ -891,6 +891,16 @@ footer {
     border-radius:4px;
 }
 
+.precio-tachado {
+    text-decoration: line-through;
+    color: #555;
+    display: inline-block;
+}
+
+.precio-promocion {
+    display: inline-block;
+}
+
 .precio-box:hover {
     border:none;
 }
