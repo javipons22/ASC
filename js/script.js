@@ -9,22 +9,18 @@ jQuery(document).ready(function($){
             });
         })
     })();
+    (function () {
+        $('.titulo-pagina .container span').on('click', function() {
+            $('.titulo-pagina .container span svg').toggleClass('rotate');
+            $('.caracteristicas').slideToggle();
+            // seteamos un timeout para que no desaparezca abruptamente el contenido y se vea mejor
+            setTimeout(function(){ $('.iphone, .container-boton-footer').toggleClass('noDisplay'); }, 200);
+            
+        })
+    })();
 });
 
-function splitScroll() {
-    const controller =new ScrollMagic.Controller();
-
-    new ScrollMagic.Scene({
-        duration: '100%',
-        triggerElement: '',
-        triggerHook: 0
-    })
-    .setPin('')
-    .addIndicators()
-    .addTo(controller);
-}
-
-
+jQuery('.caracteristicas').hide();
 var show = typeof showButtons == 'undefined' ? true : false;
 
 if (!show){

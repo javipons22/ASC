@@ -45,7 +45,7 @@ function mostrarDefault() {
     // Seleccionamos las capacidades disponibles para mostrar en colorMatcher
     var capacidades = jsonPhp[0].capacidad;
     // Iteramos en las capacidades del primer modelo para pasar variable a colorMatcher
-    for (var capacidad in capacidades){
+    for (var capacidad in capacidades) {
         var capacidadDefault = capacidad;
     }
     capacidadMatcher(iphoneDefault);
@@ -56,7 +56,7 @@ function mostrarDefault() {
 
     // Desactivamos el link para que no se pueda hacer click en las capacidades y colores hasta que se seleccione el modelo
     jQuery("#capacidad ul li label, #color ul li label").css('pointer-events', 'none');
-    
+
 }
 
 mostrarDefault();
@@ -67,6 +67,9 @@ function showNext(val, tipo, el, precio) {
         jQuery(".modelo-iphone").css("border", "1px solid rgba(136,136,136,.4)");
         var id = el.id;
         iPhoneSeleccionado = val;
+        iPhoneSeleccionadoSinEspacios = val.replace(/\s+/g, '').toLowerCase();
+        // carga las caracteristicas del iphone seleccionado
+        caracteristicasMatcher(iPhoneSeleccionadoSinEspacios);
         // Si reseleccionamos iphone quitar el field de color y de precio
         jQuery("#precio").fadeOut("fast");
         jQuery("#capacidad").css('opacity', '1');
@@ -139,7 +142,7 @@ function crearHTMLModelo(iphone, id) {
             
                             <span>${iphone}</span>
                             <input id="iphone${id}" name="iphone" type="radio" class="radio" value="${iphone}" onclick="showNext(this.value, this.name,this)"/>
-        
+                            <span class="en-stock">EN STOCK</span>
             </label>
         </li>`;
     return htmlString;
@@ -238,6 +241,78 @@ function crearHTMLCuotas(soloEfectivo, precio) {
 
 }
 
+function crearHTMLCaracteristicas(iphone) {
+    htmlString = `
+        <div class="caracteristica">
+            <h1>Tamaño y Peso</h1>
+            <p>${iphones[iphone].tamano.dimensiones}</p>
+            <p>${iphones[iphone].tamano.peso}</p>
+        </div>
+        <div class="caracteristica">
+            <h1>Display (Pantalla)</h1>
+            <p>LCD IPS touchscreen capacitivo, 16M colores</p>
+            <p>828 x 1792 pixels</p>
+            <p>326 ppi</p>
+            <p>6.1 pulgadas, 19.5:9</p>
+            <p>Resistente a rayones</p>
+            <p>Pantalla oleofóbica</p>
+            <p>Compatible Dolby Vision/HDR10</p>
+            <p>Pantalla True Tone</p>
+            <p>Ratio de refresco 120 Hz</p>
+        </div>
+        <div class="caracteristica">
+            <h1>Chip y GPU</h1>
+            <p>Apple A12 Bionic hexa-core</p>
+            <p>Apple quad-core</p>
+        </div>
+        <div class="caracteristica">
+            <h1>Camara Trasera</h1>
+            <p>12 MP, f1/.8</p>
+            <p>autofocus por detección de fase, estabilización óptica de imagen, flash LED cuádruple, detección de rostro y sonrisa, geo-tagging, smart HDR</p>
+        </div>
+        <div class="caracteristica">    
+            <h1>Camara Frontal</h1>
+            <p>7 MP, f/2.2, flash Retina, 1080p, HDR</p>
+        </div>
+        <div class="caracteristica">    
+            <h1>Grabación de Video</h1>
+            <p>2160p@24/30/60fps, 1080p@30/60/120/240fps, HDR, stereo</p>
+        </div>
+        <div class="caracteristica">    
+            <h1>USB</h1>
+            <p>Puerto Lightning</p>
+        </div>
+        <div class="caracteristica">    
+            <h1>Conector de audio</h1>
+            <p>Conector de audio por puerto Lightning (adaptador incluido)</p>
+        </div>
+        <div class="caracteristica">    
+            <h1>Seguridad</h1>
+            <p>Desbloqueo facial (Face ID)</p>
+        </div>
+        <div class="caracteristica">    
+            <h1>Resistencia al agua</h1>
+            <p>Si, certificación IP67</p>
+        </div>
+        <div class="caracteristica">    
+            <h1>Carga rápida</h1>
+            <p>Si, 50% en 30 min</p>
+        </div>
+        <div class="caracteristica">    
+            <h1>Carga inalámbrica</h1>
+            <p>Si, Qi</p>
+        </div>`;
+    return htmlString;
+}
+
+function caracteristicasMatcher(iphone) {
+    var htmlString = crearHTMLCaracteristicas(iphone);
+    console.log(htmlString);
+    jQuery(".caracteristicas").append(htmlString);
+}
+
+
+
 function displayModelos() {
     var i = 0;
     for (var property in jsonPhp) {
@@ -246,6 +321,7 @@ function displayModelos() {
             // ELIGE TU MODELO
             // obtenemos variable para el html
             var iphone = jsonPhp[property].modelo;
+
             // aplicamos la funcion creada con el template para insertarlo en el html
             var htmlString = crearHTMLModelo(iphone, i);
             jQuery("#modelo ul").append(htmlString);

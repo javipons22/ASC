@@ -203,4 +203,19 @@
     .whatsapp {
         margin-right: 0;
     }
+
+    .imagen-cat {
+        position: sticky;
+        top:154px;
+    }
+
+    .caracteristica {
+        width: 45%;
+        
+        
+    }
+
+    .caracteristicas {
+        flex-direction: row;
+    }
 }
