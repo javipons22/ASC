@@ -135,14 +135,17 @@ jQuery("#capacidad, #tamaño, #precio").hide();
     }
     
 
-    function crearHTMLPrecio(precio) {
-
+    function crearHTMLPrecio(precio,promocion) {
+        var promocionString = promocion == 0 ? `<span>$${precio}</span>` : `<span class="precio-tachado">$${precio}</span><span class="precio-promocion">  $${promocion}</span>`;
+        var precioFinal = promocion == 0 ? precio : promocion;
+        var hotSale = promocion == 0 ? 'Precio de contado' : 'PROMOCION HOTSALE!!';
         htmlString =`
         <li class="precio-play">
             <label for="precio" class="precio-box">
-                            <span>Precio de contado </span>    
-                            <span>$${precio}</span>
-                            <input id="precio" name="precio" class="radio" type="radio" value="${precio}" onclick="showNext(this.value,this.name,this)"/>
+                            <span>${hotSale}</span> `
+        htmlString += promocionString;
+        htmlString += `
+                            <input id="precio" name="precio" class="radio" type="radio" value="${precioFinal}" onclick="showNext(this.value,this.name,this)"/>
             </label>
         </li>`;
         return htmlString;
@@ -216,15 +219,17 @@ jQuery("#capacidad, #tamaño, #precio").hide();
                 // Borra los elementos de color previamente mostrados cuando se selecciona otra capacidad
                 jQuery(".precio-play").fadeOut().remove();
                 var precio = jsonPhp[index].capacidad[capacidad][val].precio;
+                var precioPromocion = jsonPhp[index].capacidad[capacidad][val].precioPromocion;
 
-                var htmlString = crearHTMLPrecio(precio,i);
+                var htmlString = crearHTMLPrecio(precio,precioPromocion);
                 jQuery( "#precio ul" ).append( htmlString );
                 i++;
 
             } else {
                 var precio = jsonPhp[index].capacidad[capacidad][val].precio;
+                var precioPromocion = jsonPhp[index].capacidad[capacidad][val].precioPromocion;
                 
-                var htmlString = crearHTMLPrecio(precio,i);
+                var htmlString = crearHTMLPrecio(precio,precioPromocion);
                 jQuery( "#precio ul" ).append( htmlString );
                 i++;
             }

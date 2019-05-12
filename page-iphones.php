@@ -61,6 +61,7 @@
             ${$trimmed_cat . "_iphone"} = array();
             ${$trimmed_cat . "_capacidad"} = array();
             ${$trimmed_cat . "_precio"} = array();
+            ${$trimmed_cat . "_precio_promocion"} = array();
             ${$trimmed_cat . "_color"} = array();
             ${$trimmed_cat . "_imagen"} = array();
             ${$trimmed_cat . "_link"} = array();
@@ -78,6 +79,9 @@
         }
         if (!in_array( get_field("precio"),${$trimmed_cat . "_precio"})) {
             ${$trimmed_cat . "_precio" }[] = get_field("precio");
+        }
+        if (!in_array( get_field("precio_promocion"),${$trimmed_cat . "_precio_promocion"})) {
+            ${$trimmed_cat . "_precio_promocion" }[] = get_field("precio_promocion");
         }
         if (!in_array( get_field("color"),${$trimmed_cat . "_color"})) {
             ${$trimmed_cat . "_color" }[] = get_field("color");
@@ -193,8 +197,19 @@
                             <li>
                                 <h3>Precio</h3>
                                     <div class="precio">
+                                    <?php 
+                                     $promocion = false;
+                                        foreach (${ $cat ."_precio_promocion" } as $precio_promocion) {
+                                            if ($precio_promocion > 0) {
+                                                $promocion = true;
+                                            }
+                                        }
+                                        if ($promocion == true) {
+                                            echo "<span class='promocion-true'>PROMOCION HOTSALE!!</span>";
+                                        } 
+                                     ?>
                                         <span>
-                                            <?php 
+                                            <?php
                                                 if(sizeof(${ $cat ."_precio" }) > 1){
                                                     $precio_minimo = min(${ $cat ."_precio" });
                                                     $precio_maximo = max(${ $cat ."_precio" });
@@ -204,6 +219,7 @@
                                                 }
                                             ?>
                                         </span>
+
                                         <p>en 12 cuotas , 6 cuotas o 3 cuotas**</p>
                                     </div>
                                 </ul> 

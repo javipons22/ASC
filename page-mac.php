@@ -52,8 +52,9 @@ $capacidad = get_field('capacidad');
 $ram = get_field('ram');
 $precio = get_field('precio');
 $solo_efectivo = get_field('solo_efectivo');
+$precio_promocion = get_field('precio_promocion');
 
-$ram_precio = array('ram'=> $ram, 'precio'=> $precio , 'soloEfectivo' => $solo_efectivo);
+$ram_precio = array('ram'=> $ram, 'precio'=> $precio , 'soloEfectivo' => $solo_efectivo, 'precioPromocion' => $precio_promocion);
 
 
 // Precio max min para el subtitulo de la pagina

@@ -611,6 +611,12 @@ footer {
     font-size:12px;
 }
 
+.promocion-true {
+    color: red;
+    font-weight:700;
+    display:block;
+}
+
 .color {
     height:14px;
     display:inline-block;

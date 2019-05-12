@@ -135,14 +135,19 @@ function crearHTMLTamaño(tamaño, id) {
 }
 
 
-function crearHTMLPrecio(precio) {
+function crearHTMLPrecio(precio, promocion) {
+    var promocionString = promocion == 0 ? `<span>$${precio}</span>` : `<span class="precio-tachado">$${precio}</span><span class="precio-promocion">  $${promocion}</span>`;
+    var precioFinal = promocion == 0 ? precio : promocion;
+    var hotSale = promocion == 0 ? 'Precio de contado' : 'PROMOCION HOTSALE!!';
 
     htmlString = `
         <li class="precio-watch">
             <label for="precio" class="precio-box">
-                            <span>Precio de contado </span>    
-                            <span>$${precio}</span>
-                            <input id="precio" name="precio" class="radio" type="radio" value="${precio}" onclick="showNext(this.value,this.name,this)"/>
+                            <span>${hotSale} </span>`
+
+                            htmlString += promocionString;
+                            htmlString += `
+                            <input id="precio" name="precio" class="radio" type="radio" value="${precioFinal}" onclick="showNext(this.value,this.name,this)"/>
             </label>
         </li>`;
     return htmlString;
@@ -246,14 +251,16 @@ function precioMatcher(tamaño, index, color) {
             if (i == 0) {
                 jQuery(".precio-watch").remove();
                 var precio = jsonPhp[index].color[color][val].precio;
+                var precioPromocion = jsonPhp[index].color[color][val].precioPromocion;
 
-                var htmlString = crearHTMLPrecio(precio);
+                var htmlString = crearHTMLPrecio(precio, precioPromocion);
                 jQuery("#precio ul").append(htmlString);
                 i++;
 
             } else {
                 var precio = jsonPhp[index].color[color][val].precio;
-                var htmlString = crearHTMLPrecio(precio);
+                var precioPromocion = jsonPhp[index].color[color][val].precioPromocion;
+                var htmlString = crearHTMLPrecio(precio, precioPromocion);
                 jQuery("#precio ul").append(htmlString);
                 i++;
             }
