@@ -136,9 +136,9 @@ function crearHTMLTamaño(tamaño, id) {
 
 
 function crearHTMLPrecio(precio, promocion) {
-    var promocionString = promocion == 0 ? `<span>$${precio}</span>` : `<span class="precio-tachado">$${precio}</span><span class="precio-promocion">  $${promocion}</span>`;
-    var precioFinal = promocion == 0 ? precio : promocion;
-    var hotSale = promocion == 0 ? 'Precio de contado' : 'PROMOCION HOTSALE!!';
+    var promocionString = promocion == 0 || null ? `<span>$${precio}</span>` : `<span class="precio-tachado">$${precio}</span><span class="precio-promocion">  $${promocion}</span>`;
+    var precioFinal = promocion == 0 || null ? precio : promocion;
+    var hotSale = promocion == 0 || null ? 'Precio de contado' : 'PROMOCION HOTSALE!!';
 
     htmlString = `
         <li class="precio-watch">

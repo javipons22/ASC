@@ -31,7 +31,15 @@
     ?>
 
     <?php endwhile;?>
-    
+<div class="banner-1">
+    <div class="container">
+        <div class="banner-1-texto">
+            <img class="hotsale" src="<?php echo $img_path; ?>/hotsale.png">
+            <h3>Aprovechá y navegá el sitio para descubrir los precios !!</h3>
+        </div>
+    </div>
+</div>
+
 <div class="banner-1">
     <div class="container">
         <div class="banner-1-texto">

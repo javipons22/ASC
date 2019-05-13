@@ -399,6 +399,10 @@ footer {
     font-weight: 500;
 }
 
+.banner-1 img {
+    height:250px;
+}
+
 .banner-1 h3, .banner-2 h3,  .banner-3 h3 {
     font-size: 19px;
     font-weight: 300px;

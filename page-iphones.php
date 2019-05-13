@@ -210,12 +210,14 @@
                                      ?>
                                         <span>
                                             <?php
-                                                if(sizeof(${ $cat ."_precio" }) > 1){
-                                                    $precio_minimo = min(${ $cat ."_precio" });
-                                                    $precio_maximo = max(${ $cat ."_precio" });
-                                                    echo "$" . $precio_minimo . "* - $" . $precio_maximo . "*";
-                                                }  else {
-                                                    echo "$" . ${ $cat ."_precio" }[0] . "*";
+                                                if (!$promocion) {
+                                                    if(sizeof(${ $cat ."_precio" }) > 1){
+                                                        $precio_minimo = min(${ $cat ."_precio" });
+                                                        $precio_maximo = max(${ $cat ."_precio" });
+                                                        echo "$" . $precio_minimo . "* - $" . $precio_maximo . "*";
+                                                    }  else {
+                                                        echo "$" . ${ $cat ."_precio" }[0] . "*";
+                                                    }
                                                 }
                                             ?>
                                         </span>
