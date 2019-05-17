@@ -10,11 +10,12 @@ jQuery(document).ready(function($){
         })
     })();
     (function () {
-        $('.titulo-pagina .container span').on('click', function() {
-            $('.titulo-pagina .container span svg').toggleClass('rotate');
-            $('.caracteristicas').slideToggle();
+        $('.boton-caracteristicas').on('click', function() {
+            $('.boton-caracteristicas svg').toggleClass('rotate');
+            window.scrollTo(0,0);
+            $('.caracteristicas').fadeToggle();
             // seteamos un timeout para que no desaparezca abruptamente el contenido y se vea mejor
-            setTimeout(function(){ $('.iphone, .container-boton-footer').toggleClass('noDisplay'); }, 200);
+            setTimeout(function(){ $('.iphone, .container-boton-footer,footer').toggleClass('noDisplay'); }, 200);
             
         })
     })();

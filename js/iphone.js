@@ -61,18 +61,31 @@ function mostrarDefault() {
 
 mostrarDefault();
 
+function cambiarTituloPaginaIphone(iphone) {
+    jQuery(".titulo-pagina > h1").text(iphone);
+}
+
+function cambiarTextoBotonPaginaIphone() {
+    jQuery("#texto-boton-caracteristicas").text("caracteristicas").css("width","100%").css("font-size", "15px");
+    jQuery("#texto-boton-caracteristicas").text("caracteristicas");
+}
+
 function showNext(val, tipo, el, precio) {
     if (tipo == 'iphone') {
         // Reseteamos el css de todos los labels de iphone cuando se haga click en otro elemento
         jQuery(".modelo-iphone").css("border", "1px solid rgba(136,136,136,.4)");
         var id = el.id;
         iPhoneSeleccionado = val;
+        cambiarTituloPaginaIphone(val);
+        cambiarTextoBotonPaginaIphone();
         iPhoneSeleccionadoSinEspacios = val.replace(/\s+/g, '').toLowerCase();
         // carga las caracteristicas del iphone seleccionado
         caracteristicasMatcher(iPhoneSeleccionadoSinEspacios);
         // Si reseleccionamos iphone quitar el field de color y de precio
-        jQuery("#precio").fadeOut("fast");
+        jQuery("#precio,#color").fadeOut("fast");
         jQuery("#capacidad").css('opacity', '1');
+        jQuery(".boton-caracteristicas").css('opacity', '1');
+        jQuery(".boton-caracteristicas").css('pointer-events', 'auto');
 
         jQuery("." + id).css("border", "1.5px solid #5e9bff");
         capacidadMatcher(val);
@@ -81,7 +94,7 @@ function showNext(val, tipo, el, precio) {
     } else if (tipo == 'capacidad') {
 
         var id = el.id;
-        jQuery("#precio").fadeOut("fast");
+        jQuery("#precio,#color").fadeOut("fast");
         // Reseteamos el css de todos los labels de iphone cuando se haga click en otro elemento
         jQuery(".capacidad-iphone label").css("border", "1px solid rgba(136,136,136,.4)");
         jQuery("." + id).css("border", "1.5px solid #5e9bff");
@@ -241,6 +254,20 @@ function crearHTMLCuotas(soloEfectivo, precio) {
 
 }
 
+// La funcion es para reemplazar los '\n' del json y reemplazarlos por un nuevo parrafo en HTML (</p><p>) y quita guiones
+function backslashAParrafo(str) {
+    str2 = str.replace(/\n/gm, '</p><p>');
+    return quitaGuiones(str2);
+}
+
+function quitaGuiones(str) {
+    return str.replace(/-/gm, '');
+}
+
+function comaAParrafo(str) {
+    return str.replace(/,/gm, '</p><p>');
+}
+
 function crearHTMLCaracteristicas(iphone) {
     htmlString = `
         <div class="caracteristica">
@@ -250,64 +277,33 @@ function crearHTMLCaracteristicas(iphone) {
         </div>
         <div class="caracteristica">
             <h1>Display (Pantalla)</h1>
-            <p>LCD IPS touchscreen capacitivo, 16M colores</p>
-            <p>828 x 1792 pixels</p>
-            <p>326 ppi</p>
-            <p>6.1 pulgadas, 19.5:9</p>
-            <p>Resistente a rayones</p>
-            <p>Pantalla oleofóbica</p>
-            <p>Compatible Dolby Vision/HDR10</p>
-            <p>Pantalla True Tone</p>
-            <p>Ratio de refresco 120 Hz</p>
+            <p>${iphones[iphone].display.tipo}</p>
+            <p>${iphones[iphone].display.tamano}</p>
+            <p>${backslashAParrafo(iphones[iphone].display.otros)}</p>
         </div>
         <div class="caracteristica">
-            <h1>Chip y GPU</h1>
-            <p>Apple A12 Bionic hexa-core</p>
-            <p>Apple quad-core</p>
+            <h1>Chip (procesador)</h1>
+            <p>${iphones[iphone].plataforma.procesador}</p>
         </div>
         <div class="caracteristica">
             <h1>Camara Trasera</h1>
-            <p>12 MP, f1/.8</p>
-            <p>autofocus por detección de fase, estabilización óptica de imagen, flash LED cuádruple, detección de rostro y sonrisa, geo-tagging, smart HDR</p>
+            <p>${comaAParrafo(iphones[iphone].camara.principal)}</p>
+            <p>${comaAParrafo(iphones[iphone].camara.funciones)}</p>
         </div>
         <div class="caracteristica">    
             <h1>Camara Frontal</h1>
-            <p>7 MP, f/2.2, flash Retina, 1080p, HDR</p>
+            <p>${comaAParrafo(iphones[iphone].camara.frontal)}</p>
         </div>
         <div class="caracteristica">    
             <h1>Grabación de Video</h1>
-            <p>2160p@24/30/60fps, 1080p@30/60/120/240fps, HDR, stereo</p>
-        </div>
-        <div class="caracteristica">    
-            <h1>USB</h1>
-            <p>Puerto Lightning</p>
-        </div>
-        <div class="caracteristica">    
-            <h1>Conector de audio</h1>
-            <p>Conector de audio por puerto Lightning (adaptador incluido)</p>
-        </div>
-        <div class="caracteristica">    
-            <h1>Seguridad</h1>
-            <p>Desbloqueo facial (Face ID)</p>
-        </div>
-        <div class="caracteristica">    
-            <h1>Resistencia al agua</h1>
-            <p>Si, certificación IP67</p>
-        </div>
-        <div class="caracteristica">    
-            <h1>Carga rápida</h1>
-            <p>Si, 50% en 30 min</p>
-        </div>
-        <div class="caracteristica">    
-            <h1>Carga inalámbrica</h1>
-            <p>Si, Qi</p>
+            <p>${comaAParrafo(iphones[iphone].camara.video)}</p>
         </div>`;
     return htmlString;
 }
 
 function caracteristicasMatcher(iphone) {
     var htmlString = crearHTMLCaracteristicas(iphone);
-    console.log(htmlString);
+    jQuery(".caracteristicas").empty();
     jQuery(".caracteristicas").append(htmlString);
 }
 
@@ -315,19 +311,33 @@ function caracteristicasMatcher(iphone) {
 
 function displayModelos() {
     var i = 0;
+
+    // Creamos un array que va a almacenar todos los iphones disponibles para mostrarlos en el .titulo-pagina h1
+    var tituloPagina = [];
+    var titulo = "";
+
     for (var property in jsonPhp) {
         if (jsonPhp.hasOwnProperty(property)) {
 
             // ELIGE TU MODELO
             // obtenemos variable para el html
             var iphone = jsonPhp[property].modelo;
-
+            tituloPagina.push(iphone);
             // aplicamos la funcion creada con el template para insertarlo en el html
             var htmlString = crearHTMLModelo(iphone, i);
             jQuery("#modelo ul").append(htmlString);
             i++;
         }
     }
+
+    for (var i = 0; i < tituloPagina.length; i++ ) {
+        if (i == tituloPagina.length - 1) {
+            titulo += tituloPagina[i];
+        } else {
+            titulo += tituloPagina[i] + ", ";
+        }
+    }
+    cambiarTituloPaginaIphone(titulo);
 }
 
 function displayCapacidades(htmlString) {

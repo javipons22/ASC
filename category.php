@@ -85,13 +85,13 @@ $slug = quita_guiones($term->slug);
 <div class="titulo-pagina">
     <div class="container">
         <h1><?php single_cat_title()?></h1>
-        <span>
+        <span class="boton-caracteristicas">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 129 129">
                 <g>
                     <path d="m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z"/>
                 </g>
             </svg>
-            características
+            <span id="texto-boton-caracteristicas">Seleccione un modelo</br> para ver caracteristicas</span>
         </span>
     </div>
     <div class="container">
@@ -176,7 +176,7 @@ var jsonPhp = <?php echo $myJSON; ?>;
 var imgPath = "<?php echo $img_path; ?>";
 
 </script>
-<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/js/iphone6.js";></script>
+<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/js/iphonesall.js";></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/js/iphone.js";></script>
 
 <?php get_footer();?>

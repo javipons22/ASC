@@ -527,6 +527,17 @@ footer {
     transition: transform 0.3s;
 }
 
+.boton-caracteristicas {
+    pointer-events: none;
+    opacity: 0.5;
+    display: flex;
+    align-items: center;
+}
+
+#texto-boton-caracteristicas {
+    font-size: 13px;
+}
+
 .caracteristicas {
     margin: 0;
     width:100%;
