@@ -53,11 +53,11 @@
         </div>
         <div class="faq-pregunta">
             <h1>¿Los productos tienen garantía?</h1>
-            <p>Los productos tienen un año de Garantía Apple Oficial en Cordoba, Rosario y Buenos Aires a diferencia de nuestras competencias.</p>
+            <p>Los productos son libres de fábrica, vienen en caja sellada y tienen un año de Garantía Apple Oficial en Cordoba, Rosario y Buenos Aires a diferencia de nuestras competencias.</p>
         </div>
         <div class="faq-pregunta">
             <h1>¿Hacen envíos?</h1>
-            <p>Si, hacemos envios a todo el país, con Correo Argentino ($400)</p>
+            <p>Si, hacemos envios a todo el país, con Correo Argentino ($500)</p>
         </div>
     </div>
 </div>

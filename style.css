@@ -1086,6 +1086,12 @@ footer {
 .faq-pregunta {
     display:none;
     margin: 55px 15px;
+    color: #888;
+
+}
+
+.faq-pregunta h1 {
+    color: #000;
 
 }
 

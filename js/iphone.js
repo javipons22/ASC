@@ -61,13 +61,17 @@ function mostrarDefault() {
 
 mostrarDefault();
 
+var tituloDefault = jsonPhp[1].modelo !== undefined ? jsonPhp[0].modelo + ", " + jsonPhp[1].modelo : jsonPhp[0].modelo;
+
+
 function cambiarTituloPaginaIphone(iphone) {
-    jQuery(".titulo-pagina > h1").text(iphone);
+    jQuery(".titulo-pagina .container > h1").text(iphone);
 }
+
+cambiarTituloPaginaIphone(tituloDefault);
 
 function cambiarTextoBotonPaginaIphone() {
     jQuery("#texto-boton-caracteristicas").text("caracteristicas").css("width","100%").css("font-size", "15px");
-    jQuery("#texto-boton-caracteristicas").text("caracteristicas");
 }
 
 function showNext(val, tipo, el, precio) {
