@@ -19,6 +19,15 @@ jQuery(document).ready(function($){
             
         })
     })();
+
+    (function () {
+        $('.faq-titulo').on('click', function() {
+            console.log("ok");
+            $('.faq-pregunta').slideToggle( function(){
+                $('faq-pregunta').css("display","inline");
+            });
+        })
+    })();
 });
 
 jQuery('.caracteristicas').hide();

@@ -132,7 +132,7 @@ $myJSON = json_encode($array_final,JSON_FORCE_OBJECT);
             </div>
             <ul>
                 <li id="modelo">
-                    <h3>Elige modelo</h3>
+                    <h3>Primero elige modelo</h3>
                     <ul>
                     </ul>   
                 </li>

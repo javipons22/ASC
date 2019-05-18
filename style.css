@@ -1060,6 +1060,41 @@ footer {
     margin-top:30px;
 }
 
+.faq {
+    border: 1px solid rgba(136,136,136,.4);
+    border-radius: 10px;
+    margin:10px 10px 50px 10px;
+}
+
+.faq-titulo {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    cursor:pointer;
+}
+
+.faq-titulo span {
+    font-size:50px;
+    font-weight: 800;
+    margin: 5px 25px 5px 10px;
+}
+
+.faq-titulo h1 {
+ font-size:15px;
+}
+
+.faq-pregunta {
+    display:none;
+    margin: 55px 15px;
+
+}
+
+.faq-pregunta h1 {
+    /*display:none;*/
+    border-bottom: 1px solid rgba(136,136,136,.4);
+    margin-bottom: 15px;
+    font-size: 20px;
+}
 /* --------------- (pagina upload)  --------------- */
 
 .error, .success {
