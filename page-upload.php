@@ -161,6 +161,7 @@ function iterador_csv($csv)
                 $iphone = ${'iphone' . $x};
                 $capacidad = ${'capacidad' . $x};
                 $precio = ${'precio' . $x};
+                $precio_promocion = ${'promocion' . $x};
                 $color = ${'color' . $x};
                 $stock = ${'stock' . $x};
                 
@@ -210,7 +211,7 @@ function iterador_csv($csv)
                 $cat = array($cat_id);
 
                 if ($stock > 0) {
-                    crear_iphone($titulo, $cat, $iphone, $precio, $capacidad, $color, $solo_efectivo);
+                    crear_iphone($titulo, $cat, $iphone, $precio, $capacidad, $color, $solo_efectivo, $precio_promocion);
                     $subidos_correctos[] = $titulo;
                 } else {
                     $subidos_error[] = $titulo ;
@@ -231,6 +232,7 @@ function iterador_csv($csv)
                 $capacidad = ${'capacidad' . $x};
                 $ram = ${'ram' . $x};
                 $precio = ${'precio' . $x};
+                $precio_promocion = ${'promocion' . $x};
 
                 if(${'solo-efectivo' . $x} == "si"){
                     $solo_efectivo = true;
@@ -241,7 +243,7 @@ function iterador_csv($csv)
                 // La categoria tiene que ser un array para que wordpress la acepte
                 $cat = array(11);
 
-                crear_mac($titulo, $cat, $mac, $pantalla, $capacidad, $ram, $precio, $solo_efectivo);
+                crear_mac($titulo, $cat, $mac, $pantalla, $capacidad, $ram, $precio, $solo_efectivo, $precio_promocion);
                 $subidos_correctos[] = $titulo;
 
             }
@@ -259,6 +261,7 @@ function iterador_csv($csv)
                 $precio = ${'precio' . $x};
                 $tamaño = ${'tamaño' . $x};
                 $stock = ${'stock' . $x};
+                $precio_promocion = ${'promocion' . $x};
 
                 if(${'solo-efectivo' . $x} == "si"){
                     $solo_efectivo = true;
@@ -270,7 +273,7 @@ function iterador_csv($csv)
                 $cat = array(12);
 
                 if ($stock > 0) {
-                    crear_watch($titulo, $cat, $watch, $precio, $tamaño, $color, $solo_efectivo);
+                    crear_watch($titulo, $cat, $watch, $precio, $tamaño, $color, $solo_efectivo, $precio_promocion);
                     $subidos_correctos[] = $titulo;
                 } else {
                     $subidos_error[] = $titulo;
@@ -312,6 +315,7 @@ function iterador_csv($csv)
                 $playstation = ${'playstation' . $x};
                 $capacidad = ${'capacidad' . $x};
                 $precio = ${'precio' . $x};
+                $precio_promocion = ${'promocion' . $x};
 
                 if(${'solo-efectivo' . $x} == "si"){
                     $solo_efectivo = true;
@@ -323,7 +327,7 @@ function iterador_csv($csv)
                 // La categoria tiene que ser un array para que wordpress la acepte
                 $cat = array($cat_id);
 
-                crear_play($titulo, $cat, $playstation, $capacidad, $precio, $solo_efectivo);
+                crear_play($titulo, $cat, $playstation, $capacidad, $precio, $solo_efectivo, $precio_promocion);
                 $subidos_correctos[] = $titulo;
 
             }
@@ -342,7 +346,7 @@ function iterador_csv($csv)
     }
 }
 
-function crear_iphone($titulo, $cat, $iphone, $precio, $capacidad, $color, $solo_efectivo)
+function crear_iphone($titulo, $cat, $iphone, $precio, $capacidad, $color, $solo_efectivo, $precio_promocion)
 {
 
     $my_post = array(
@@ -360,12 +364,13 @@ function crear_iphone($titulo, $cat, $iphone, $precio, $capacidad, $color, $solo
     update_field('capacidad', $capacidad, $post_id);
     update_field('color', $color, $post_id);
     update_field('solo_efectivo', $solo_efectivo, $post_id);
+    update_field('precio_promocion', $precio_promocion, $post_id);
 
 }
 
 //crear_iphone($titulo, $cat, $iphone, $precio, $capacidad, $color);
 
-function crear_mac($titulo, $cat, $mac, $pantalla, $capacidad, $ram, $precio,$solo_efectivo)
+function crear_mac($titulo, $cat, $mac, $pantalla, $capacidad, $ram, $precio,$solo_efectivo, $precio_promocion)
 {
 
     $my_post = array(
@@ -384,10 +389,11 @@ function crear_mac($titulo, $cat, $mac, $pantalla, $capacidad, $ram, $precio,$so
     update_field('ram', $ram, $post_id);
     update_field('precio', $precio, $post_id);
     update_field('solo_efectivo', $solo_efectivo, $post_id);
+    update_field('precio_promocion', $precio_promocion, $post_id);
 
 }
 
-function crear_watch($titulo, $cat, $watch, $precio, $tamaño, $color, $solo_efectivo)
+function crear_watch($titulo, $cat, $watch, $precio, $tamaño, $color, $solo_efectivo, $precio_promocion)
 {
 
     $my_post = array(
@@ -405,6 +411,7 @@ function crear_watch($titulo, $cat, $watch, $precio, $tamaño, $color, $solo_efe
     update_field('precio', $precio, $post_id);
     update_field('tamano', $tamaño, $post_id);
     update_field('solo_efectivo', $solo_efectivo, $post_id);
+    update_field('precio_promocion', $precio_promocion, $post_id);
 
 }
 
@@ -427,7 +434,7 @@ function crear_accesorio($titulo, $accesorio, $precio)
 
 }
 
-function crear_play($titulo, $cat, $playstation, $capacidad, $precio, $solo_efectivo)
+function crear_play($titulo, $cat, $playstation, $capacidad, $precio, $solo_efectivo, $precio_promocion)
 {
 
     $my_post = array(
@@ -444,6 +451,7 @@ function crear_play($titulo, $cat, $playstation, $capacidad, $precio, $solo_efec
     update_field('precio', $precio, $post_id);
     update_field('capacidad', $capacidad, $post_id);
     update_field('solo_efectivo', $solo_efectivo, $post_id);
+    update_field('precio_promocion', $precio_promocion, $post_id);
 
 }
 

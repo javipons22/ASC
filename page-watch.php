@@ -37,9 +37,10 @@ if($query->have_posts() ) : while($query ->have_posts()) : $query->the_post();
     $tamaño = get_field('tamano');
     $color = get_field('color');
     $precio = get_field('precio');
+    $precio_promocion = get_field('precio_promocion');
 
 
-    $tamaño_precio = array('tamaño'=> $tamaño, 'precio'=> $precio);
+    $tamaño_precio = array('tamaño'=> $tamaño, 'precio'=> $precio, 'precioPromocion' => $precio_promocion);
 
     // Precio max min para el subtitulo de la pagina
     $precio_max_min[] = (int)$precio;

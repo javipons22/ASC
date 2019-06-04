@@ -399,6 +399,10 @@ footer {
     font-weight: 500;
 }
 
+.banner-1 img {
+    height:250px;
+}
+
 .banner-1 h3, .banner-2 h3,  .banner-3 h3 {
     font-size: 19px;
     font-weight: 300px;
@@ -686,6 +690,12 @@ footer {
     font-size:12px;
 }
 
+.promocion-true {
+    color: red;
+    font-weight:700;
+    display:block;
+}
+
 .color {
     height:14px;
     display:inline-block;
@@ -964,6 +974,16 @@ footer {
     justify-content: flex-start;
     padding:20px 10px;
     border-radius:4px;
+}
+
+.precio-tachado {
+    text-decoration: line-through;
+    color: #555;
+    display: inline-block;
+}
+
+.precio-promocion {
+    display: inline-block;
 }
 
 .precio-box:hover {

@@ -49,8 +49,9 @@ $modelo = get_field('modelo');
 $capacidad = get_field('capacidad');
 $precio = get_field('precio');
 $imagen = get_field('imagen');
+$precio_promocion = get_field('precio_promocion');
 
-$array_precio = array('precio'=> $precio);
+$array_precio = array('precio'=> $precio, 'precioPromocion' => $precio_promocion);
 
 
 
