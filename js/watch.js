@@ -138,12 +138,12 @@ function crearHTMLTamaño(tamaño, id) {
 function crearHTMLPrecio(precio, promocion) {
     var promocionString = promocion == 0 || null ? `<span>$${precio}</span>` : `<span class="precio-tachado">$${precio}</span><span class="precio-promocion">  $${promocion}</span>`;
     var precioFinal = promocion == 0 || null ? precio : promocion;
-    var hotSale = promocion == 0 || null ? 'Precio de contado' : 'PROMOCION HOTSALE!!';
+    var tituloPromocion = promocion == 0 || null ? 'Precio de contado' : 'PROMOCION!!';
 
     htmlString = `
         <li class="precio-watch">
             <label for="precio" class="precio-box">
-                            <span>${hotSale} </span>`
+                            <span>${tituloPromocion} </span>`
 
                             htmlString += promocionString;
                             htmlString += `

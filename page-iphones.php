@@ -205,7 +205,7 @@
                                             }
                                         }
                                         if ($promocion == true) {
-                                            echo "<span class='promocion-true'>PROMOCION HOTSALE!!</span>";
+                                            echo "<span class='promocion-true'>PROMOCION!!</span>";
                                         } 
                                      ?>
                                         <span>

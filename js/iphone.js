@@ -202,11 +202,11 @@ function crearHTMLPrecio(precio, promocion) {
 
     var promocionString = promocion == 0 ? `<span>$${precio}</span>` : `<span class="precio-tachado">$${precio}</span><span class="precio-promocion">  $${promocion}</span>`;
     var precioFinal = promocion == 0 ? precio : promocion;
-    var hotSale = promocion == 0 ? 'Precio de contado' : 'PROMOCION HOTSALE!!';
+    var tituloPromocion = promocion == 0 ? 'Precio de contado' : 'PROMOCION!!';
     htmlString = `
         <li class="precio-iphone">
             <label for="precio" class="precio-box">
-                            <span>${hotSale}</span>   
+                            <span>${tituloPromocion}</span>   
                             
                             ` 
     htmlString += promocionString;                   

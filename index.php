@@ -34,15 +34,6 @@
 <div class="banner-1">
     <div class="container">
         <div class="banner-1-texto">
-            <img class="hotsale" src="<?php echo $img_path; ?>/hotsale.png">
-            <h3>Aprovechá y navegá el sitio para descubrir los precios !!</h3>
-        </div>
-    </div>
-</div>
-
-<div class="banner-1">
-    <div class="container">
-        <div class="banner-1-texto">
             <h1><?php echo $nombre;?> a $<?php echo $precio; ?>.* o 12 cuotas de $<?php echo intval($precio*1.6/12);?>.*</h1>
             <h3>Comprá en nuestro local abierto al público o recibilo por correo.</h3>
             <a href="<?php echo $link;?>">Ver más ></a>
