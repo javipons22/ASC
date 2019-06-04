@@ -61,7 +61,7 @@ function mostrarDefault() {
 
 mostrarDefault();
 
-var tituloDefault = jsonPhp[1].modelo !== undefined ? jsonPhp[0].modelo + ", " + jsonPhp[1].modelo : jsonPhp[0].modelo;
+var tituloDefault = jsonPhp[1] !== undefined ? jsonPhp[0].modelo + ", " + jsonPhp[1].modelo : jsonPhp[0].modelo;
 
 
 function cambiarTituloPaginaIphone(iphone) {

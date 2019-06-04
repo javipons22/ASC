@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- INICIO cache (borrar despues de un tiempo) -->
+    <meta http-equiv=“Pragma” content=”no-cache”>
+    <meta http-equiv=“Expires” content=”-1″>
+    <meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
+    <!-- fin cache -->
+    <?php $img_path_thumb = get_site_url() . "/wp-content/uploads/applelogothumb.png"; ?>
+    <meta property="og:image" content="<?php echo $img_path_thumb;?>" />
+
     <!-- INICIO FAVICON -->
     <?php $img_path = get_site_url() . "/wp-content/uploads/favicon"; ?>
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $img_path; ?>/favicon-32x32.png">
