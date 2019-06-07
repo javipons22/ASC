@@ -200,9 +200,9 @@ function crearHTMLColor(color, id, colorClase) {
 
 function crearHTMLPrecio(precio, promocion) {
 
-    var promocionString = promocion == 0 ? `<span>$${precio}</span>` : `<span class="precio-tachado">$${precio}</span><span class="precio-promocion">  $${promocion}</span>`;
-    var precioFinal = promocion == 0 ? precio : promocion;
-    var tituloPromocion = promocion == 0 ? 'Precio de contado' : 'PROMOCION!!';
+    var promocionString = promocion == 0 || promocion == null ? `<span>$${precio}</span>` : `<span class="precio-tachado">$${precio}</span><span class="precio-promocion">  $${promocion}</span>`;
+    var precioFinal = promocion == 0 || promocion == null ? precio : promocion;
+    var tituloPromocion = promocion == 0 || promocion == null ? 'Precio de contado' : 'PROMOCION!!';
     htmlString = `
         <li class="precio-iphone">
             <label for="precio" class="precio-box">
@@ -286,7 +286,8 @@ function comaAParrafo(str) {
 }
 
 function crearHTMLCaracteristicas(iphone) {
-    htmlString = `
+    if (iphones[iphone]) {
+        htmlString = `
         <div class="caracteristica">
             <h1>Tamaño y Peso</h1>
             <p>${iphones[iphone].tamano.dimensiones}</p>
@@ -315,7 +316,11 @@ function crearHTMLCaracteristicas(iphone) {
             <h1>Grabación de Video</h1>
             <p>${comaAParrafo(iphones[iphone].camara.video)}</p>
         </div>`;
-    return htmlString;
+        return htmlString;
+    } else {
+        return "No se puede cargar la información de este iphone";
+    }
+    
 }
 
 function caracteristicasMatcher(iphone) {

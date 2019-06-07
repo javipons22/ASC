@@ -132,7 +132,8 @@ function iterador_csv($csv)
             // iteramos en las columnas de fila 1
             for ($x = 0; $x < sizeof($a); $x++) {
                 //$a(fila)[$x(columna)] asignamos variable a las keys para asignar nombres de variables dinamicos
-                $nombre_campo = strtolower($a[$x]);
+                $str = strtolower($a[$x]);
+                $nombre_campo = str_replace(' ', '', $str);
                 array_push($campos, $nombre_campo);
             }
             // Hacemos que salga de este bloque if despues de ser llamado
@@ -332,6 +333,59 @@ function iterador_csv($csv)
 
             }
         }
+    } else if ($campos[0] == "servicio") {
+        borrar_posts_previos("servicios");
+        for ($x = 1; $x <= sizeof($csv); $x++) {
+
+            if (!empty(${'servicio' . $x})) {
+
+                //Hacemos un array para iterar en las columnas
+                $servicios = array('pantalla-original', 'pantalla-generica', 'pin-de-carga-microfono', 'auricular-camara-delantera','camara-atras(camara)','camara-atras(vidrio)','parlante','soft','liberacion','power','home','bateria-original','bateria-generica','bano-quimico','rep-placa');
+                // Para cada una de las columnas del excel ( escritas en $servicios) obtenemos titulo iphone y precio
+                foreach ($servicios as $servicio) {
+
+                    // El nombre de servicio subido debe ser en mayusculas y sin guiones
+                    $str = str_replace('-', ' ', $servicio);
+                    $servicio_parsed = strtoupper($str);
+                    // Agregamos "ñ" en caso de que sea "BANO QUIMICO"
+                    if ($servicio_parsed == "BANO QUIMICO"){
+                        $servicio_parsed = "BAÑO QUIMICO";
+                    }
+                    $titulo = ${'servicio' . $x} . " - " . $servicio_parsed . " - " . "$" . ${$servicio . $x};
+                    $iphone = ${'servicio' . $x};
+                    $precio = ${$servicio . $x};
+                   
+
+                    // La categoria debe ser un array para wordpress
+                    $cat = array(20);
+
+                    crear_servicio($titulo, $cat, $iphone, $servicio_parsed, $precio);
+                    $subidos_correctos[] = $titulo;
+                    
+                }
+                
+                /*
+                $titulo = ${'servicio' . $x} . " - " . ${'capacidad' . $x};
+                $playstation = ${'playstation' . $x};
+                $capacidad = ${'capacidad' . $x};
+                $precio = ${'precio' . $x};
+                $precio_promocion = ${'promocion' . $x};
+
+                if(${'solo-efectivo' . $x} == "si"){
+                    $solo_efectivo = true;
+                } else {
+                    $solo_efectivo = false;
+                };
+
+                $cat_id = 15;
+                // La categoria tiene que ser un array para que wordpress la acepte
+                $cat = array($cat_id);
+
+                crear_play($titulo, $cat, $playstation, $capacidad, $precio, $solo_efectivo, $precio_promocion);
+                $subidos_correctos[] = $titulo;
+                */
+            }
+        }
     }
 
     echo "<p>" . sizeof($subidos_correctos) . " Articulos subidos correctamente </p>";
@@ -452,6 +506,25 @@ function crear_play($titulo, $cat, $playstation, $capacidad, $precio, $solo_efec
     update_field('capacidad', $capacidad, $post_id);
     update_field('solo_efectivo', $solo_efectivo, $post_id);
     update_field('precio_promocion', $precio_promocion, $post_id);
+
+}
+
+function crear_servicio($titulo, $cat, $iphone, $servicio, $precio)
+{
+
+    $my_post = array(
+        'post_title' => $titulo,
+        'post_category' => $cat,
+        'post_type' => 'servicios',
+        'post_status' => 'publish',
+    );
+
+    // Insert the post into the database
+    $post_id = wp_insert_post($my_post);
+
+    update_field('iphone', $iphone, $post_id);
+    update_field('servicio', $servicio, $post_id);
+    update_field('precio', $precio, $post_id);
 
 }
 

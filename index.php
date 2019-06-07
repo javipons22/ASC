@@ -27,14 +27,14 @@
         $cat_id = get_cat_ID( $cat );
         $link = get_category_link( $cat_id );
         $nombre = get_field('iphone');
-        $precio = get_field('precio');
+        $precio = get_field('precio_promocion');
     ?>
 
     <?php endwhile;?>
 <div class="banner-1">
     <div class="container">
         <div class="banner-1-texto">
-            <h1><?php echo $nombre;?> a $<?php echo $precio; ?>.* o 12 cuotas de $<?php echo intval($precio*1.6/12);?>.*</h1>
+            <h1><?php echo $nombre;?> a $<?php echo $precio; ?>.* o 12 cuotas de $<?php echo intval($precio*1.7/12);?>.*</h1>
             <h3>Comprá en nuestro local abierto al público o recibilo por correo.</h3>
             <a href="<?php echo $link;?>">Ver más ></a>
         </div>
