@@ -51,7 +51,7 @@
     }
   
     .separador-header {
-        height: 66px;
+        height: 45px;
     }
 
     .sub-menu .flecha {
@@ -165,7 +165,7 @@
     .titulo-pagina {
         position:sticky;
         position:-webkit-sticky;
-        top: 66px;
+        top: 45px;
     }
 
     .titulo-iphone-movil{
@@ -192,9 +192,6 @@
         margin: 0;
     }
     
-    header {
-        min-height:66px;
-    }
 
     .datos-iphone-cat {
         margin-right: 0;

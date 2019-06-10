@@ -25,23 +25,6 @@
                 <br>
                 **Productos en 12 cuotas con 70% de interés, en 6 cuotas con 35% de interés o en 3 cuotas con 22% de interés.
             </p>
-            <div class="footer-nav">
-                <div class="columna-1-footer">
-                    <ul>
-                        <h3>Productos</h3>
-                        <?php 
-
-                        wp_nav_menu( [
-                            'menu' => 'Menu2',
-                            'container' => false,
-                            'items_wrap' => '%3$s'
-                        ] ); 
-
-                        ?>
-                    </ul>
-                    
-                </div>
-            </div>
             
             <div class="creditos">
                 <ul>
@@ -55,10 +38,6 @@
                             <li><a href="#">Reclamos</a></li>
                             <li><a href="#">Preguntas Frecuentes</a></li>
                         </ul>
-                    </li>
-                    <li class="pais">
-                        <img src="<?php echo $img_path; ?>/argentina.png" alt="bandera">
-                        <p>Argentina</p>
                     </li>
                 </ul>
                 

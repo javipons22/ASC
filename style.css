@@ -66,7 +66,7 @@ a:hover {
 }
 
 header {
-    background: rgba(45,45,45,0.98);
+    background: rgba(222, 18, 18,0.95);
     width:100%;
     position:fixed;
     z-index: 1000;
@@ -74,7 +74,7 @@ header {
 }
 
 .separador-header {
-    height: 45px;
+    height: 54px;
 }
 
 
@@ -103,6 +103,7 @@ header {
 
 .carrito svg {
     height:20px;
+    width: auto;
 }
 
 /* --------------- MENU  --------------- */
@@ -116,10 +117,11 @@ nav {
 .menu {
     display:flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 100%;
     margin:0 auto;
+    text-align: center;
 }
 
 /* -- orden en flexbox (despues modificar en pantallas mas grandes) */
@@ -198,8 +200,8 @@ nav {
 /* --------------- FOOTER  --------------- */
 
 footer {
-    background: #F2F2F2;
-    color: #888;
+    background: #515151;
+    color: #aaa;
     font-size: 12px;
     margin-top: 6px;
 }
@@ -207,7 +209,6 @@ footer {
 
 .info-footer {
     padding: 17px;
-    border-bottom: 1px solid rgb(214, 214, 214);
 }
 
 .footer-nav {
@@ -216,7 +217,7 @@ footer {
 
 .columna-1-footer h3 {
     font-weight: 700;
-    color: #333;
+    color: #aaa;
     margin-bottom:11px;
 }
 
@@ -226,7 +227,7 @@ footer {
 
 .columna-1-footer li a {
     text-decoration: none;
-    color: #888;
+    color: #aaa;
 }
 
 
@@ -281,6 +282,10 @@ footer {
     border-bottom: 1px solid rgb(214, 214, 214);
 }
 
+.info-contacto a {
+    color: #ccc;
+}
+
 .contacto-footer ul {
     display: flex;
     flex-direction: row;
@@ -301,7 +306,7 @@ footer {
 
 
 .contacto-footer a {
-    color: #333;
+    color: #aaa;
 }
 
 .contacto-footer li:last-child {
