@@ -1,217 +1,173 @@
 @media only screen and (min-width: 768px) {
     /* -- orden en flexbox (despues modificar en pantallas mas grandes) */
     .menu-icon {
-        display:none;
+        display: none;
     }
-
     .menu-logo {
-        order:1;
+        order: 1;
         text-align: center;
         flex-basis: 7%;
     }
-
     .menu-items {
-        display:inline-block;
+        display: inline-block;
         flex-basis: 80%;
-        order:2;
+        order: 2;
     }
-
     .carrito {
-        order:3;
-        text-align:right;
-        flex-basis:7%;
+        order: 3;
+        text-align: right;
+        flex-basis: 7%;
     }
-
     /* -- fin orden */
-
     .menu-items {
-        height:100%;
-        border:none;
-        text-align:center;
+        flex-basis: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
         padding: 0;
+        border: none;
     }
-
-    .menu-items > ul {
-        text-align:left;
-        display:flex;
+    .menu-items>ul {
+        text-align: left;
+        display: flex;
         justify-content: space-around;
     }
-
-    .menu-items > ul > li {
+    .menu-items>ul>li {
         font-size: 14px;
-        border:none;
-        display:inline-block;
-        width:auto;
-    
+        border: none;
+        display: inline-block;
+        width: auto;
     }
-
-    
     .menu-logo {
-        padding: 10px 0; /* Le da el tamaño a todo el nav*/
+        padding: 10px 0;
+        /* Le da el tamaño a todo el nav*/
     }
-  
     .separador-header {
         height: 45px;
     }
-
     .sub-menu .flecha {
-        display:none;
+        display: none;
     }
-
-
-    
     .productos-flex {
         justify-content: space-between;
     }
-
     .creditos {
-        padding-bottom:0;
+        padding-bottom: 0;
     }
-    .creditos > ul {
-        flex-direction:row;
+    .creditos>ul {
+        flex-direction: row;
         align-items: flex-start;
     }
-
     .info-contacto {
         flex-basis: 100%;
-        
     }
-
     .pais {
-        display:flex;
+        display: flex;
         align-items: center;
         justify-content: flex-end;
     }
-
     .pais p {
-        margin:0;
+        margin: 0;
         padding: 0;
         margin-left: 7px;
     }
-
-
     .contacto-footer {
         flex-grow: 1;
         margin-left: 20px;
     }
-
     /* - Orden de elementos en footer flex - */
-
     .info-contacto {
-        order:1;
+        order: 1;
     }
-
     .contacto-footer {
         order: 3;
     }
-
     .pais {
-        order:4;
+        order: 4;
     }
-
     .copyright {
-        order:2;
+        order: 2;
     }
-
     .iphone-cat {
         flex-direction: row;
     }
-
     .imagen-cat {
         flex-basis: 45%;
     }
-
     .datos-iphone-cat {
-        flex-basis:45%;
+        flex-basis: 45%;
     }
-
     .producto {
         width: 49%;
     }
-
-    .banner-1 h1, .banner-2 h1, .banner-3 h1 {
+    .banner-1 h1,
+    .banner-2 h1,
+    .banner-3 h1 {
         padding: 0 10px;
         font-size: 32px;
         font-weight: 500;
     }
-    
-    .banner-1 h3, .banner-2 h3,  .banner-3 h3 {
+    .banner-1 h3,
+    .banner-2 h3,
+    .banner-3 h3 {
         padding: 0 10px;
         font-size: 21px;
         font-weight: 300px;
-        margin: 15px 0;  
+        margin: 15px 0;
     }
-
     .banner-2 img {
-        max-width:65%;
+        max-width: 65%;
     }
-
     .banner-3 img {
-        max-width:100%
+        max-width: 100%
     }
-
     .contacto {
-        padding:0;
+        padding: 0;
     }
-
     .info-pagina-contacto {
-        order:1;
+        order: 1;
     }
-    
     .maps {
-        order:2;
+        order: 2;
     }
-
     .titulo-pagina {
-        position:sticky;
-        position:-webkit-sticky;
+        position: sticky;
+        position: -webkit-sticky;
         top: 45px;
     }
-
-    .titulo-iphone-movil{
-        display:none;
+    .titulo-iphone-movil {
+        display: none;
     }
-    
     .titulo-iphone-cat {
-        display:block;
+        display: block;
         padding: 20px;
         background-color: #f2f2f2;
         border-radius: 15px;
     }
-
-    .datos-iphone-cat > ul > li:first-child {
-        border:none;
-        margin-top:0;
+    .datos-iphone-cat>ul>li:first-child {
+        border: none;
+        margin-top: 0;
     }
-
     .imagen-cat {
-        width:100%;
-        text-align:center;
+        width: 100%;
+        text-align: center;
         max-height: 450px;
         min-height: 450px;
         margin: 0;
     }
-    
-
     .datos-iphone-cat {
         margin-right: 0;
     }
-
     .whatsapp {
         margin-right: 0;
     }
-
     .imagen-cat {
         position: sticky;
-        top:154px;
+        top: 154px;
     }
-
     .caracteristica {
         width: 45%;
-        
-        
     }
-
     .caracteristicas {
         flex-direction: row;
     }

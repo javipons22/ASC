@@ -18,7 +18,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $img_path; ?>/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $img_path; ?>/favicon-16x16.png">
     <!-- FIN FAVICON -->
-    <title><?php wp_title('|');?></title>
+    <title><?php wp_title('Store CBA |');?></title>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138352969-1"></script>

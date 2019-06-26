@@ -14,15 +14,14 @@ This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
 
-
 html {
-    height:100%;
+    height: 100%;
 }
 
 body {
     font-family: 'Roboto', sans-serif;
     height: 100vh;
-    display:flex;
+    display: flex;
     flex-direction: column;
 }
 
@@ -33,7 +32,7 @@ body {
 }
 
 a {
-    text-decoration:none;
+    text-decoration: none;
     color: #0070c9;
 }
 
@@ -42,21 +41,22 @@ a:hover {
 }
 
 
-
 /* --------------- CLASES EN COMUN (ver en js) --------------- */
+
 .background {
     background: #000;
     transition: all;
     transition-duration: 0.3s;
 }
 
-.overflow{
+.overflow {
     overflow: hidden;
 }
 
 .flex {
-    display:flex;
+    display: flex;
 }
+
 
 /* --------------- HEADER  --------------- */
 
@@ -66,17 +66,16 @@ a:hover {
 }
 
 header {
-    background: rgba(222, 18, 18,0.95);
-    width:100%;
-    position:fixed;
+    background: rgba(222, 18, 18, 0.95);
+    width: 100%;
+    position: fixed;
     z-index: 1000;
-    min-height:45px;
+    min-height: 45px;
 }
 
 .separador-header {
     height: 54px;
 }
-
 
 
 /* --------------- LOGO E ICONOS--------------- */
@@ -86,111 +85,113 @@ header {
 }
 
 .logo svg {
-    height:22px;
-
+    height: 22px;
 }
 
 .menu-logo h1 {
     font-size: 10px;
 }
 
-.logo:hover ,.carrito:hover {
-    opacity:0.5;
+.logo:hover,
+.carrito:hover {
+    opacity: 0.5;
     transition-property: opacity;
     transition-duration: 0.1s;
     transition-timing-function: linear;
 }
 
 .carrito svg {
-    height:20px;
+    height: 20px;
     width: auto;
 }
+
 
 /* --------------- MENU  --------------- */
 
 nav {
-    max-width:100%;
+    max-width: 100%;
     text-align: center;
-
 }
 
 .menu {
-    display:flex;
+    display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 100%;
-    margin:0 auto;
+    margin: 0 auto;
     text-align: center;
 }
 
+
 /* -- orden en flexbox (despues modificar en pantallas mas grandes) */
+
 .menu-icon {
     order: 1;
-    flex-basis:33%; /* se pone 33% para que solo haya 3 elementos y los menu-items aparezcan abajo */
+    flex-basis: 33%;
+    /* se pone 33% para que solo haya 3 elementos y los menu-items aparezcan abajo */
     text-align: left;
 }
 
 .menu-logo {
-    order:2;
-    flex-basis:33%;
+    order: 2;
+    flex-basis: 33%;
     text-align: center;
 }
 
 .menu-items {
-    order:4;
+    order: 4;
     flex-basis: 100%;
     height: 100vh;
-    display:none;/* Version movil solo hace display a traves del js cuando se apreta el boton */
+    display: none;
+    /* Version movil solo hace display a traves del js cuando se apreta el boton */
 }
 
 .carrito {
-    order:3;
-    flex-basis:33%;
-    text-align:right;
+    order: 3;
+    flex-basis: 33%;
+    text-align: right;
 }
 
 
 /* -- fin orden */
 
-.menu > li {
+.menu>li {
     font-size: 14px;
     font-weight: 300;
     color: #fff;
 }
 
-.menu > li a {
+.menu>li a {
     text-decoration: none;
     color: #fff;
 }
 
-.menu-icon > div {
+.menu-icon>div {
     padding: 17px;
 }
 
-.carrito > a {
+.carrito>a {
     padding: 17px;
 }
 
 .menu-items {
-    text-align:left;
-    border-top:1.5px solid #282828;
-    padding: 45px 40px 8px 40px; 
+    text-align: left;
+    border-top: 1.5px solid #282828;
+    padding: 45px 40px 8px 40px;
 }
 
-
-.menu-items > ul > li {
+.menu-items>ul>li {
     display: block;
-    width:100%;
+    width: 100%;
     font-size: 16px;
-    border-bottom:1.5px solid #282828;
-    padding:10px 0px;
+    border-bottom: 1.5px solid #282828;
+    padding: 10px 0px;
     margin: 5px 0px;
-
 }
 
 .menu-items ul li:hover {
-    opacity:0.5;
+    opacity: 0.5;
     transition-property: opacity;
     transition-duration: 0.1s;
     transition-timing-function: linear;
@@ -206,7 +207,6 @@ footer {
     margin-top: 6px;
 }
 
-
 .info-footer {
     padding: 17px;
 }
@@ -218,11 +218,11 @@ footer {
 .columna-1-footer h3 {
     font-weight: 700;
     color: #aaa;
-    margin-bottom:11px;
+    margin-bottom: 11px;
 }
 
 .columna-1-footer li {
-    margin-bottom:9.6px;
+    margin-bottom: 9.6px;
 }
 
 .columna-1-footer li a {
@@ -230,44 +230,37 @@ footer {
     color: #aaa;
 }
 
-
 .creditos ul {
-    display:flex;
+    display: flex;
     flex-wrap: wrap;
     flex-direction: column;
 }
 
-
 .creditos ul li:last-child {
-    flex-grow:1;
+    flex-grow: 1;
 }
 
-
 .creditos ul li {
-    margin-bottom : 8px;
-
+    margin-bottom: 8px;
 }
 
 .pais {
-    display:flex;
+    display: flex;
     align-items: center;
-
 }
 
 .pais p {
-    margin-left:3px;
+    margin-left: 3px;
 }
-
 
 .creditos img {
-    height:16px;
+    height: 16px;
     vertical-align: middle;
-    border:1px solid rgb(214, 214, 214);
+    border: 1px solid rgb(214, 214, 214);
 }
 
-
 .creditos li:last-child p {
-    padding:0 17px 0 0;
+    padding: 0 17px 0 0;
 }
 
 .creditos {
@@ -275,9 +268,8 @@ footer {
     padding: 0 17px 20px 17px;
 }
 
-
 .info-contacto p {
-    padding:0 17px 8px 0;
+    padding: 0 17px 8px 0;
     margin-bottom: 7px;
     border-bottom: 1px solid rgb(214, 214, 214);
 }
@@ -304,7 +296,6 @@ footer {
     padding: 0 10px 0 0;
 }
 
-
 .contacto-footer a {
     color: #aaa;
 }
@@ -314,53 +305,54 @@ footer {
 }
 
 .boton-msg {
-    display:flex;
+    display: flex;
     justify-content: space-between;
     color: #fff;
     align-items: center;
-    height:40px;
+    height: 40px;
     background: #0798fc;
-    border-radius:7px;
+    border-radius: 7px;
     position: relative;
-    bottom:0;
-    z-index:100;
-    padding:5px 15px;
+    bottom: 0;
+    z-index: 100;
+    padding: 5px 15px;
     margin: 0 5px;
 }
 
 .boton-msg img {
     margin-right: 10px;
-    height:25px;
-    width:25px;
+    height: 25px;
+    width: 25px;
 }
 
-
-.boton-msg:hover > span {
+.boton-msg:hover>span {
     text-decoration: none;
 }
 
 .whatsapp {
-    background:#01e676;
+    background: #01e676;
 }
 
 .container-boton-footer {
-    position:sticky;
-    position:-webkit-sticky;
-    display:flex;
+    position: sticky;
+    position: -webkit-sticky;
+    display: flex;
     justify-content: flex-end;
-    margin:0 auto;
+    margin: 0 auto;
     top: 0;
-    left:0;
-    right:0;
-    bottom:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     max-width: 980px;
-    width:100%;
-    padding-bottom:15px;
+    width: 100%;
+    padding-bottom: 15px;
 }
 
+
 /* - Orden de elementos en footer flex - */
+
 .info-contacto {
-    order:1;
+    order: 1;
 }
 
 .contacto-footer {
@@ -368,50 +360,58 @@ footer {
 }
 
 .pais {
-    order:3;
+    order: 3;
 }
 
 .copyright {
-    order:4;
+    order: 4;
 }
+
 
 /* --------------- BANNERS  --------------- */
 
-.banner-1 , .banner-2 , .banner-3 {
-    display:flex;
+.banner-1,
+.banner-2,
+.banner-3 {
+    display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;/* hacemos un padding-top porque el nav es fixed y cubriria el contenido*/
-    background:#FAFAFA;
+    text-align: center;
+    /* hacemos un padding-top porque el nav es fixed y cubriria el contenido*/
+    background: #FAFAFA;
     margin-bottom: 12px;
     overflow: hidden;
 }
 
-.banner-1-texto, .banner-2-texto , .banner-3-texto{
+.banner-1-texto,
+.banner-2-texto,
+.banner-3-texto {
     margin: 60px 0;
     padding: 0 50px;
     display: flex;
-    flex-basis:100%;
+    flex-basis: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
 }
 
-
-.banner-1 h1, .banner-2 h1, .banner-3 h1 {
+.banner-1 h1,
+.banner-2 h1,
+.banner-3 h1 {
     font-size: 27px;
     font-weight: 500;
 }
 
 .banner-1 img {
-    height:250px;
+    height: 250px;
 }
 
-.banner-1 h3, .banner-2 h3,  .banner-3 h3 {
+.banner-1 h3,
+.banner-2 h3,
+.banner-3 h3 {
     font-size: 19px;
     font-weight: 300px;
-    margin: 15px 0;  
+    margin: 15px 0;
 }
 
 .banner-1 span {
@@ -419,13 +419,16 @@ footer {
     font-weight: 800;
 }
 
-.banner-1 a , .banner-2 a , .banner-3 a {
+.banner-1 a,
+.banner-2 a,
+.banner-3 a {
     font-size: 21px;
-    text-align:center;
+    text-align: center;
 }
 
-.banner-2 img, .banner-3 img {
-    max-width:350px;
+.banner-2 img,
+.banner-3 img {
+    max-width: 350px;
     object-fit: contain;
     margin-bottom: 30px;
 }
@@ -445,89 +448,97 @@ footer {
 
 .sub-menu ul li img {
     height: 54px;
-    
 }
 
 .sub-menu ul {
-    display:flex;
+    display: flex;
     justify-content: space-between;
     margin: 0 30px;
-   
 }
 
 .sub-menu ul li {
-    text-align:center;
+    text-align: center;
     padding: 18px 40px;
 }
 
 .sub-menu h5 {
-    font-size:11px;
+    font-size: 11px;
     font-weight: 300;
     margin-top: 5px;
 }
 
 .sub-menu h5 span {
-    font-size:8px;
+    font-size: 8px;
 }
 
 .sub-menu p {
-    text-align:center;
+    text-align: center;
     font-size: 11px;
     font-weight: 500;
     padding-bottom: 5px;
 }
 
 .sub-menu .contenedor-flecha {
-    display:block;
+    display: block;
     text-align: center;
 }
 
 .sub-menu .flecha {
-    width:20px;
-    padding-bottom:5px;
+    width: 20px;
+    padding-bottom: 5px;
 }
-
 
 .sub-menu a {
     color: #333;
 }
 
+
 /* Esconder el scrollbar */
-.sub-menu-container::-webkit-scrollbar { width: 0 !important }
-.sub-menu-container { overflow: -moz-scrollbars-none; }
-.sub-menu-container { -ms-overflow-style: none; }
+
+.sub-menu-container::-webkit-scrollbar {
+    width: 0 !important
+}
+
+.sub-menu-container {
+    overflow: -moz-scrollbars-none;
+}
+
+.sub-menu-container {
+    -ms-overflow-style: none;
+}
 
 
 /*FIN esconder el scrollbar */
 
+
 /* --------------- (pagina iphone)  --------------- */
 
 .titulo-pagina {
-    border-bottom:1px solid rgba(136,136,136,.4);
+    border-bottom: 1px solid rgba(136, 136, 136, .4);
     font-size: 24px;
     padding: 14px 17px;
-    position:sticky;
-    position:-webkit-sticky;
+    position: sticky;
+    position: -webkit-sticky;
     top: 45px;
-    background-color: rgba(255,255,255,0.95);
-    z-index:999;
+    background-color: rgba(255, 255, 255, 0.95);
+    z-index: 999;
 }
 
 .titulo-pagina .container {
-    display:flex;
+    display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .titulo-pagina .container span {
-    font-size:15px;
-    font-weight:300;
-    display:flex;
-    cursor:pointer;
+    font-size: 15px;
+    font-weight: 300;
+    display: flex;
+    cursor: pointer;
 }
 
 .titulo-pagina .container span svg {
-    height:16px;
+    height: 16px;
     margin: 0 5px;
 }
 
@@ -549,29 +560,28 @@ footer {
 
 .caracteristicas {
     margin: 0;
-    width:100%;
+    width: 100%;
     margin-top: 14px;
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-content: flex-start;
     align-items: flex-start;
-    text-align:left;
+    text-align: left;
     flex-wrap: wrap;
 }
 
 .caracteristica {
     margin: 15px 0;
     width: 100%;
-    
 }
 
 .caracteristica h1 {
-    display:block;
-    width:100%;
-    border-bottom:1.5px solid rgba(136,136,136,.4);
-    padding:5px 0;
-    margin-bottom:15px;
+    display: block;
+    width: 100%;
+    border-bottom: 1.5px solid rgba(136, 136, 136, .4);
+    padding: 5px 0;
+    margin-bottom: 15px;
 }
 
 .caracteristica p {
@@ -581,37 +591,37 @@ footer {
 }
 
 .noDisplay {
-    display:none;
+    display: none;
 }
 
 .producto {
     width: 100%;
-    border: 1px solid rgba(136,136,136,.4);
+    border: 1px solid rgba(136, 136, 136, .4);
     margin: 15px 0;
-    display:flex;
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
     border-radius: 14px;
     overflow: hidden;
 }
 
 .producto-titulo {
     font-size: 24px;
-    border-bottom: 1px solid rgba(136,136,136,.4);
-    display:block;
+    border-bottom: 1px solid rgba(136, 136, 136, .4);
+    display: block;
     padding-bottom: 5px;
     margin: 10px 15px 0 15px;
 }
+
 .producto-info-imagen {
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     flex-basis: 40%;
-    overflow:hidden;
-   
+    overflow: hidden;
 }
 
 .producto-info-imagen img {
-    max-width:100%;
+    max-width: 100%;
     object-fit: contain;
 }
 
@@ -626,47 +636,47 @@ footer {
 }
 
 .en-stock {
-    color:#42f471;
+    color: #42f471;
     font-weight: 800;
 }
 
-.producto-info .info{
+.producto-info .info {
     flex-basis: 55%;
 }
 
-.info > ul {
-    width:100%;
-    height:100%;
+.info>ul {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-} 
+}
 
-.info > ul > li {
+.info>ul>li {
     margin-top: 15px;
 }
-.info > ul > li:last-child {
+
+.info>ul>li:last-child {
     margin-bottom: 15px;
 }
 
 .producto-info h3 {
-    font-size:13px;
-    border-bottom: 1px solid rgba(136,136,136,.4);
+    font-size: 13px;
+    border-bottom: 1px solid rgba(136, 136, 136, .4);
 }
 
 .info-items {
-    display:flex;
-    flex-wrap:wrap;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: flex-start;
     margin-top: 7px;
-
 }
 
 .info-items li {
     padding: 10px;
     margin-bottom: 5px;
     margin-right: 15px;
-    border: 1px solid rgba(136,136,136,.4);
+    border: 1px solid rgba(136, 136, 136, .4);
     border-radius: 7px;
 }
 
@@ -676,34 +686,33 @@ footer {
 }
 
 .info-colores li {
-    margin:0 10px 5px 0;
+    margin: 0 10px 5px 0;
     padding: 7px 5px;
-    text-align:center;
+    text-align: center;
 }
 
-
 #modelo {
-    padding-top:40px;
+    padding-top: 40px;
 }
 
 .precio {
-    margin-top:10px;
-    font-size:20px;
+    margin-top: 10px;
+    font-size: 20px;
 }
 
 .precio p {
-    font-size:12px;
+    font-size: 12px;
 }
 
 .promocion-true {
     color: red;
-    font-weight:700;
-    display:block;
+    font-weight: 700;
+    display: block;
 }
 
 .color {
-    height:14px;
-    display:inline-block;
+    height: 14px;
+    display: inline-block;
     width: 14px;
     border-radius: 50%;
     vertical-align: middle;
@@ -770,37 +779,39 @@ footer {
     padding: 0 10px;
 }
 
+
 /* --------------- (pagina 404)  --------------- */
 
 .error-404 {
     margin: 100px auto;
-    text-align:center;
+    text-align: center;
     font-weight: 700;
 }
 
-.error-404 img{
+.error-404 img {
     width: 200px;
 }
 
 .error-404 h1 {
-    margin-top:50px;
-    font-size:30px;
+    margin-top: 50px;
+    font-size: 30px;
 }
+
 
 /* --------------- (pagina iphones (por cada iphone. CATEGORIAS))  --------------- */
 
 .iphone-cat {
     margin: 35px auto;
-
-    display:flex;
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
     max-width: 980px;
 }
+
 .imagen-cat {
-    width:100%;
-    text-align:center;
+    width: 100%;
+    text-align: center;
     max-height: 450px;
     min-height: 450px;
     margin: 40px 0;
@@ -808,52 +819,49 @@ footer {
 
 .imagen-cat img {
     object-fit: contain;
-    width:100%;
+    width: 100%;
     max-height: 450px;
-
 }
 
 .datos-iphone-cat {
     margin: 0 20px;
-    width:100%;
+    width: 100%;
 }
 
-.datos-iphone-cat > .titulo-iphone-cat h1 {
+.datos-iphone-cat>.titulo-iphone-cat h1 {
     font-size: 40px;
-    margin-bottom:5px;
+    margin-bottom: 5px;
     font-weight: 700;
 }
 
-.datos-iphone-cat > .titulo-iphone-cat h2 {
+.datos-iphone-cat>.titulo-iphone-cat h2 {
     font-size: 20px;
     width: 65%;
 }
 
 .datos-iphone-cat h3 {
-    margin-bottom:15px;
+    margin-bottom: 15px;
 }
 
-.datos-iphone-cat > ul > li {
-    
+.datos-iphone-cat>ul>li {
     margin-bottom: 26px;
     padding-top: 20px;
     font-size: 17px;
     font-weight: 700;
-    border-top: 1px solid rgba(136,136,136,.4);
-    width:100%;
+    border-top: 1px solid rgba(136, 136, 136, .4);
+    width: 100%;
 }
 
-.datos-iphone-cat > ul > li:first-child {
-    border-top:1px solid rgba(136,136,136,.4);
-    margin-top:25px;
+.datos-iphone-cat>ul>li:first-child {
+    border-top: 1px solid rgba(136, 136, 136, .4);
+    margin-top: 25px;
 }
-
 
 .box {
     display: inline-block;
     font-weight: 300;
     width: 100%;
-    border: 1px solid rgba(136,136,136,.4);
+    border: 1px solid rgba(136, 136, 136, .4);
     border-radius: 4px;
     display: flex;
     align-items: center;
@@ -866,43 +874,46 @@ footer {
     padding: 30px 8px;
 }
 
-.modelo-accesorio span{
+.modelo-accesorio span {
     padding: 15px 8px;
 }
 
 .box:hover {
-    border: 1px solid rgba(136,136,136,.9);
+    border: 1px solid rgba(136, 136, 136, .9);
 }
-
 
 .radio {
-    display:none;
+    display: none;
 }
 
-#capacidad ul, #ram ul  {
+#capacidad ul,
+#ram ul {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
-#capacidad ul li, #ram ul li{
+#capacidad ul li,
+#ram ul li {
     flex-basis: 48%;
 }
 
-#capacidad .box, #ram .box {
-    display:flex;
+#capacidad .box,
+#ram .box {
+    display: flex;
     justify-content: center;
 }
 
-#capacidad .box span, #ram .box span {
-    display:block;
-    padding:40px 0;
+#capacidad .box span,
+#ram .box span {
+    display: block;
+    padding: 40px 0;
     font-weight: 400;
 }
 
 #color .box {
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
 }
@@ -914,71 +925,68 @@ footer {
     justify-content: space-between;
 }
 
-#color ul li{
+#color ul li {
     flex-basis: 48%;
 }
 
 #color .box span {
     font-size: 13px;
     margin-bottom: 0;
-    padding:0;
+    padding: 0;
     margin-bottom: 30px;
-    margin-top:5px;
+    margin-top: 5px;
 }
 
 .circulo-color {
     border-radius: 50%;
-    margin-top:30px;
+    margin-top: 30px;
     height: 30px;
     width: 30px;
 }
 
 .pagos {
-    display:flex;
+    display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     margin-bottom: 10px;
 }
 
-
 .pagos li {
-    flex-basis:23%;
+    flex-basis: 23%;
     font-size: 15px;
     font-weight: 300;
-    text-align:center;
-    height:100%;
-    
+    text-align: center;
+    height: 100%;
 }
 
 #solo-efectivo {
-    flex-basis:100%;
+    flex-basis: 100%;
 }
 
-.pagos li label{
+.pagos li label {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items:center;
+    align-items: center;
     border: 1px solid rgba(136, 136, 136, 0.4);
-    border-radius:4px;
+    border-radius: 4px;
 }
 
 .pagos li:first-child label {
     border: 1.5px solid rgb(94, 155, 255)
 }
 
-
-.precio-box{
-    border:none;
-    background : #f2f2f2;
+.precio-box {
+    border: none;
+    background: #f2f2f2;
     font-size: 30px;
     font-weight: 500;
     cursor: inherit;
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding:20px 10px;
-    border-radius:4px;
+    padding: 20px 10px;
+    border-radius: 4px;
 }
 
 .precio-tachado {
@@ -992,180 +1000,334 @@ footer {
 }
 
 .precio-box:hover {
-    border:none;
+    border: none;
 }
 
 .precio-box span:first-child {
-    font-size:13px;
-    margin-bottom:3px;
-    font-weight:300;
+    font-size: 13px;
+    margin-bottom: 3px;
+    font-weight: 300;
 }
 
 .cuotas {
-    height:46px;
-    width:100%;
-    cursor:pointer;
+    height: 46px;
+    width: 100%;
+    cursor: pointer;
 }
-
 
 .titulo-iphone-movil {
-    flex-basis:100%;
-    text-align:center;
+    flex-basis: 100%;
+    text-align: center;
 }
 
-.titulo-iphone-movil > h1 {
+.titulo-iphone-movil>h1 {
     font-size: 35px;
     font-weight: 700;
-    margin-bottom:5px;
+    margin-bottom: 5px;
 }
 
 .titulo-iphone-cat {
-    display:none;
+    display: none;
 }
-
-
 
 
 /* --------------- (pagina contacto)  --------------- */
 
 .contacto {
-    display:flex;
+    display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 0 10px;
 }
 
 .info-pagina-contacto {
-    height:100%;
-    padding:15px 15px 15px 8px;
-    border: 1px solid rgba(136,136,136,.4);
+    height: 100%;
+    padding: 15px 15px 15px 8px;
+    border: 1px solid rgba(136, 136, 136, .4);
     border-radius: 10px 10px 10px 0;
 }
 
-.datos li > p{
-    width:50%;
+.datos li>p {
+    width: 50%;
     font-size: 13px;
-    flex-grow:1;
-    margin-left:7px;
+    flex-grow: 1;
+    margin-left: 7px;
 }
 
 .contacto h2 {
-    display:block;
+    display: block;
     margin-right: 20px;
     padding-bottom: 10px;
-    border-bottom: 1px solid rgba(136,136,136,.4);
+    border-bottom: 1px solid rgba(136, 136, 136, .4);
 }
 
-
-
-.datos > li {
-    display:flex;
+.datos>li {
+    display: flex;
     justify-content: flex-start;
     align-items: center;
     margin: 10px 0;
 }
 
-.datos > li > div {
-    width:26px;
+.datos>li>div {
+    width: 26px;
     height: 26px;
     text-align: center;
 }
 
-.datos > li img {
-    height:100%;
+.datos>li img {
+    height: 100%;
 }
 
 .info-pagina-contacto {
-    order:2;
+    order: 2;
     margin: 30px 0;
 }
 
 .maps {
-    order:1;
-    margin-top:30px;
+    order: 1;
+    margin-top: 30px;
 }
 
 .faq {
-    border: 1px solid rgba(136,136,136,.4);
+    border: 1px solid rgba(136, 136, 136, .4);
     border-radius: 10px;
-    margin:10px 10px 50px 10px;
+    margin: 10px 10px 50px 10px;
 }
 
 .faq-titulo {
-    display:flex;
+    display: flex;
     flex-direction: row;
     align-items: center;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .faq-titulo span {
-    font-size:50px;
+    font-size: 50px;
     font-weight: 800;
     margin: 5px 25px 5px 10px;
 }
 
 .faq-titulo h1 {
- font-size:15px;
+    font-size: 15px;
 }
 
 .faq-pregunta {
-    display:none;
+    display: none;
     margin: 55px 15px;
     color: #888;
-
 }
 
 .faq-pregunta h1 {
     color: #000;
-
 }
 
 .faq-pregunta h1 {
     /*display:none;*/
-    border-bottom: 1px solid rgba(136,136,136,.4);
+    border-bottom: 1px solid rgba(136, 136, 136, .4);
     margin-bottom: 15px;
     font-size: 20px;
 }
+
+
 /* --------------- (pagina upload)  --------------- */
 
-.error, .success {
-    font-weight:700;
+.error,
+.success {
+    font-weight: 700;
 }
 
 .error {
-    background-color:#f9ba9d;
+    background-color: #f9ba9d;
 }
 
 .success {
-    background-color:#d1ffd1;
+    background-color: #d1ffd1;
 }
 
 .upload {
-    display:flex;
+    display: flex;
     justify-content: center;
     align-content: center;
-    height:100%;
+    height: 100%;
     text-align: center;
-    margin-top:100px;
+    margin-top: 100px;
     background: #f2f2f2;
 }
 
 .upload h2 {
     margin: 15px 0;
-    font-weight:700;
+    font-weight: 700;
 }
-
 
 .form-csv p {
     margin: 15px 0;
 }
 
 .boton-csv {
-    font-weight:700;
-    border:none;
+    font-weight: 700;
+    border: none;
     background: linear-gradient(#42a1ec, #0070c9);
-    cursor:pointer;
+    cursor: pointer;
     padding: 15px 55px;
     color: #fff;
-    border-radius:10px;
+    border-radius: 10px;
+}
+
+
+/* --------------- (pagina servicio tecnico)  --------------- */
+
+#form-servicios {
+    background: #f2f2f2;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 7px;
+}
+
+#form-servicios>p {
+    margin: 35px 0;
+}
+
+#form-servicios>p label {
+    margin-bottom: 5px;
+}
+
+#form-servicios>p select {
+    padding: 10px;
+}
+
+#form-servicios>p input {
+    padding: 10px;
+}
+
+#form-servicios>p>* {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.container-fechahora {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    align-content: stretch;
+}
+
+.container-fechahora p label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#datepicker {
+    display: none;
+}
+
+#wp-submit {
+    font-weight: 700;
+    border: none;
+    background: linear-gradient(#42a1ec, #0070c9);
+    cursor: pointer;
+    padding: 20px;
+    color: #fff;
+    border-radius: 10px;
+}
+
+.precio-servicio {
+    cursor: default;
+    padding: 10px;
+    background: white;
+    border: 1px solid #999;
+    color: black;
+}
+
+
+/* --------------- (pagina servicio submit)  --------------- */
+
+.servicio-submit {
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    flex-wrap: wrap;
+}
+
+.servicio-submit h1 {
+    font-size: 40px;
+    margin: 0 15px;
+    margin-bottom: 15px;
+}
+
+#errores {
+    border: 1px solid #ccc;
+    border-top: 5px solid red;
+    display: flex;
+    flex-direction: column;
+    margin: 0 15px;
+}
+
+#no-errores {
+    border: 1px solid #ccc;
+    border-top: 5px solid greenyellow;
+    display: flex;
+    flex-direction: column;
+    margin: 0 15px;
+}
+
+.errores-form-submit,
+.elemento-form-submit {
+    padding: 20px;
+    font-weight: 400;
+}
+
+.xdsoft_monthpicker {
+    z-index: 2;
+}
+
+
+/* --------------- (pagina turnos)  --------------- */
+
+.green {
+    background: #7af97c;
+}
+
+
+/* ***************  Tabla turnos *************** */
+
+th {
+    text-align: left;
+}
+
+table {
+    margin: 25px 0;
+}
+
+table,
+td,
+th {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+td,
+th {
+    padding: 5px;
+}
+
+th {
+    color: white;
+    background-color: #e01e23;
+}
+
+td {
+    color: #444;
+}
+
+tr:last-child {
+    border: none;
+    text-align: left;
+}
+
+.titulo-tabla-turnos {
+    margin-top: 50px;
 }
