@@ -56,6 +56,25 @@ $myJSON = json_encode($array_final, JSON_FORCE_OBJECT);
 //--------FIN Creador de objeto Json servicios
 //------------
 
+//------------
+//--------Obtener fechas de turnos para que no puedan ser dos turnos en la misma fecha y hora
+//------------
+
+$fechas_de_turnos = array();
+$args2 = array(
+    'post_type' => 'turnos',
+    'posts_per_page' => -1,
+);
+
+$query2 = new WP_Query($args2);
+
+if ($query2->have_posts()): while ($query2->have_posts()): $query2->the_post();
+
+$fechas_de_turnos[get_field('fecha')] = get_field('hora');
+
+endwhile;endif;
+
+$myJSON2 = json_encode($fechas_de_turnos, JSON_FORCE_OBJECT);
 ?>
 
 <div class="container">
@@ -122,6 +141,7 @@ $myJSON = json_encode($array_final, JSON_FORCE_OBJECT);
 <script>
 var showButtons = false;
 var jsonPhp = <?php echo $myJSON; ?>;
+var jsonPhp2 = <?php echo $myJSON2; ?>;
 </script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/js/servicios.js"></script>
 <?php get_footer();?>
