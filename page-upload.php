@@ -165,12 +165,13 @@ function iterador_csv($csv)
                 $precio_promocion = ${'promocion' . $x};
                 $color = ${'color' . $x};
                 $stock = ${'stock' . $x};
-                
-                if(${'solo-efectivo' . $x} == "si"){
+
+                if (${'solo-efectivo' . $x} == "si") {
                     $solo_efectivo = true;
                 } else {
                     $solo_efectivo = false;
-                };
+                }
+                ;
 
                 switch ($iphone) {
                     case "iPhone 6":
@@ -215,7 +216,7 @@ function iterador_csv($csv)
                     crear_iphone($titulo, $cat, $iphone, $precio, $capacidad, $color, $solo_efectivo, $precio_promocion);
                     $subidos_correctos[] = $titulo;
                 } else {
-                    $subidos_error[] = $titulo ;
+                    $subidos_error[] = $titulo;
                 }
             }
         }
@@ -235,11 +236,12 @@ function iterador_csv($csv)
                 $precio = ${'precio' . $x};
                 $precio_promocion = ${'promocion' . $x};
 
-                if(${'solo-efectivo' . $x} == "si"){
+                if (${'solo-efectivo' . $x} == "si") {
                     $solo_efectivo = true;
                 } else {
                     $solo_efectivo = false;
-                };
+                }
+                ;
 
                 // La categoria tiene que ser un array para que wordpress la acepte
                 $cat = array(11);
@@ -264,11 +266,12 @@ function iterador_csv($csv)
                 $stock = ${'stock' . $x};
                 $precio_promocion = ${'promocion' . $x};
 
-                if(${'solo-efectivo' . $x} == "si"){
+                if (${'solo-efectivo' . $x} == "si") {
                     $solo_efectivo = true;
                 } else {
                     $solo_efectivo = false;
-                };
+                }
+                ;
 
                 // La categoria tiene que ser un array para que wordpress la acepte
                 $cat = array(12);
@@ -292,11 +295,12 @@ function iterador_csv($csv)
                 $accesorio = ${'accesorio' . $x};
                 $precio = ${'precio' . $x};
 
-                if(${'solo-efectivo' . $x} == "si"){
+                if (${'solo-efectivo' . $x} == "si") {
                     $solo_efectivo = true;
                 } else {
                     $solo_efectivo = false;
-                };
+                }
+                ;
 
                 // La categoria tiene que ser un array para que wordpress la acepte
                 $cat = array(14);
@@ -318,11 +322,12 @@ function iterador_csv($csv)
                 $precio = ${'precio' . $x};
                 $precio_promocion = ${'promocion' . $x};
 
-                if(${'solo-efectivo' . $x} == "si"){
+                if (${'solo-efectivo' . $x} == "si") {
                     $solo_efectivo = true;
                 } else {
                     $solo_efectivo = false;
-                };
+                }
+                ;
 
                 $cat_id = 15;
                 // La categoria tiene que ser un array para que wordpress la acepte
@@ -340,7 +345,7 @@ function iterador_csv($csv)
             if (!empty(${'servicio' . $x})) {
 
                 //Hacemos un array para iterar en las columnas
-                $servicios = array('pantalla-original', 'pantalla-generica', 'pin-de-carga-microfono', 'auricular-camara-delantera','camara-atras(camara)','camara-atras(vidrio)','parlante','soft','liberacion','power','home','bateria-original','bateria-generica','bano-quimico','rep-placa');
+                $servicios = array('pantalla-original', 'pantalla-generica', 'pin-de-carga-microfono', 'auricular-camara-delantera', 'camara-atras(camara)', 'camara-atras(vidrio)', 'parlante', 'soft', 'liberacion', 'power', 'home', 'bateria-original', 'bateria-generica', 'bano-quimico', 'rep-placa');
                 // Para cada una de las columnas del excel ( escritas en $servicios) obtenemos titulo iphone y precio
                 foreach ($servicios as $servicio) {
 
@@ -348,42 +353,44 @@ function iterador_csv($csv)
                     $str = str_replace('-', ' ', $servicio);
                     $servicio_parsed = strtoupper($str);
                     // Agregamos "ñ" en caso de que sea "BANO QUIMICO"
-                    if ($servicio_parsed == "BANO QUIMICO"){
+                    if ($servicio_parsed == "BANO QUIMICO") {
                         $servicio_parsed = "BAÑO QUIMICO";
                     }
                     $titulo = ${'servicio' . $x} . " - " . $servicio_parsed . " - " . "$" . ${$servicio . $x};
                     $iphone = ${'servicio' . $x};
                     $precio = ${$servicio . $x};
-                   
 
                     // La categoria debe ser un array para wordpress
                     $cat = array(20);
+                    if ($precio == 0) {
+                        $subidos_error[] = $titulo;
+                    } else {
+                        crear_servicio($titulo, $cat, $iphone, $servicio_parsed, $precio);
+                        $subidos_correctos[] = $titulo;
+                    }
 
-                    crear_servicio($titulo, $cat, $iphone, $servicio_parsed, $precio);
-                    $subidos_correctos[] = $titulo;
-                    
                 }
-                
+
                 /*
-                $titulo = ${'servicio' . $x} . " - " . ${'capacidad' . $x};
-                $playstation = ${'playstation' . $x};
-                $capacidad = ${'capacidad' . $x};
-                $precio = ${'precio' . $x};
-                $precio_promocion = ${'promocion' . $x};
+            $titulo = ${'servicio' . $x} . " - " . ${'capacidad' . $x};
+            $playstation = ${'playstation' . $x};
+            $capacidad = ${'capacidad' . $x};
+            $precio = ${'precio' . $x};
+            $precio_promocion = ${'promocion' . $x};
 
-                if(${'solo-efectivo' . $x} == "si"){
-                    $solo_efectivo = true;
-                } else {
-                    $solo_efectivo = false;
-                };
+            if(${'solo-efectivo' . $x} == "si"){
+            $solo_efectivo = true;
+            } else {
+            $solo_efectivo = false;
+            };
 
-                $cat_id = 15;
-                // La categoria tiene que ser un array para que wordpress la acepte
-                $cat = array($cat_id);
+            $cat_id = 15;
+            // La categoria tiene que ser un array para que wordpress la acepte
+            $cat = array($cat_id);
 
-                crear_play($titulo, $cat, $playstation, $capacidad, $precio, $solo_efectivo, $precio_promocion);
-                $subidos_correctos[] = $titulo;
-                */
+            crear_play($titulo, $cat, $playstation, $capacidad, $precio, $solo_efectivo, $precio_promocion);
+            $subidos_correctos[] = $titulo;
+             */
             }
         }
     }
@@ -391,7 +398,7 @@ function iterador_csv($csv)
     echo "<p>" . sizeof($subidos_correctos) . " Articulos subidos correctamente </p>";
 
     foreach ($subidos_correctos as $subido) {
-        
+
         echo "<p class='success'>" . $subido . "</p>";
     }
 
@@ -424,7 +431,7 @@ function crear_iphone($titulo, $cat, $iphone, $precio, $capacidad, $color, $solo
 
 //crear_iphone($titulo, $cat, $iphone, $precio, $capacidad, $color);
 
-function crear_mac($titulo, $cat, $mac, $pantalla, $capacidad, $ram, $precio,$solo_efectivo, $precio_promocion)
+function crear_mac($titulo, $cat, $mac, $pantalla, $capacidad, $ram, $precio, $solo_efectivo, $precio_promocion)
 {
 
     $my_post = array(

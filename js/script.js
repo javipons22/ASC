@@ -37,12 +37,8 @@ jQuery(document).ready(function($) {
 
     function mostrarHoras(horas) {
         // Si no pasamos el parametro horas se hace el default de horas Disponibles
-        if (!horas) {
-            horas = [
-                '10:30', '11:00', '12:00',
-                '13:00', '17:30', '18:00',
-                '19:00', '20:00'
-            ];
+        if (horas == "default") {
+            horas = horasDisponibles;
         }
         $('#timepicker').datetimepicker({
             datepicker: false,
@@ -66,9 +62,9 @@ jQuery(document).ready(function($) {
             if (index > -1) {
                 arrayHoras.splice(index, 1);
             }
-            mostrarHoras(arrayHoras);
+            return arrayHoras;
         } else {
-            mostrarHoras();
+            return "default";
         }
     }
 
@@ -77,7 +73,7 @@ jQuery(document).ready(function($) {
 
     // usamos la app para tiempo aca (a traves de funcion mostrarHoras() y para fecha en el otro , el id selecciona el input en page_turnos.php
     // Mostramos por default el timepicker
-    mostrarHoras();
+    mostrarHoras("default");
 
     $('#datepicker').datetimepicker({
         onSelectDate: function(ct, $i) {
@@ -86,7 +82,8 @@ jQuery(document).ready(function($) {
             var mes = ("0" + (ct.getMonth() + 1)).slice(-2);
             var año = ct.getFullYear();
             fechaSeleccionada = dia + "/" + mes + "/" + año;
-            borrarHorasSeleccionadas(fechaSeleccionada, horasDisponibles);
+            var horas = borrarHorasSeleccionadas(fechaSeleccionada, horasDisponibles);
+            mostrarHoras(horas);
         },
         timepicker: false,
         format: 'd/m/Y',

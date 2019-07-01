@@ -65,7 +65,8 @@ $iphone
         echo "<td>";
         the_field('servicio');
         echo "</td>";
-        echo "<td>";
+        // en precio se agrega el signo $ 
+        echo "<td>$";
         the_field('precio');
         echo "</td>";
         echo "<td>";

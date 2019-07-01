@@ -8,6 +8,7 @@ $iphones_existentes = array();
 $capacidades_existentes = array();
 $array_final = array();
 $precio_max_min = array();
+$hay_solo_efectivo = array();
 
 // Comienza el loop
 if (have_posts()): while (have_posts()): the_post();
@@ -33,6 +34,11 @@ if (have_posts()): while (have_posts()): the_post();
 
         // Precio max min para el subtitulo de la pagina
         $precio_max_min[] = (int) $precio;
+
+        // Si hay uno por lo menos de solo-efectivo true agregarlo a array y despues confirmamos si hay y sacamos el mensaje de cuotas
+        if ($solo_efectivo === true){
+            array_push($hay_solo_efectivo, $solo_efectivo);
+        }
 
         // Si no esta el modelo de iphone , agregar al nombre del array data y despues agregar al array_final
         if (!in_array($modelo, $iphones_existentes)) {
@@ -115,8 +121,12 @@ if (sizeof($precio_max_min) > 1) {
 } else {
     echo "A solo $" . min($precio_max_min);
 }
-
-?> <br>También en 12, 6 o 3 cuotas**</h2>
+if(sizeof($hay_solo_efectivo ) === 0){
+    echo "<br>También en 12, 6 o 3 cuotas**</h2>";
+} else {
+    echo "</h2>";
+}
+?> 
             </span>
         </div>
         <div class="imagen-cat">
@@ -134,7 +144,13 @@ if (sizeof($precio_max_min) > 1) {
     echo "A solo $" . min($precio_max_min);
 }
 
-?> <br>También en 12, 6 o 3 cuotas**</h2>
+if(sizeof($hay_solo_efectivo ) === 0){
+    echo "<br>También en 12, 6 o 3 cuotas**</h2>";
+} else {
+    echo "</h2>";
+}
+
+?>
                 </span>
             </div>
             <ul>

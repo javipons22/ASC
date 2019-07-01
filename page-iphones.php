@@ -92,6 +92,11 @@
         if (!in_array( $link,${$trimmed_cat . "_link"})) {
             ${$trimmed_cat . "_link" }[] = $link;
         }
+
+        $solo_efectivo = get_field('solo_efectivo');
+        if ($solo_efectivo) {
+            ${$trimmed_cat . "_solo_efectivo" }[] = 1;
+        }
     
         // Ordenamos los datos de capacidad para que aparezcan ordenados (ej. 16GB 64GB)
         sort(${$trimmed_cat . "_capacidad" });
@@ -164,7 +169,18 @@
         <?php foreach ($categorias_ordenadas_trim as $cat): ?>
             <div class="producto">
                 <div class="producto-titulo">
-                    <h2><?php echo ${ $cat ."_category" }; ?></h2>
+                    <h2><?php 
+                            $i = 0;
+                            foreach(${ $cat ."_iphone" } as $iphone_titulo){ 
+                                if ($i == 0 && sizeof(${ $cat ."_iphone" }) > 1) {
+                                    echo $iphone_titulo . " - ";
+                                    $i = $i+1; 
+                                } else {
+                                    echo $iphone_titulo;
+                                }                            
+                        } 
+                        ?>
+                    </h2>
                 </div>
                 <div class="producto-info">
                     <div class="producto-info-imagen">
@@ -221,8 +237,14 @@
                                                 }
                                             ?>
                                         </span>
-
-                                        <p>en 12 cuotas , 6 cuotas o 3 cuotas**</p>
+                                        <?php
+                                            if(!${$cat . "_solo_efectivo" }){
+                                                echo "<p>en 12 cuotas , 6 cuotas o 3 cuotas**</p>";
+                                            } else {
+                                                echo "<p>Pago solo en contado</p>";
+                                            }
+                                        ?>
+                                        
                                     </div>
                                 </ul> 
                             </li>
