@@ -96,6 +96,8 @@
         $solo_efectivo = get_field('solo_efectivo');
         if ($solo_efectivo) {
             ${$trimmed_cat . "_solo_efectivo" }[] = 1;
+        } else {
+            ${$trimmed_cat . "_solo_efectivo" }[] = 0;
         }
     
         // Ordenamos los datos de capacidad para que aparezcan ordenados (ej. 16GB 64GB)
@@ -238,13 +240,13 @@
                                             ?>
                                         </span>
                                         <?php
-                                            if(!${$cat . "_solo_efectivo" }){
+                                            if(in_array("0", ${$cat . "_solo_efectivo" })){
                                                 echo "<p>en 12 cuotas , 6 cuotas o 3 cuotas**</p>";
+                                                
                                             } else {
-                                                echo "<p>Pago solo en contado</p>";
+                                                echo "<p>Pago solo en contado</p>"; 
                                             }
                                         ?>
-                                        
                                     </div>
                                 </ul> 
                             </li>

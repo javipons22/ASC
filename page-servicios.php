@@ -78,7 +78,15 @@ $myJSON2 = json_encode($fechas_de_turnos, JSON_FORCE_OBJECT);
 ?>
 
 <div class="container">
-
+    <div class="titulo-servicio-tecnico">
+        <div>
+            <img src="<?php echo $img_path;?>/tools-solid.svg" alt="icono servicio tecnico">
+        </div>
+        <div>
+            <h1>Servicio Técnico</h1>
+            <h2>Completa el formulario para solicitar un turno en nuestro local</h2>
+        </div>
+    </div>
     <form method="post" action="<?php echo $url_path;?>/serviciosubmit" id="form-servicios">
         <p>
             <label for="iphone">Selecciona tu iPhone</label>

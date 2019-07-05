@@ -1176,6 +1176,20 @@ footer {
 
 /* --------------- (pagina servicio tecnico)  --------------- */
 
+.titulo-servicio-tecnico {
+    margin: 25px 0;
+    display: flex;
+}
+
+.titulo-servicio-tecnico img {
+    height: 50px;
+    margin: 10px;
+}
+
+.titulo-servicio-tecnico h1 {
+    font-size: 50px;
+}
+
 #form-servicios {
     background: #f2f2f2;
     padding: 15px;

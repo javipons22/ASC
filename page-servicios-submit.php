@@ -46,7 +46,10 @@ function send_mail()
     $from = "info@applestorecordoba.com";
     $to = $email;
     $subject = "Turno para servicio tecnico de Apple Store Cordoba";
-    $message = $nombre . " tienes turno el día " . $fecha . " a las " . $hora . " para arreglar tu " . $iphone . ". Cualquier consulta comunicate al telefono 3512140570. Gracias!";
+    $message = '<html><body>';
+    $message .= '<h1>Hola' . $nombre .'!</h1>';
+    $message .= '<p>' . $nombre . " tienes turno el día " . $fecha . " a las " . $hora . " para arreglar tu " . $iphone . ". Cualquier consulta comunicate al telefono 3512140570. Gracias!</p>";
+    $message .= '</body></html>';
     $headers = "From:" . $from . "\r\n";
     $headers .= "Content-Type: text/html; charset=UTF-8";
 
@@ -80,13 +83,12 @@ if ($_POST) {
         $fecha_hora = $fecha . ' ' . $hora . ':00';
         $format = "d/m/Y H:i:s";
         $dateobj = DateTime::createFromFormat($format, $fecha_hora);
-       
+
         $iso_datetime = $dateobj->format(Datetime::ATOM);
         $fechanum = strtotime($iso_datetime);
     } else {
         array_push($error, "Complete fecha y hora!");
     }
-  
 
     if (empty($iphone) || empty($servicio) || empty($precio) || empty($fecha) || empty($hora) || empty($nombre) || empty($apellido) || empty($email) || empty($celular)) {
         array_push($error, "Faltan completar campos del formulario , por favor complete todos");
@@ -103,7 +105,7 @@ if ($_POST) {
     if (count($error) == 0) {
         $titulo = $fecha . " - " . $iphone . " - " . $servicio . " - " . $nombre . " " . $apellido;
         //send_mail();
-        crear_turno($titulo, $fecha, $hora, $nombre, $apellido, $iphone, $servicio, $precio, $celular, $email,$fechanum);
+        crear_turno($titulo, $fecha, $hora, $nombre, $apellido, $iphone, $servicio, $precio, $celular, $email, $fechanum);
     }
 
 }
