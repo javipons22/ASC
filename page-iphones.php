@@ -108,7 +108,7 @@
 ?>
 
 <?php 
-    $orden_categorias = array("iPhone XS","iPhone XR", "iPhone X", "iPhone 8", "iPhone 7", "iPhone 6");
+    $orden_categorias = array("iPhone 11 Pro","iPhone 11","iPhone XS","iPhone XR", "iPhone X", "iPhone 8", "iPhone 7", "iPhone 6");
     $categorias_ordenadas = array();
     $categorias_ordenadas_trim = array();
     foreach ($orden_categorias as $val){

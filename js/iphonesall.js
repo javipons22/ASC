@@ -664,5 +664,229 @@ var iphones = {
             "stand_by": "",
             "tiempo_de_conversacion": "hasta 23 h"
         }
+    },
+    "iphone11": {
+        "redes": {
+            "2g": "gsm 850 / 900 / 1800 / 1900",
+            "3g": "hsdpa 850 / 900 / 1700 (aws) / 1900 / 2100",
+            "4g": "lte 1(2100), 2(1900), 3(1800), 4(1700/2100), 5(850), 7(2600), 8(900), 11(1500), 12(700), 13(700), 17(700), 18(800), 19(800), 20(800), 21(1500), 25(1900), 26(850), 28(700), 29(700), 30(2300), 32(1500), 34(2000), 38(2600), 39(1900), 40(2300), 41(2500), 42(3500), 46, 48, 66(1700/2100) - a2221\nlte 1(2100), 2(1900), 3(1800), 4(1700/2100), 5(850), 7(2600), 8(900), 12(700), 13(700), 14(700), 17(700), 18(800), 19(800), 20(800), 25(1900), 26(850), 29(700), 30(2300), 34(2000), 38(2600), 39(1900), 40(2300), 41(2500), 42(3500), 46, 48, 66(1700/2100), 71(600) - a2111",
+            "gprs": "si",
+            "edge": "si",
+            "sim": "nano-sim / nano-sim dual"
+        },
+        "lanzamiento": { "anunciado": "2019, septiembre", "estado": "disponible" },
+        "tamano": {
+            "dimensiones": "150.9 x 75.7 x 8.3 mm",
+            "peso": "194 g",
+            "materiales": "frente y posterior de vidrio, marco de aluminio serie 7000"
+        },
+        "display": {
+            "tipo": "lcd ips touchscreen capacitivo, 16m colores",
+            "tamano": "6.1 pulgadas, 19.5:9",
+            "resolucion": "828 x 1792 pixels",
+            "densidad": "326 ppi",
+            "proteccion": "resistente a rayones\npantalla oleofóbica",
+            "otros": "ratio de refresco 120 hz\nhdr10\ndolby vision"
+        },
+        "plataforma": {
+            "os": "ios 13",
+            "ui": "no",
+            "procesador": "apple a13 bionic hexa-core 2.65ghz",
+            "gpu": "apple quad-core"
+        },
+        "memoria": {
+            "interna": "4gb ram, 64/128/256gb almacenamiento interno",
+            "slot_de_tarjeta": "no"
+        },
+        "camara": {
+            "principal": "dual, 12 mp (f1/.8, pdaf, ois, wide) + 12 mp (f/2.4, ultrawide)",
+            "funciones": "autofocus por detección de fase, estabilización óptica de imagen, flash led de dos tonos, ia, geo-tagging, smart hdr",
+            "video": "2160p@24/30/60fps, 1080p@30/60/120/240fps, hdr, stereo",
+            "frontal": "12 mp, f/2.2, flash retina, 2160p@30fps, 1080p@30/60fps, hdr"
+        },
+        "conectividad": {
+            "wi_fi": "wi-fi 802.11 a/b/g/n/ac/ad; wi-fi direct; banda dual",
+            "bluetooth": "v5.0 le, a2dp",
+            "gps": "gps con soporte a-gps, glonass, galileo, qzss",
+            "usb": "puerto lightning",
+            "nfc": "si",
+            "puerto_infrarrojo": "no"
+        },
+        "sonido": {
+            "parlante": "parlantes stereo",
+            "conector_de_audio": "conector de audio por puerto lightning (adaptador incluido)",
+            "notificaciones": "ringtones polifónico, mp3, wav; vibración",
+            "radio_fm": "no",
+            "otros": "cancelación activa de ruido con micrófono dedicado"
+        },
+        "caracteristicas": {
+            "sensores": "acelerómetro",
+            "otros": "apple pay",
+            "seguridad": "desbloqueo facial (face id)",
+            "resistencia_al_agua": "si, certificación ip68",
+            "mensajeria": "sms, mms, email, push mail, im, imessage",
+            "navegador": "html5",
+            "colores": "negro, verde, púrpura, amarillo, blanco, rojo (product red)",
+            "extras": "visor de documentos"
+        },
+        "bateria": {
+            "capacidad": "3046 mah",
+            "tipo": "li-ion",
+            "extraible": "no",
+            "carga_rapida": "si, 18w",
+            "carga_inalambrica": "si, qi",
+            "stand_by": "",
+            "tiempo_de_conversacion": "hasta 22 h"
+        }
+    },
+    "iphone11pro": {
+        "redes": {
+            "2g": "gsm 850 / 900 / 1800 / 1900",
+            "3g": "hsdpa 850 / 900 / 1700 (aws) / 1900 / 2100",
+            "4g": "lte 1(2100), 2(1900), 3(1800), 4(1700/2100), 5(850), 7(2600), 8(900), 11(1500), 12(700), 13(700), 17(700), 18(800), 19(800), 20(800), 21(1500), 25(1900), 26(850), 28(700), 29(700), 30(2300), 32(1500), 34(2000), 38(2600), 39(1900), 40(2300), 41(2500), 42(3500), 46, 48, 66(1700/2100) - a2215\nlte 1(2100), 2(1900), 3(1800), 4(1700/2100), 5(850), 7(2600), 8(900), 12(700), 13(700), 14(700), 17(700), 18(800), 19(800), 20(800), 25(1900), 26(850), 29(700), 30(2300), 34(2000), 38(2600), 39(1900), 40(2300), 41(2500), 42(3500), 46, 48, 66(1700/2100), 71(600) - a2160\nlte 1(2100), 2(1900), 3(1800), 4(1700/2100), 5(850), 7(2600), 8(900), 12(700), 13(700), 14(700), 17(700), 18(800), 19(800), 20(800), 25(1900), 26(850), 29(700), 30(2300), 34(2000), 38(2600), 39(1900), 40(2300), 41(2500), 42(3500), 46, 48, 66(1700/2100), 71(600) - a2217",
+            "gprs": "si",
+            "edge": "si",
+            "sim": "nano-sim y esim"
+        },
+        "lanzamiento": { "anunciado": "2019, septiembre", "estado": "disponible" },
+        "tamano": {
+            "dimensiones": "144 x 71.4 x 8.1 mm",
+            "peso": "188 g",
+            "materiales": "frente y posterior de vidrio, marco de acero inoxidable"
+        },
+        "display": {
+            "tipo": "oled touchscreen capacitivo, 16m colores",
+            "tamano": "5.8 pulgadas, 19.5:9",
+            "resolucion": "1125 x 2436 pixels",
+            "densidad": "458 ppi",
+            "proteccion": "resistente a rayones\npantalla oleofóbica",
+            "otros": "ratio de refresco 120 hz"
+        },
+        "plataforma": {
+            "os": "ios 13",
+            "ui": "no",
+            "procesador": "apple a13 bionic hexa-core 2.65ghz",
+            "gpu": "apple quad-core"
+        },
+        "memoria": {
+            "interna": "4gb ram, 64/256/512gb almacenamiento interno",
+            "slot_de_tarjeta": "no"
+        },
+        "camara": {
+            "principal": "triple, 12 mp (f1/.8, pdaf, ois, wide) + 12 mp (f/2.4, ultrawide) + 12 mp (f/2.0, pdaf, ois, telefoto)",
+            "funciones": "autofocus por detección de fase, estabilización óptica de imagen, flash led cuádruple, zoom óptico 2x, detección de rostro y sonrisa, geo-tagging, smart hdr",
+            "video": "2160p@24/30/60fps, 1080p@30/60/120/240fps, hdr, stereo",
+            "frontal": "12 mp, f/2.2, flash retina, 2160p@24/30/60fps, 1080p@30/60/120fps, hdr"
+        },
+        "conectividad": {
+            "wi_fi": "wi-fi 802.11 a/b/g/n/ac/ad/ax; wi-fi direct; banda dual",
+            "bluetooth": "v5.0 le, a2dp",
+            "gps": "gps con soporte a-gps, glonass, galileo, qzss",
+            "usb": "puerto lightning",
+            "nfc": "si",
+            "puerto_infrarrojo": "no"
+        },
+        "sonido": {
+            "parlante": "parlantes stereo",
+            "conector_de_audio": "conector de audio por puerto lightning (adaptador incluido)",
+            "notificaciones": "ringtones polifónico, mp3, wav; vibración",
+            "radio_fm": "no",
+            "otros": "cancelación activa de ruido con micrófono dedicado"
+        },
+        "caracteristicas": {
+            "sensores": "acelerómetro",
+            "otros": "apple pay",
+            "seguridad": "desbloqueo facial (face id)",
+            "resistencia_al_agua": "si, certificación ip68",
+            "mensajeria": "sms, mms, email, push mail, im, imessage",
+            "navegador": "html5",
+            "colores": "dorado, gris, plateado, verde",
+            "extras": "visor de documentos"
+        },
+        "bateria": {
+            "capacidad": "3190 mah",
+            "tipo": "li-ion",
+            "extraible": "no",
+            "carga_rapida": "si, 18w",
+            "carga_inalambrica": "si, qi",
+            "carga_reversible": "usb power delivery 2.0",
+            "stand_by": "",
+            "tiempo_de_conversacion": "hasta 18 h"
+        }
+    },
+    "iphone11promax": {
+        "redes": {
+            "2g": "gsm 850 / 900 / 1800 / 1900",
+            "3g": "hsdpa 850 / 900 / 1700 (aws) / 1900 / 2100",
+            "4g": "lte 1(2100), 2(1900), 3(1800), 4(1700/2100), 5(850), 7(2600), 8(900), 11(1500), 12(700), 13(700), 17(700), 18(800), 19(800), 20(800), 21(1500), 25(1900), 26(850), 28(700), 29(700), 30(2300), 32(1500), 34(2000), 38(2600), 39(1900), 40(2300), 41(2500), 42(3500), 46, 48, 66(1700/2100) - a2218\nlte 1(2100), 2(1900), 3(1800), 4(1700/2100), 5(850), 7(2600), 8(900), 12(700), 13(700), 14(700), 17(700), 18(800), 19(800), 20(800), 25(1900), 26(850), 29(700), 30(2300), 34(2000), 38(2600), 39(1900), 40(2300), 41(2500), 42(3500), 46, 48, 66(1700/2100), 71(600) - a2161",
+            "gprs": "si",
+            "edge": "si",
+            "sim": "nano-sim y esim"
+        },
+        "lanzamiento": { "anunciado": "2019, septiembre", "estado": "disponible" },
+        "tamano": {
+            "dimensiones": "158 x 77.8 x 8.1 mm",
+            "peso": "226 g",
+            "materiales": "frente y posterior de vidrio, marco de acero inoxidable"
+        },
+        "display": {
+            "tipo": "oled touchscreen capacitivo, 16m colores",
+            "tamano": "6.5 pulgadas, 19.5:9",
+            "resolucion": "1242 x 2688 pixels",
+            "densidad": "458 ppi",
+            "proteccion": "resistente a rayones\npantalla oleofóbica",
+            "otros": "ratio de refresco 120 hz"
+        },
+        "plataforma": {
+            "os": "ios 13",
+            "ui": "no",
+            "procesador": "apple a13 bionic hexa-core 2.65ghz",
+            "gpu": "apple quad-core"
+        },
+        "memoria": {
+            "interna": "4gb ram, 64/256/512gb almacenamiento interno",
+            "slot_de_tarjeta": "no"
+        },
+        "camara": {
+            "principal": "triple, 12 mp (f1/.8, pdaf, ois, wide) + 12 mp (f/2.4, ultrawide) + 12 mp (f/2.0, pdaf, ois, telefoto)",
+            "funciones": "autofocus por detección de fase, estabilización óptica de imagen, flash led cuádruple, zoom óptico 2x, detección de rostro y sonrisa, geo-tagging, smart hdr",
+            "video": "2160p@24/30/60fps, 1080p@30/60/120/240fps, hdr, stereo",
+            "frontal": "12 mp, f/2.2, flash retina, 2160p@24/30/60fps, 1080p@30/60/120fps, hdr"
+        },
+        "conectividad": {
+            "wi_fi": "wi-fi 802.11 a/b/g/n/ac/ad/ax; wi-fi direct; banda dual",
+            "bluetooth": "v5.0 le, a2dp",
+            "gps": "gps con soporte a-gps, glonass, galileo, qzss",
+            "usb": "puerto lightning",
+            "nfc": "si",
+            "puerto_infrarrojo": "no"
+        },
+        "sonido": {
+            "parlante": "parlantes stereo",
+            "conector_de_audio": "conector de audio por puerto lightning (adaptador incluido)",
+            "notificaciones": "ringtones polifónico, mp3, wav; vibración",
+            "radio_fm": "no",
+            "otros": "cancelación activa de ruido con micrófono dedicado"
+        },
+        "caracteristicas": {
+            "sensores": "acelerómetro",
+            "otros": "apple pay",
+            "seguridad": "desbloqueo facial (face id)",
+            "resistencia_al_agua": "si, certificación ip68",
+            "mensajeria": "sms, mms, email, push mail, im, imessage",
+            "navegador": "html5",
+            "colores": "dorado, gris, plateado, verde",
+            "extras": "visor de documentos"
+        },
+        "bateria": {
+            "capacidad": "3969 mah",
+            "tipo": "li-ion",
+            "extraible": "no",
+            "carga_rapida": "si, 18w",
+            "carga_inalambrica": "si, qi",
+            "carga_reversible": "usb power delivery 2.0",
+            "stand_by": "",
+            "tiempo_de_conversacion": "hasta 20 h"
+        }
     }
 }

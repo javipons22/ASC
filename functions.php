@@ -1,20 +1,21 @@
 <?php
 
+
 function wpt_theme_styles()
 { //wpt es un nombre dado por nosotros para diferenciar con otros plugins
     wp_enqueue_style('date_picker_css', get_template_directory_uri() . '/css/jquery.datetimepicker.min.css');
     wp_enqueue_style('reset', get_template_directory_uri() . '/css/reset.css');
     wp_enqueue_style('fuentegoogle', 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
     wp_enqueue_style('hamb_icon', get_template_directory_uri() . '/css/hamb-icon.css');
-    wp_enqueue_style('main_css', get_template_directory_uri() . '/style.css');
-    wp_enqueue_style('laptop_media', get_template_directory_uri() . '/css/laptop.css');
+    wp_enqueue_style('main_css', get_template_directory_uri() . '/style.css',array(),"1.5.0");
+    wp_enqueue_style('laptop_media', get_template_directory_uri() . '/css/laptop.css',array(),"1.5.0");
 }
 add_action('wp_enqueue_scripts', 'wpt_theme_styles');
 
 function wpt_theme_js()
 {
     wp_enqueue_script('date_picker_js', get_template_directory_uri() . '/js/jquery.datetimepicker.full.min.js', array('jquery'), '', true);
-    wp_enqueue_script('main_js', get_template_directory_uri() . '/js/script.js', array('jquery'), '', true);
+    wp_enqueue_script('main_js', get_template_directory_uri() . '/js/script.js', array('jquery'), '1.5.0', true);
     //wp_enqueue_script('iphone_js', get_template_directory_uri() . '/js/iphone.js', array('jquery') , '' , true);
 }
 add_action('wp_enqueue_scripts', 'wpt_theme_js');
@@ -69,3 +70,4 @@ function register_my_menu()
     register_nav_menus(array('header_menu' => 'Header Menu', 'footer_menu' => 'Footer Menu'));
 }
 add_action('init', 'register_my_menu');
+

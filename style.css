@@ -758,6 +758,18 @@ footer {
     background: #000;
 }
 
+.white {
+    background: #f9f6ee;
+}
+
+.purple {
+    background: #d1cddb;
+}
+
+.midnight-green {
+    background: #6d7b71;
+}
+
 .producto-boton {
     text-align: center;
     color: #fff;
@@ -1302,7 +1314,7 @@ footer {
 /* --------------- (pagina turnos)  --------------- */
 
 .green {
-    background: #7af97c;
+    background: #ade0ce;
 }
 
 

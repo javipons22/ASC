@@ -207,6 +207,15 @@ function iterador_csv($csv)
                     case "iPhone XR":
                         $cat_id = 9;
                         break;
+                    case "iPhone 11":
+                        $cat_id = 13;
+                        break;
+                    case "iPhone 11 Pro":
+                        $cat_id = 14;
+                        break;
+                    case "iPhone 11 Pro Max":
+                        $cat_id = 14;
+                        break;
                 }
 
                 // La categoria tiene que ser un array para que wordpress la acepte
@@ -345,8 +354,8 @@ function iterador_csv($csv)
             if (!empty(${'servicio' . $x})) {
 
                 //Hacemos un array para iterar en las columnas
-                $servicios = array('pantalla-original', 'pantalla-generica', 'pin-de-carga-microfono', 'auricular-camara-delantera', 'camara-atras(camara)', 'camara-atras(vidrio)', 'parlante', 'soft', 'liberacion', 'power', 'home', 'bateria-original', 'bateria-generica', 'bano-quimico', 'rep-placa');
-                // Para cada una de las columnas del excel ( escritas en $servicios) obtenemos titulo iphone y precio
+                $servicios = array('pantalla-original', 'pantalla-calidad-original', 'pin-de-carga-microfono', 'auricular-camara-delantera', 'camara-atras(camara)', 'camara-atras(vidrio)', 'parlante', 'soft', 'liberacion', 'power', 'home', 'bateria-original', 'bateria-calidad-original', 'bano-quimico', 'rep-placa');
+                // Para cada una de las columnas del excel ( escritas en $servicios) obtenemos titulo iphone y precio«
                 foreach ($servicios as $servicio) {
 
                     // El nombre de servicio subido debe ser en mayusculas y sin guiones

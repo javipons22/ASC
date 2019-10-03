@@ -143,8 +143,10 @@ $myJSON2 = json_encode($fechas_de_turnos, JSON_FORCE_OBJECT);
             <input type="submit" name="wp-submit" id="wp-submit" class="button button-primary"
                 value="SOLICITAR TURNO" />
         </p>
+        <p>Consultas por servicio técnico al número 3518106793</p>
 
     </form>
+    
 </div>
 <script>
 var showButtons = false;

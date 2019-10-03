@@ -27,7 +27,11 @@
         $cat_id = get_cat_ID( $cat );
         $link = get_category_link( $cat_id );
         $nombre = get_field('iphone');
-        $precio = get_field('precio_promocion');
+        if(get_field('precio_promocion')){
+            $precio = get_field('precio_promocion');
+        } else {
+            $precio = get_field('precio');
+        }
     ?>
 
     <?php endwhile;?>

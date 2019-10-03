@@ -39,16 +39,33 @@ function crear_turno($titulo, $fecha, $hora, $nombre, $apellido, $iphone, $servi
 //--------Inicio Funcion enviar email
 //------------
 
-function send_mail()
+function send_mail($nombre,$fecha,$hora, $iphone,$email)
 {
     ini_set('display_errors', 1);
     error_reporting(E_ALL);
-    $from = "info@applestorecordoba.com";
+    $from = "info@storecba.com";
     $to = $email;
     $subject = "Turno para servicio tecnico de Apple Store Cordoba";
-    $message = '<html><body>';
-    $message .= '<h1>Hola' . $nombre .'!</h1>';
-    $message .= '<p>' . $nombre . " tienes turno el día " . $fecha . " a las " . $hora . " para arreglar tu " . $iphone . ". Cualquier consulta comunicate al telefono 3512140570. Gracias!</p>";
+    $message = '<html><head></head><body>';
+    $message .= '<h1>Hola ' . $nombre .'!</h1>';
+    $message .= '<p>' . $nombre . " tienes turno el día " . $fecha . " a las " . $hora . " para arreglar tu " . $iphone . ". Cualquier consulta comunicate al telefono 3518106793. Gracias!</p>";
+    $message .= '</body></html>';
+    $headers = "From:" . $from . "\r\n";
+    $headers .= "Content-Type: text/html; charset=UTF-8";
+
+    mail($to, $subject, $message, $headers);
+
+}
+
+function send_mail_2($nombre,$fecha,$hora, $iphone, $servicio)
+{
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL);
+    $from = "info@storecba.com";
+    $to = "info@storecba.com";
+    $subject = $nombre . " Saco turno para el dia " . $fecha;
+    $message = '<html><head></head><body>';
+    $message .= '<p>' . $nombre . " saco turno para el día " . $fecha . " a las " . $hora . " para arreglar " . $servicio . " de su " . $iphone;
     $message .= '</body></html>';
     $headers = "From:" . $from . "\r\n";
     $headers .= "Content-Type: text/html; charset=UTF-8";
@@ -104,7 +121,8 @@ if ($_POST) {
 
     if (count($error) == 0) {
         $titulo = $fecha . " - " . $iphone . " - " . $servicio . " - " . $nombre . " " . $apellido;
-        //send_mail();
+        send_mail($nombre,$fecha,$hora, $iphone,$email);
+        send_mail_2($nombre,$fecha,$hora, $iphone, $servicio);
         crear_turno($titulo, $fecha, $hora, $nombre, $apellido, $iphone, $servicio, $precio, $celular, $email, $fechanum);
     }
 
@@ -131,6 +149,7 @@ if (count($error) !== 0):
     <div id="no-errores">
     <p class="elemento-form-submit"> Traé tu <?php echo $iphone; ?> el dia <?php echo $fecha; ?> a las <?php echo $hora; ?> al <b> local adentro del supermercado Disco, Av. Recta Martinolli 7120</b> </p>
     <p class="elemento-form-submit">Te enviamos los datos del turno al email: <?php echo $email; ?></p>
+    <p class="elemento-form-submit">Cualquier consulta comunicate al numero: 3518106793</p>
     </div>
     <?php else: ?>
     <h1>Completa el Formulario</h1>
