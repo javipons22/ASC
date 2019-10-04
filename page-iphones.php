@@ -230,11 +230,18 @@
                                             <?php
                                                 if (!$promocion) {
                                                     if(sizeof(${ $cat ."_precio" }) > 1){
+                                                        if ($cat == "iPhone11Pro" || $cat == "iPhone11ProMax" || $cat == "iPhone11") {
+                                                            $currency = 'U$';
+                                                            $currency_detail = '***';
+                                                        }  else {
+                                                            $currency = '$';
+                                                            $currency_detail = '*';
+                                                        }
                                                         $precio_minimo = min(${ $cat ."_precio" });
                                                         $precio_maximo = max(${ $cat ."_precio" });
-                                                        echo "$" . $precio_minimo . "* - $" . $precio_maximo . "*";
+                                                        echo $currency . $precio_minimo . $currency_detail . " - " . $currency . $precio_maximo . $currency_detail;
                                                     }  else {
-                                                        echo "$" . ${ $cat ."_precio" }[0] . "*";
+                                                        echo $currency . ${ $cat ."_precio" }[0] . $currency_detail;
                                                     }
                                                 }
                                             ?>

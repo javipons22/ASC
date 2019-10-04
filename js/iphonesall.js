@@ -699,7 +699,7 @@ var iphones = {
             "slot_de_tarjeta": "no"
         },
         "camara": {
-            "principal": "dual, 12 mp (f1/.8, pdaf, ois, wide) + 12 mp (f/2.4, ultrawide)",
+            "principal": "dual, 12 mp ( f1/.8,  pdaf, ois, wide ) + 12 mp ( f/2.4 , ultrawide)",
             "funciones": "autofocus por detección de fase, estabilización óptica de imagen, flash led de dos tonos, ia, geo-tagging, smart hdr",
             "video": "2160p@24/30/60fps, 1080p@30/60/120/240fps, hdr, stereo",
             "frontal": "12 mp, f/2.2, flash retina, 2160p@30fps, 1080p@30/60fps, hdr"

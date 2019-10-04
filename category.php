@@ -118,10 +118,16 @@ $slug = quita_guiones($term->slug);
             <span>
                 <h2><?php
 
-if (sizeof($precio_max_min) > 1) {
-    echo "De $" . min($precio_max_min) . " a $" . max($precio_max_min);
+if ($modelo == 'iPhone 11 Pro' || $modelo == 'iPhone 11 Pro Max' || $modelo == 'iPhone 11') {
+    $currency = 'U$';
 } else {
-    echo "A solo $" . min($precio_max_min);
+    $currency = '$';
+}
+
+if (sizeof($precio_max_min) > 1) {
+    echo "De " . $currency . min($precio_max_min) . " a " . $currency . max($precio_max_min);
+} else {
+    echo "A solo ". $currency . min($precio_max_min);
 }
 if(in_array(0,$hay_solo_efectivo )){
     echo "<br>También en 12, 6 o 3 cuotas**</h2>";
@@ -141,9 +147,9 @@ if(in_array(0,$hay_solo_efectivo )){
                     <h2><?php
 
 if (sizeof($precio_max_min) > 1) {
-    echo "De $" . min($precio_max_min) . " a $" . max($precio_max_min);
+    echo "De " . $currency . min($precio_max_min) . " a " . $currency . max($precio_max_min);
 } else {
-    echo "A solo $" . min($precio_max_min);
+    echo "A solo " . $currency . min($precio_max_min);
 }
 
 if(in_array(0,$hay_solo_efectivo )){
@@ -151,6 +157,8 @@ if(in_array(0,$hay_solo_efectivo )){
 } else {
     echo "</h2>";
 }
+
+
 
 ?>
                 </span>
@@ -193,6 +201,7 @@ if(in_array(0,$hay_solo_efectivo )){
 // VARIABLES PHP A JS
 var jsonPhp = <?php echo $myJSON; ?>;
 var imgPath = "<?php echo $img_path; ?>";
+var currency = "<?php echo $currency; ?>";
 
 </script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/js/iphonesall.js";></script>

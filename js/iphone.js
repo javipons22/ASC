@@ -1,4 +1,3 @@
-
 var indexModeloSeleccionado = 0;
 var capacidadModeloSeleccionado;
 console.log(jsonPhp);
@@ -9,7 +8,7 @@ jQuery("#cuotas, #precio").hide();
 
 function cargarImagen(link, modelo) {
     var img = new Image();
-    jQuery(img).load(function () {
+    jQuery(img).load(function() {
         console.log(`imagen de ${modelo} cargada`);
     }).attr('src', link);
 }
@@ -71,7 +70,7 @@ function cambiarTituloPaginaIphone(iphone) {
 cambiarTituloPaginaIphone(tituloDefault);
 
 function cambiarTextoBotonPaginaIphone() {
-    jQuery("#texto-boton-caracteristicas").text("caracteristicas").css("width","100%").css("font-size", "15px");
+    jQuery("#texto-boton-caracteristicas").text("caracteristicas").css("width", "100%").css("font-size", "15px");
 }
 
 function showNext(val, tipo, el, precio) {
@@ -118,10 +117,10 @@ function showNext(val, tipo, el, precio) {
         var str2 = val.replace(/\s/g, '');
         var imagen = imgPath + "/iphone/" + str1.toLowerCase() + str2.toLowerCase() + ".png";
         jQuery("#imagen").fadeOut();
-        setTimeout(function () { jQuery("#imagen").attr('src', imagen); }, 300);
+        setTimeout(function() { jQuery("#imagen").attr('src', imagen); }, 300);
 
         // solo mostrar cuando termina de cargar la imagen 
-        jQuery("#imagen").on('load', function () {
+        jQuery("#imagen").on('load', function() {
             jQuery("#imagen").fadeIn();
         });
 
@@ -144,16 +143,15 @@ function showNext(val, tipo, el, precio) {
         var textoRendered = val === "1" ? textoEfectivo : textoCuotas;
 
         // Si se selecciona la cuota se borra el texto tachado de la promocion (pero el valor de la cuota corresponde a la promocion)
-        jQuery(".precio-tachado").css('text-decoration','none');
-        jQuery(".precio-tachado").css('color','black');
+        jQuery(".precio-tachado").css('text-decoration', 'none');
+        jQuery(".precio-tachado").css('color', 'black');
         jQuery(".precio-promocion").hide();
 
         jQuery(".precio-box > span:first-child").text(textoRendered);
-        jQuery(".precio-box > span:nth-child(2)").text('$' + nuevoPrecio);
+        jQuery(".precio-box > span:nth-child(2)").text(currency + nuevoPrecio); // currency se obtiene de category.php
     }
 
 }
-
 
 
 function crearHTMLModelo(iphone, id) {
@@ -200,7 +198,7 @@ function crearHTMLColor(color, id, colorClase) {
 
 function crearHTMLPrecio(precio, promocion) {
 
-    var promocionString = promocion == 0 || promocion == null ? `<span>$${precio}</span>` : `<span class="precio-tachado">$${precio}</span><span class="precio-promocion">  $${promocion}</span>`;
+    var promocionString = promocion == 0 || promocion == null ? `<span>${currency + precio}</span>` : `<span class="precio-tachado">${currency + precio}</span><span class="precio-promocion">  ${currency + promocion}</span>`;
     var precioFinal = promocion == 0 || promocion == null ? precio : promocion;
     var tituloPromocion = promocion == 0 || promocion == null ? 'Precio de contado' : 'PROMOCION!!';
     htmlString = `
@@ -208,8 +206,8 @@ function crearHTMLPrecio(precio, promocion) {
             <label for="precio" class="precio-box">
                             <span>${tituloPromocion}</span>   
                             
-                            ` 
-    htmlString += promocionString;                   
+                            `
+    htmlString += promocionString;
     htmlString += `
                             
                             <input id="precio" name="precio" class="radio" type="radio" value="${precioFinal}" onclick="showNext(this.value,this.name,this)"/>
@@ -320,7 +318,7 @@ function crearHTMLCaracteristicas(iphone) {
     } else {
         return "No se puede cargar la información de este iphone";
     }
-    
+
 }
 
 function caracteristicasMatcher(iphone) {
@@ -352,7 +350,7 @@ function displayModelos() {
         }
     }
 
-    for (var i = 0; i < tituloPagina.length; i++ ) {
+    for (var i = 0; i < tituloPagina.length; i++) {
         if (i == tituloPagina.length - 1) {
             titulo += tituloPagina[i];
         } else {
@@ -441,8 +439,8 @@ function precioMatcher(color, index, capacidad) {
                 var promocion = jsonPhp[index].capacidad[capacidad][val].precioPromocion;
                 var soloEfectivo = jsonPhp[index].capacidad[capacidad][val].soloEfectivo;
 
-                var htmlString = crearHTMLPrecio(precio,promocion);
-                var htmlString2 = crearHTMLCuotas(soloEfectivo, precio,promocion);
+                var htmlString = crearHTMLPrecio(precio, promocion);
+                var htmlString2 = crearHTMLCuotas(soloEfectivo, precio, promocion);
                 jQuery("#precio > ul").append(htmlString);
                 jQuery("#precio > ul").prepend(htmlString2);
                 i++;
@@ -452,8 +450,8 @@ function precioMatcher(color, index, capacidad) {
                 var promocion = jsonPhp[index].capacidad[capacidad][val].precioPromocion;
                 var soloEfectivo = jsonPhp[index].capacidad[capacidad][val].soloEfectivo;
 
-                var htmlString = crearHTMLPrecio(precio,promocion);
-                var htmlString2 = crearHTMLCuotas(soloEfectivo, precio,promocion);
+                var htmlString = crearHTMLPrecio(precio, promocion);
+                var htmlString2 = crearHTMLCuotas(soloEfectivo, precio, promocion);
                 jQuery("#precio > ul").append(htmlString);
                 jQuery("#precio > ul").prepend(htmlString2);
                 i++;
