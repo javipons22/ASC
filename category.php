@@ -10,8 +10,16 @@ $array_final = array();
 $precio_max_min = array();
 $hay_solo_efectivo = array();
 
+//Obtenemos la categoria para el query (porque si no ponemos 'posts_per_page' en -1 no hace display de todos los iphones)
+$categories = get_the_category();
+$category_id = $categories[0]->cat_ID;
+
+// posts per page en -1 para que reciba todos los iphones
+$args = array( 'posts_per_page' => -1,
+'cat' => $category_id );
+$the_query = new WP_Query($args);
 // Comienza el loop
-if (have_posts()): while (have_posts()): the_post();
+if ($the_query->have_posts()): while ($the_query->have_posts()): $the_query->the_post();
 
         $data = array();
         /*
@@ -78,7 +86,6 @@ if (have_posts()): while (have_posts()): the_post();
 // Pasamos los datos del objeto al script de javascript
 // JSON_FORCE_OBJECT es para que los arrays se conviertan en {} en vez de []
 $myJSON = json_encode($array_final, JSON_FORCE_OBJECT);
-
 // Obtenemos el slug de la categoria para seleccionar imagen
 function quita_guiones($cadena)
 {
