@@ -131,11 +131,8 @@ if ($modelo == 'iPhone 11 Pro' || $modelo == 'iPhone 11 Pro Max' || $modelo == '
     $currency = '$';
 }
 
-if (sizeof($precio_max_min) > 1) {
-    echo "De " . $currency . min($precio_max_min) . " a " . $currency . max($precio_max_min);
-} else {
-    echo "A solo ". $currency . min($precio_max_min);
-}
+    echo "A partir de " . $currency . min($precio_max_min);
+
 if(in_array(0,$hay_solo_efectivo )){
     echo "<br>También en 12, 6 o 3 cuotas**</h2>";
 } else {
@@ -153,11 +150,7 @@ if(in_array(0,$hay_solo_efectivo )){
                 <span>
                     <h2><?php
 
-if (sizeof($precio_max_min) > 1) {
-    echo "De " . $currency . min($precio_max_min) . " a " . $currency . max($precio_max_min);
-} else {
-    echo "A solo " . $currency . min($precio_max_min);
-}
+    echo "A partir de " . $currency . min($precio_max_min);
 
 if(in_array(0,$hay_solo_efectivo )){
     echo "<br>También en 12, 6 o 3 cuotas**</h2>";
@@ -211,7 +204,6 @@ var imgPath = "<?php echo $img_path; ?>";
 var currency = "<?php echo $currency; ?>";
 
 </script>
-<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/js/iphonesall.js";></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/js/iphone.js";></script>
 
 <?php get_footer();?>

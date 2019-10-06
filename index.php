@@ -32,15 +32,22 @@
         } else {
             $precio = get_field('precio');
         }
+        
     ?>
 
     <?php endwhile;?>
 <div class="banner-1">
     <div class="container">
         <div class="banner-1-texto">
+            <?php if (strpos($nombre, '11') !== false):?>
+            <h1><?php echo $nombre;?> a partir de U$<?php echo $precio; ?>***</h1>
+            <h3>Comprá en nuestro local abierto al público o recibilo por correo.</h3>
+            <a href="<?php echo $link;?>">Ver más ></a>
+            <?php else:?>
             <h1><?php echo $nombre;?> a $<?php echo $precio; ?>.* o 12 cuotas de $<?php echo intval($precio*1.7/12);?>.*</h1>
             <h3>Comprá en nuestro local abierto al público o recibilo por correo.</h3>
             <a href="<?php echo $link;?>">Ver más ></a>
+            <?php endif;?>
         </div>
     </div>
 </div>
