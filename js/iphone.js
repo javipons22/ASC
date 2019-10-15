@@ -134,7 +134,7 @@ function showNext(val, tipo, el, precio) {
         jQuery(".pagos > li > label").css("border", "1px solid rgba(136,136,136,.4)");
         jQuery("." + id).css("border", "1.5px solid #5e9bff");
 
-        var interes = (val === "1" ? 1 : (val === "3" ? 1.225 : (val === "6" ? 1.35 : 1.70)));
+        var interes = (val === "1" ? 1 : (val === "3" ? 1.225 : (val === "6" ? 1.35 : (val === "12" ? 1.70 : 1.40)))); // Intereses
 
         var nuevoPrecio = parseInt(precio * interes / val);
         var textoCuotas = `Pago en ${val} cuotas de`;
@@ -218,7 +218,7 @@ function crearHTMLPrecio(precio, promocion) {
 
 }
 
-function crearHTMLCuotas(soloEfectivo, precio, promocion) {
+function crearHTMLCuotas(soloEfectivo, precio, promocion,cuotas18) {
     var precioFinal = promocion == 0 ? precio : promocion;
     if (soloEfectivo) {
         htmlString = `
@@ -259,9 +259,19 @@ function crearHTMLCuotas(soloEfectivo, precio, promocion) {
                             <span>12 Cuotas</span>
                             <input id="cuotas4" name="cuotas" class="radio" type="radio" value="12" onclick="showNext(this.value,this.name,this,${precioFinal})"/>
                         </label>
-                    </li>
-            </ul>
-            `;
+                    </li>`;
+                    if(cuotas18) {
+                        htmlString += `
+                        <li id="cuotas18">
+                            <label for="cuotas5" class="cuotas cuotas5">    
+                                <span>18 Cuotas</span>
+                                <input id="cuotas5" name="cuotas" class="radio" type="radio" value="18" onclick="showNext(this.value,this.name,this,${precioFinal})"/>
+                            </label>
+                        </li></ul>`;
+                    } else {
+                        htmlString += `</ul>`;
+                    }
+            
         return htmlString;
     }
 
@@ -438,9 +448,10 @@ function precioMatcher(color, index, capacidad) {
                 var precio = jsonPhp[index].capacidad[capacidad][val].precio;
                 var promocion = jsonPhp[index].capacidad[capacidad][val].precioPromocion;
                 var soloEfectivo = jsonPhp[index].capacidad[capacidad][val].soloEfectivo;
+                var cuotas18 = jsonPhp[index].capacidad[capacidad][val]['18Cuotas'];
 
                 var htmlString = crearHTMLPrecio(precio, promocion);
-                var htmlString2 = crearHTMLCuotas(soloEfectivo, precio, promocion);
+                var htmlString2 = crearHTMLCuotas(soloEfectivo, precio, promocion,cuotas18);
                 jQuery("#precio > ul").append(htmlString);
                 jQuery("#precio > ul").prepend(htmlString2);
                 i++;
@@ -449,9 +460,10 @@ function precioMatcher(color, index, capacidad) {
                 var precio = jsonPhp[index].capacidad[capacidad][val].precio;
                 var promocion = jsonPhp[index].capacidad[capacidad][val].precioPromocion;
                 var soloEfectivo = jsonPhp[index].capacidad[capacidad][val].soloEfectivo;
+                var cuotas18 = jsonPhp[index].capacidad[capacidad][val]['18Cuotas'];
 
                 var htmlString = crearHTMLPrecio(precio, promocion);
-                var htmlString2 = crearHTMLCuotas(soloEfectivo, precio, promocion);
+                var htmlString2 = crearHTMLCuotas(soloEfectivo, precio, promocion,cuotas18);
                 jQuery("#precio > ul").append(htmlString);
                 jQuery("#precio > ul").prepend(htmlString2);
                 i++;

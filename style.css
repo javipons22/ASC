@@ -969,6 +969,7 @@ footer {
     font-weight: 300;
     text-align: center;
     height: 100%;
+    margin-bottom:10px;
 }
 
 #solo-efectivo {
@@ -985,7 +986,11 @@ footer {
 }
 
 .pagos li:first-child label {
-    border: 1.5px solid rgb(94, 155, 255)
+    border: 1.5px solid rgb(94, 155, 255);
+}
+
+#cuotas18 {
+    flex-basis:100%;
 }
 
 .precio-box {
@@ -1018,7 +1023,7 @@ footer {
 .precio-box span:first-child {
     font-size: 13px;
     margin-bottom: 3px;
-    font-weight: 300;
+    font-weight: 300;</ul>
 }
 
 .cuotas {

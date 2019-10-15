@@ -37,8 +37,9 @@ if ($the_query->have_posts()): while ($the_query->have_posts()): $the_query->the
         $precio = get_field('precio');
         $solo_efectivo = get_field('solo_efectivo');
         $precio_promocion = get_field('precio_promocion');
+        $cuotas_18 = get_field('18_cuotas');
 
-        $color_precio = array('color' => $color, 'precio' => $precio, 'precioPromocion' => $precio_promocion, 'soloEfectivo' => $solo_efectivo);
+        $color_precio = array('color' => $color, 'precio' => $precio, 'precioPromocion' => $precio_promocion, 'soloEfectivo' => $solo_efectivo, '18Cuotas' => $cuotas_18);
 
         // Precio max min para el subtitulo de la pagina
         $precio_max_min[] = (int) $precio;

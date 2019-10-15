@@ -165,13 +165,18 @@ function iterador_csv($csv)
                 $precio_promocion = ${'promocion' . $x};
                 $color = ${'color' . $x};
                 $stock = ${'stock' . $x};
+                $cuotas_18 = ${'18-cuotas' . $x};
 
                 if (${'solo-efectivo' . $x} == "si") {
                     $solo_efectivo = true;
                 } else {
                     $solo_efectivo = false;
                 }
-                ;
+                if (${'18-cuotas' . $x} == "si") {
+                    $cuotas_18 = true;
+                } else {
+                    $cuotas_18 = false;
+                }
 
                 switch ($iphone) {
                     case "iPhone 6":
@@ -222,7 +227,7 @@ function iterador_csv($csv)
                 $cat = array($cat_id);
 
                 if ($stock > 0) {
-                    crear_iphone($titulo, $cat, $iphone, $precio, $capacidad, $color, $solo_efectivo, $precio_promocion);
+                    crear_iphone($titulo, $cat, $iphone, $precio, $capacidad, $color, $solo_efectivo, $precio_promocion, $cuotas_18);
                     $subidos_correctos[] = $titulo;
                 } else {
                     $subidos_error[] = $titulo;
@@ -416,7 +421,7 @@ function iterador_csv($csv)
     }
 }
 
-function crear_iphone($titulo, $cat, $iphone, $precio, $capacidad, $color, $solo_efectivo, $precio_promocion)
+function crear_iphone($titulo, $cat, $iphone, $precio, $capacidad, $color, $solo_efectivo, $precio_promocion,$cuotas_18)
 {
 
     $my_post = array(
@@ -435,6 +440,7 @@ function crear_iphone($titulo, $cat, $iphone, $precio, $capacidad, $color, $solo
     update_field('color', $color, $post_id);
     update_field('solo_efectivo', $solo_efectivo, $post_id);
     update_field('precio_promocion', $precio_promocion, $post_id);
+    update_field('18_cuotas', $cuotas_18, $post_id);
 
 }
 
