@@ -255,7 +255,7 @@
                                         </span>
                                         <?php
                                             if(in_array("1", ${$cat . "cuotas18" })) {
-                                                echo "<p>en 18 cuotas, 12 cuotas, 6 cuotas o 3 cuotas**</p>";
+                                                echo "<p>en 18 cuotas****, 12 cuotas, 6 cuotas o 3 cuotas**</p>";
                                             } elseif (in_array("0", ${$cat . "_solo_efectivo" })) {
                                                 echo "<p>en 12 cuotas , 6 cuotas o 3 cuotas**</p>";
                                             } else {

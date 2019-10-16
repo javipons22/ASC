@@ -135,8 +135,13 @@ function crearHTMLTamaño(tamaño, id) {
 }
 
 
-function crearHTMLPrecio(precio, promocion) {
-    var promocionString = promocion == 0 || null ? `<span>$${precio}</span>` : `<span class="precio-tachado">$${precio}</span><span class="precio-promocion">  $${promocion}</span>`;
+function crearHTMLPrecio(precio, promocion,dolares) {
+    if(dolares) {
+        var currency = 'U$';
+    } else {
+        var currency = '$';
+    }
+    var promocionString = promocion == 0 || null ? `<span>${currency}${precio}</span>` : `<span class="precio-tachado">${currency}${precio}</span><span class="precio-promocion">  ${currency}${promocion}</span>`;
     var precioFinal = promocion == 0 || null ? precio : promocion;
     var tituloPromocion = promocion == 0 || null ? 'Precio de contado' : 'PROMOCION!!';
 
@@ -252,15 +257,18 @@ function precioMatcher(tamaño, index, color) {
                 jQuery(".precio-watch").remove();
                 var precio = jsonPhp[index].color[color][val].precio;
                 var precioPromocion = jsonPhp[index].color[color][val].precioPromocion;
+                var dolares = jsonPhp[index].color[color][val].dolares;
 
-                var htmlString = crearHTMLPrecio(precio, precioPromocion);
+                var htmlString = crearHTMLPrecio(precio, precioPromocion,dolares);
                 jQuery("#precio ul").append(htmlString);
                 i++;
 
             } else {
                 var precio = jsonPhp[index].color[color][val].precio;
                 var precioPromocion = jsonPhp[index].color[color][val].precioPromocion;
-                var htmlString = crearHTMLPrecio(precio, precioPromocion);
+                var dolares = jsonPhp[index].color[color][val].dolares;
+
+                var htmlString = crearHTMLPrecio(precio, precioPromocion,dolares);
                 jQuery("#precio ul").append(htmlString);
                 i++;
             }

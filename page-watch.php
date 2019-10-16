@@ -38,12 +38,20 @@ if($query->have_posts() ) : while($query ->have_posts()) : $query->the_post();
     $color = get_field('color');
     $precio = get_field('precio');
     $precio_promocion = get_field('precio_promocion');
+    $dolares = get_field('dolares');
 
 
-    $tamaño_precio = array('tamaño'=> $tamaño, 'precio'=> $precio, 'precioPromocion' => $precio_promocion);
+    $tamaño_precio = array('tamaño'=> $tamaño, 'precio'=> $precio, 'precioPromocion' => $precio_promocion, 'dolares' => $dolares);
 
     // Precio max min para el subtitulo de la pagina
     $precio_max_min[] = (int)$precio;
+
+    // Se pone currency dolares si alguno de los productos esta en dolares
+    if ($dolares){
+        $hay_dolares[] = 1;
+    } else {
+        $hay_dolares[] = 0;
+    }
 
     // Si no esta el modelo de iphone , agregar al nombre del array data y despues agregar al array_final 
     if(!in_array($modelo ,$watch_existentes)){
@@ -83,7 +91,11 @@ endwhile; endif;
 // JSON_FORCE_OBJECT es para que los arrays se conviertan en {} en vez de []
 $myJSON = json_encode($array_final,JSON_FORCE_OBJECT);
 
-
+if (in_array(1,$hay_dolares)){
+    $currency = "U$";
+} else {
+    $currency = "$";
+}
 
 
 ?>
@@ -103,13 +115,13 @@ $myJSON = json_encode($array_final,JSON_FORCE_OBJECT);
                 <h2><?php
                 
                 if (sizeof($precio_max_min) > 1) {
-                    echo "De $" . min($precio_max_min) . " a $" . max($precio_max_min);
+                    echo "A partir de " . $currency . min($precio_max_min);
                 } else {
-                    echo "A solo $" . min($precio_max_min);
+                    echo "A solo " . $currency . min($precio_max_min);
                 }
 
                 
-                ?> <br>También en 12, 6 o 3 cuotas**</h2>
+                ?>
             </span>
         </div>
         <div class="imagen-cat">
@@ -122,13 +134,13 @@ $myJSON = json_encode($array_final,JSON_FORCE_OBJECT);
                     <h2><?php
                     
                     if (sizeof($precio_max_min) > 1) {
-                        echo "De $" . min($precio_max_min) . " a $" . max($precio_max_min);
+                        echo "A partir de " . $currency . min($precio_max_min);
                     } else {
-                        echo "A solo $" . min($precio_max_min);
+                        echo "A solo " . $currency . min($precio_max_min);
                     }
 
                     
-                    ?> <br>También en 12, 6 o 3 cuotas**</h2>
+                    ?>
                 </span>
             </div>
             <ul>
@@ -164,5 +176,5 @@ $myJSON = json_encode($array_final,JSON_FORCE_OBJECT);
 var jsonPhp = <?php echo $myJSON; ?>;
 var imgPath = "<?php echo $img_path; ?>";
 </script>
-<script type="text/javascript" src="<?php echo get_template_directory_uri()?>/js/watch.js";></script>
+<script type="text/javascript" src="<?php echo get_template_directory_uri()?>/js/watch.js?v=1.2";></script>
 <?php get_footer(); ?>

@@ -166,9 +166,15 @@ function crearHTMLRam(ram, id) {
 
 }
 
-function crearHTMLPrecio(precio,promocion) {
+function crearHTMLPrecio(precio,promocion,dolares) {
 
-    var promocionString = promocion == 0 || null ? `<span>$${precio}</span>` : `<span class="precio-tachado">$${precio}</span><span class="precio-promocion">  $${promocion}</span>`;
+    if(dolares) {
+        var currency = "U$";
+    } else {
+        var currency = "$";
+    }
+
+    var promocionString = promocion == 0 || null ? `<span>${currency}${precio}</span>` : `<span class="precio-tachado">${currency}${precio}</span><span class="precio-promocion">  ${currency}${promocion}</span>`;
         var precioFinal = promocion == 0 || null ? precio : promocion;
         var tituloPromocion = promocion == 0 || null ? 'Precio de contado' : 'PROMOCION!!';
 
@@ -363,11 +369,12 @@ function precioMatcher(index, pantalla, capacidad, ramIndex) {
     var precio = jsonPhp[index].pantalla[pantalla][capacidad][ramIndex].precio;
     var precioPromocion = jsonPhp[index].pantalla[pantalla][capacidad][ramIndex].precioPromocion;
     var soloEfectivo = jsonPhp[index].pantalla[pantalla][capacidad][ramIndex].soloEfectivo;
+    var dolares = jsonPhp[index].pantalla[pantalla][capacidad][ramIndex].dolares;
 
     jQuery(".precio-mac, .pagos").remove();
 
 
-    var htmlString = crearHTMLPrecio(precio, precioPromocion);
+    var htmlString = crearHTMLPrecio(precio, precioPromocion,dolares);
     var htmlString2 = crearHTMLCuotas(soloEfectivo, precio, precioPromocion);
     jQuery("#precio > ul").append(htmlString);
     jQuery("#precio > ul").prepend(htmlString2);

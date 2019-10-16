@@ -255,12 +255,17 @@ function iterador_csv($csv)
                 } else {
                     $solo_efectivo = false;
                 }
-                ;
+                if (${'dolares' . $x} == "si") {
+                    $dolares = true;
+                } else {
+                    $dolares = false;
+                }
+                
 
                 // La categoria tiene que ser un array para que wordpress la acepte
                 $cat = array(11);
 
-                crear_mac($titulo, $cat, $mac, $pantalla, $capacidad, $ram, $precio, $solo_efectivo, $precio_promocion);
+                crear_mac($titulo, $cat, $mac, $pantalla, $capacidad, $ram, $precio, $solo_efectivo, $precio_promocion,$dolares);
                 $subidos_correctos[] = $titulo;
 
             }
@@ -285,13 +290,18 @@ function iterador_csv($csv)
                 } else {
                     $solo_efectivo = false;
                 }
-                ;
+                if (${'dolares' . $x} == "si") {
+                    $dolares = true;
+                } else {
+                    $dolares = false;
+                }
+                
 
                 // La categoria tiene que ser un array para que wordpress la acepte
                 $cat = array(12);
 
                 if ($stock > 0) {
-                    crear_watch($titulo, $cat, $watch, $precio, $tamaño, $color, $solo_efectivo, $precio_promocion);
+                    crear_watch($titulo, $cat, $watch, $precio, $tamaño, $color, $solo_efectivo, $precio_promocion,$dolares);
                     $subidos_correctos[] = $titulo;
                 } else {
                     $subidos_error[] = $titulo;
@@ -446,7 +456,7 @@ function crear_iphone($titulo, $cat, $iphone, $precio, $capacidad, $color, $solo
 
 //crear_iphone($titulo, $cat, $iphone, $precio, $capacidad, $color);
 
-function crear_mac($titulo, $cat, $mac, $pantalla, $capacidad, $ram, $precio, $solo_efectivo, $precio_promocion)
+function crear_mac($titulo, $cat, $mac, $pantalla, $capacidad, $ram, $precio, $solo_efectivo, $precio_promocion,$dolares)
 {
 
     $my_post = array(
@@ -466,10 +476,11 @@ function crear_mac($titulo, $cat, $mac, $pantalla, $capacidad, $ram, $precio, $s
     update_field('precio', $precio, $post_id);
     update_field('solo_efectivo', $solo_efectivo, $post_id);
     update_field('precio_promocion', $precio_promocion, $post_id);
+    update_field('dolares', $dolares, $post_id);
 
 }
 
-function crear_watch($titulo, $cat, $watch, $precio, $tamaño, $color, $solo_efectivo, $precio_promocion)
+function crear_watch($titulo, $cat, $watch, $precio, $tamaño, $color, $solo_efectivo, $precio_promocion,$dolares)
 {
 
     $my_post = array(
@@ -488,6 +499,7 @@ function crear_watch($titulo, $cat, $watch, $precio, $tamaño, $color, $solo_efe
     update_field('tamano', $tamaño, $post_id);
     update_field('solo_efectivo', $solo_efectivo, $post_id);
     update_field('precio_promocion', $precio_promocion, $post_id);
+    update_field('dolares', $dolares, $post_id);
 
 }
 

@@ -53,8 +53,9 @@ $ram = get_field('ram');
 $precio = get_field('precio');
 $solo_efectivo = get_field('solo_efectivo');
 $precio_promocion = get_field('precio_promocion');
+$dolares = get_field('dolares');
 
-$ram_precio = array('ram'=> $ram, 'precio'=> $precio , 'soloEfectivo' => $solo_efectivo, 'precioPromocion' => $precio_promocion);
+$ram_precio = array('ram'=> $ram, 'precio'=> $precio , 'soloEfectivo' => $solo_efectivo, 'precioPromocion' => $precio_promocion, 'dolares'=>$dolares);
 
 
 // Precio max min para el subtitulo de la pagina
@@ -92,6 +93,13 @@ if(!in_array($mac ,$mac_existentes)){
                 $array_final[$index]['pantalla'][$pantalla][$capacidad][] = $ram_precio;
             }    
 }
+
+if($dolares) {
+    $hay_dolares[] = 1;
+} else {
+    $hay_dolares[] = 0;
+}
+
 endwhile; endif; 
 
 // Pasamos los datos del objeto al script de javascript
@@ -102,6 +110,12 @@ $myJSON = json_encode($array_final,JSON_FORCE_OBJECT);
 function quita_guiones($cadena){
 $cadena = str_replace('-', '', $cadena);
 return $cadena;
+}
+
+if (in_array(1,$hay_dolares)){
+    $currency = "U$";
+} else {
+    $currency = "$";
 }
 
 ?>
@@ -121,13 +135,13 @@ return $cadena;
             <h2><?php
             
             if (sizeof($precio_max_min) > 1) {
-                echo "De $" . min($precio_max_min) . " a $" . max($precio_max_min);
+                echo "A partir de " . $currency . min($precio_max_min);
             } else {
-                echo "A solo $" . min($precio_max_min);
+                echo "A solo " . $currency . min($precio_max_min);
             }
 
             
-            ?> <br>También en 12, 6 o 3 cuotas**</h2>
+            ?>
         </span>
     </div>
     <div class="imagen-cat">
@@ -140,13 +154,14 @@ return $cadena;
                 <h2><?php
                 
                 if (sizeof($precio_max_min) > 1) {
-                    echo "De $" . min($precio_max_min) . " a $" . max($precio_max_min);
+                    echo "A partir de " . $currency . min($precio_max_min);
                 } else {
-                    echo "A solo $" . min($precio_max_min);
+                    echo "A solo " . $currency . min($precio_max_min);
                 }
+    
 
                 
-                ?> <br>También en 12, 6 o 3 cuotas**</h2>
+                ?>
             </span>
         </div>
         <ul>
@@ -187,5 +202,5 @@ return $cadena;
 var jsonPhp = <?php echo $myJSON; ?>;
 var imgPath = "<?php echo $img_path; ?>";
 </script>
-<script type="text/javascript" src="<?php echo get_template_directory_uri()?>/js/mac.js";></script>
+<script type="text/javascript" src="<?php echo get_template_directory_uri()?>/js/mac.js?v=1.2";></script>
 <?php get_footer(); ?>
