@@ -196,7 +196,13 @@ function crearHTMLColor(color, id, colorClase) {
 
 }
 
-function crearHTMLPrecio(precio, promocion) {
+function crearHTMLPrecio(precio, promocion,dolares) {
+
+    if (dolares) {
+        var currency = "U$";
+    } else {
+        var currency = "$";
+    }
 
     var promocionString = promocion == 0 || promocion == null ? `<span>${currency + precio}</span>` : `<span class="precio-tachado">${currency + precio}</span><span class="precio-promocion">  ${currency + promocion}</span>`;
     var precioFinal = promocion == 0 || promocion == null ? precio : promocion;

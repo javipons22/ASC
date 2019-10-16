@@ -41,7 +41,7 @@
                 <h3>Comprá en nuestro local abierto al público o recibilo por correo.</h3>
                 <a href="<?php echo $link;?>">Ver más ></a>
                 <?php elseif ($cuotas18):?>
-                <h1><?php echo $nombre;?> en 18 cuotas de $<?php echo intval($precio*1.4/18);?>.*</h1>
+                <h1><?php echo $nombre;?> en 18 cuotas de $<?php echo intval($precio*1.4/18);?>.****</h1>
                 <h3>Comprá en nuestro local abierto al público o recibilo por correo.</h3>
                 <a href="<?php echo $link;?>">Ver más ></a>
                 <?php else:?>

@@ -38,8 +38,9 @@ if ($the_query->have_posts()): while ($the_query->have_posts()): $the_query->the
         $solo_efectivo = get_field('solo_efectivo');
         $precio_promocion = get_field('precio_promocion');
         $cuotas_18 = get_field('18_cuotas');
+        $dolares = get_field('dolares');
 
-        $color_precio = array('color' => $color, 'precio' => $precio, 'precioPromocion' => $precio_promocion, 'soloEfectivo' => $solo_efectivo, '18Cuotas' => $cuotas_18);
+        $color_precio = array('color' => $color, 'precio' => $precio, 'precioPromocion' => $precio_promocion, 'soloEfectivo' => $solo_efectivo, '18Cuotas' => $cuotas_18,'dolares'=>$dolares);
 
         // Precio max min para el subtitulo de la pagina
         $precio_max_min[] = (int) $precio;
@@ -49,6 +50,12 @@ if ($the_query->have_posts()): while ($the_query->have_posts()): $the_query->the
             array_push($hay_solo_efectivo, 1);
         } else {
             array_push($hay_solo_efectivo, 0); 
+        }
+
+        if ($dolares) {
+            $hay_dolares[] = 1;
+        } else {
+            $hay_dolares[] = 0;
         }
 
         // Si no esta el modelo de iphone , agregar al nombre del array data y despues agregar al array_final
@@ -126,7 +133,7 @@ $slug = quita_guiones($term->slug);
             <span>
                 <h2><?php
 
-if ($modelo == 'iPhone 11 Pro' || $modelo == 'iPhone 11 Pro Max' || $modelo == 'iPhone 11') {
+if (in_array(1,$hay_dolares)) {
     $currency = 'U$';
 } else {
     $currency = '$';
