@@ -99,6 +99,13 @@
         } else {
             ${$trimmed_cat . "_solo_efectivo" }[] = 0;
         }
+
+        $cuotas18 = get_field('18_cuotas');
+        if ($cuotas18) {
+            ${$trimmed_cat . "cuotas18" }[] = 1;
+        } else {
+            ${$trimmed_cat . "cuotas18" }[] = 0;
+        }
     
         // Ordenamos los datos de capacidad para que aparezcan ordenados (ej. 16GB 64GB)
         sort(${$trimmed_cat . "_capacidad" });
@@ -247,9 +254,10 @@
                                             ?>
                                         </span>
                                         <?php
-                                            if(in_array("0", ${$cat . "_solo_efectivo" })){
+                                            if(in_array("1", ${$cat . "cuotas18" })) {
+                                                echo "<p>en 18 cuotas, 12 cuotas, 6 cuotas o 3 cuotas**</p>";
+                                            } elseif (in_array("0", ${$cat . "_solo_efectivo" })) {
                                                 echo "<p>en 12 cuotas , 6 cuotas o 3 cuotas**</p>";
-                                                
                                             } else {
                                                 echo "<p>Pago solo en contado</p>"; 
                                             }
