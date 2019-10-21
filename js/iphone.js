@@ -134,7 +134,7 @@ function showNext(val, tipo, el, precio) {
         jQuery(".pagos > li > label").css("border", "1px solid rgba(136,136,136,.4)");
         jQuery("." + id).css("border", "1.5px solid #5e9bff");
 
-        var interes = (val === "1" ? 1 : (val === "3" ? 1.225 : (val === "6" ? 1.35 : (val === "12" ? 1.70 : 1.40)))); // Intereses
+        var interes = (val === "1" ? 1 : (val === "3" ? 1.24 : (val === "6" ? 1.36 : (val === "12" ? 1.4 : 1.60)))); // Intereses
 
         var nuevoPrecio = parseInt(precio * interes / val);
         var textoCuotas = `Pago en ${val} cuotas de`;

@@ -23,11 +23,11 @@
                 <br>
                 * Precios en pesos ARS
                 <br>
-                ** Productos en 12 cuotas con 70% de interés, en 6 cuotas con 35% de interés o en 3 cuotas con 22% de interés.
+                ** Productos en 12 cuotas con 40% de interés, en 6 cuotas con 36% de interés o en 3 cuotas con 24% de interés.
                 <br>
                 *** Precios en Dolares USD
                 <br>
-                **** Algunos productos en 18 cuotas con 40% de interés
+                **** Algunos productos en 18 cuotas con 60% de interés
             </p>
             
             <div class="creditos">
