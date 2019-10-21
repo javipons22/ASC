@@ -204,7 +204,7 @@ function crearHTMLPrecio(precio, promocion,dolares) {
         var currency = "$";
     }
 
-    var promocionString = promocion == 0 || promocion == null ? `<span>${currency + precio}</span>` : `<span class="precio-tachado">${currency + precio}</span><span class="precio-promocion">  ${currency + promocion}</span>`;
+    var promocionString = promocion == 0 || promocion == null ? `<span>${currency}${precio}</span>` : `<span class="precio-tachado">${currency}${precio}</span><span class="precio-promocion">  ${currency}${promocion}</span>`;
     var precioFinal = promocion == 0 || promocion == null ? precio : promocion;
     var tituloPromocion = promocion == 0 || promocion == null ? 'Precio de contado' : 'PROMOCION!!';
     htmlString = `
@@ -455,8 +455,9 @@ function precioMatcher(color, index, capacidad) {
                 var promocion = jsonPhp[index].capacidad[capacidad][val].precioPromocion;
                 var soloEfectivo = jsonPhp[index].capacidad[capacidad][val].soloEfectivo;
                 var cuotas18 = jsonPhp[index].capacidad[capacidad][val]['18Cuotas'];
+                var dolares = jsonPhp[index].capacidad[capacidad][val].dolares;
 
-                var htmlString = crearHTMLPrecio(precio, promocion);
+                var htmlString = crearHTMLPrecio(precio, promocion,dolares);
                 var htmlString2 = crearHTMLCuotas(soloEfectivo, precio, promocion,cuotas18);
                 jQuery("#precio > ul").append(htmlString);
                 jQuery("#precio > ul").prepend(htmlString2);
@@ -467,8 +468,9 @@ function precioMatcher(color, index, capacidad) {
                 var promocion = jsonPhp[index].capacidad[capacidad][val].precioPromocion;
                 var soloEfectivo = jsonPhp[index].capacidad[capacidad][val].soloEfectivo;
                 var cuotas18 = jsonPhp[index].capacidad[capacidad][val]['18Cuotas'];
+                var dolares = jsonPhp[index].capacidad[capacidad][val].dolares;
 
-                var htmlString = crearHTMLPrecio(precio, promocion);
+                var htmlString = crearHTMLPrecio(precio, promocion,dolares);
                 var htmlString2 = crearHTMLCuotas(soloEfectivo, precio, promocion,cuotas18);
                 jQuery("#precio > ul").append(htmlString);
                 jQuery("#precio > ul").prepend(htmlString2);

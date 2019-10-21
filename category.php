@@ -212,6 +212,6 @@ var imgPath = "<?php echo $img_path; ?>";
 var currency = "<?php echo $currency; ?>";
 
 </script>
-<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/js/iphone.js?v=1.2";></script>
+<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/js/iphone.js?v=2.0";></script>
 
 <?php get_footer();?>
