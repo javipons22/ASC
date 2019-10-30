@@ -202,5 +202,5 @@ if (in_array(1,$hay_dolares)){
 var jsonPhp = <?php echo $myJSON; ?>;
 var imgPath = "<?php echo $img_path; ?>";
 </script>
-<script type="text/javascript" src="<?php echo get_template_directory_uri()?>/js/mac.js?v=1.2";></script>
+<script type="text/javascript" src="<?php echo get_template_directory_uri()?>/js/mac.js?v=2.3";></script>
 <?php get_footer(); ?>
