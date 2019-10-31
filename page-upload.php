@@ -21,6 +21,10 @@ get_header();
     </section>
 <?php
 
+
+
+
+
 function borrar_posts_previos($tipo)
 {
     // Argumentos para el query del loop de wordpress
@@ -100,7 +104,6 @@ if (isset($_POST['upload'])) {
 
         $attach_data = wp_generate_attachment_metadata($attach_id, $uploadfile);
         wp_update_attachment_metadata($attach_id, $attach_data);
-
     } else {
         // mensaje de error
         echo "ERROR";
@@ -231,7 +234,7 @@ function iterador_csv($csv)
 
                 // La categoria tiene que ser un array para que wordpress la acepte
                 $cat = array($cat_id);
-
+                
                 if ($stock > 0) {
                     crear_iphone($titulo, $cat, $iphone, $precio, $capacidad, $color, $solo_efectivo, $precio_promocion, $cuotas_18,$dolares);
                     $subidos_correctos[] = $titulo;

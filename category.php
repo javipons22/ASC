@@ -14,6 +14,17 @@ $hay_solo_efectivo = array();
 $categories = get_the_category();
 $category_id = $categories[0]->cat_ID;
 
+// Obtenemos el valor del dolar desde cotizacion
+$args_cotizacion = array(
+    'post_type' => 'cotizacion',
+    'posts_per_page' => -1,
+);
+$query_cotizacion = new WP_Query($args_cotizacion);
+if ($query_cotizacion->have_posts()): while ($query_cotizacion->have_posts()): $query_cotizacion->the_post();
+    $dolar = get_field("dolar");
+endwhile;endif;
+// Fin obtener valor del dolar
+
 // posts per page en -1 para que reciba todos los iphones
 $args = array( 'posts_per_page' => -1,
 'cat' => $category_id );
@@ -35,15 +46,16 @@ if ($the_query->have_posts()): while ($the_query->have_posts()): $the_query->the
         $capacidad = get_field('capacidad');
         $color = get_field('color');
         $precio = get_field('precio');
+        $precio_final = (int)((float)$dolar * (float)$precio);
         $solo_efectivo = get_field('solo_efectivo');
         $precio_promocion = get_field('precio_promocion');
         $cuotas_18 = get_field('18_cuotas');
         $dolares = get_field('dolares');
 
-        $color_precio = array('color' => $color, 'precio' => $precio, 'precioPromocion' => $precio_promocion, 'soloEfectivo' => $solo_efectivo, '18Cuotas' => $cuotas_18,'dolares'=>$dolares);
+        $color_precio = array('color' => $color, 'precio' => $precio_final, 'precioPromocion' => $precio_promocion, 'soloEfectivo' => $solo_efectivo, '18Cuotas' => $cuotas_18,'dolares'=>$dolares);
 
         // Precio max min para el subtitulo de la pagina
-        $precio_max_min[] = (int) $precio;
+        $precio_max_min[] = (int) $precio_final;
 
         // Si hay uno por lo menos de solo-efectivo true agregarlo a array y despues confirmamos si hay y sacamos el mensaje de cuotas
         if ($solo_efectivo === true){

@@ -8,6 +8,16 @@
 
 
 <?php 
+// Obtenemos el valor del dolar desde cotizacion
+$args_cotizacion = array(
+    'post_type' => 'cotizacion',
+    'posts_per_page' => -1,
+);
+$query_cotizacion = new WP_Query($args_cotizacion);
+if ($query_cotizacion->have_posts()): while ($query_cotizacion->have_posts()): $query_cotizacion->the_post();
+    $dolar = get_field("dolar");
+endwhile;endif;
+// Fin obtener valor del dolar
 
     // Argumentos para el query del loop de wordpress
     $args = array(
@@ -78,7 +88,9 @@
             ${$trimmed_cat . "_capacidad" }[] = intval(get_field("capacidad"));
         }
         if (!in_array( get_field("precio"),${$trimmed_cat . "_precio"})) {
-            ${$trimmed_cat . "_precio" }[] = get_field("precio");
+            $precio = get_field("precio");
+            $precio_final = ((float)$dolar * (float)$precio);
+            ${$trimmed_cat . "_precio" }[] = (int)$precio_final;
         }
         if (!in_array( get_field("precio_promocion"),${$trimmed_cat . "_precio_promocion"})) {
             ${$trimmed_cat . "_precio_promocion" }[] = get_field("precio_promocion");
@@ -237,13 +249,9 @@
                                             <?php
                                                 if (!$promocion) {
                                                     if(sizeof(${ $cat ."_precio" }) > 1){
-                                                        if ($cat == "iPhone11Pro" || $cat == "iPhone11ProMax" || $cat == "iPhone11") {
-                                                            $currency = 'U$';
-                                                            $currency_detail = '***';
-                                                        }  else {
-                                                            $currency = '$';
-                                                            $currency_detail = '*';
-                                                        }
+                                                        
+                                                        $currency = '$';
+                                                        $currency_detail = '*';
                                                         $precio_minimo = min(${ $cat ."_precio" });
                                                         $precio_maximo = max(${ $cat ."_precio" });
                                                         echo $currency . $precio_minimo . $currency_detail . " - " . $currency . $precio_maximo . $currency_detail;
