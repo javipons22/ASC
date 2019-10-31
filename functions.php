@@ -72,3 +72,9 @@ function register_my_menu()
 }
 add_action('init', 'register_my_menu');
 
+
+function admin_default_page() {
+    return 'http://www.google.com';
+  }
+  
+add_filter('login_redirect', 'admin_default_page');
