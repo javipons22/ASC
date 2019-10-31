@@ -41,6 +41,7 @@
                             <li><a href="#">Contacto</a></li>
                             <li><a href="#">Reclamos</a></li>
                             <li><a href="#">Preguntas Frecuentes</a></li>
+                            <li><a href="<?php echo get_site_url() . '/login/'?>">LogIn</a></li>
                         </ul>
                     </li>
                 </ul>
