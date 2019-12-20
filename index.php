@@ -7,7 +7,21 @@
     $args = array(
         'post_type' => 'paginahome',
         'posts_per_page'=> -1
-    );
+    );?>
+    
+<div class="banner-4">
+    <div class="container">
+        <div class="banner-4-texto">
+            <h1>Felices Fiestas! te desea Apple Store CBA</h1>
+            <h3>Elegí tu regalo!</h3>
+            <a href="<?php echo $url_path; ?>/iphone">Ver todos ></a>
+        </div>
+        <img class="banner-4-imagen" src="<?php echo $img_path; ?>/iphone/navidad.png" alt="navidad">
+    </div>
+</div>
+    
+    
+    <?php
 
     // Query
     $query1 = new WP_Query($args);
