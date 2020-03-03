@@ -10,7 +10,7 @@
 <?php 
 // Obtenemos el valor del dolar desde cotizacion
 $args_cotizacion = array(
-    'post_type' => 'cotizacion',
+    'post_type' => 'cotiz',
     'posts_per_page' => -1,
 );
 $query_cotizacion = new WP_Query($args_cotizacion);

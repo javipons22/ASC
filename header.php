@@ -1,4 +1,4 @@
-<?php Header("Cache-Control: max-age=3000, must-revalidate"); ?>
+<?php Header("Last-Modified: Sun, 01 Mar 2020 22:17:33 GMT"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +46,8 @@
                             'menu' => 'Menu1',
                             'container' => 'ul',
                         ]);
-
+                            // Los iconos de facebook e instagram son agregados con un plugin en el dashboard
+                        
                         ?>
                     </li>
                 </ul>

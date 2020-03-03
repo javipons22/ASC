@@ -16,7 +16,7 @@ $category_id = $categories[0]->cat_ID;
 
 // Obtenemos el valor del dolar desde cotizacion
 $args_cotizacion = array(
-    'post_type' => 'cotizacion',
+    'post_type' => 'cotiz',
     'posts_per_page' => -1,
 );
 $query_cotizacion = new WP_Query($args_cotizacion);
@@ -46,9 +46,10 @@ if ($the_query->have_posts()): while ($the_query->have_posts()): $the_query->the
         $capacidad = get_field('capacidad');
         $color = get_field('color');
         $precio = get_field('precio');
+        $promocion = get_field('precio_promocion');
         $precio_final = (int)((float)$dolar * (float)$precio);
         $solo_efectivo = get_field('solo_efectivo');
-        $precio_promocion = get_field('precio_promocion');
+        $precio_promocion = (int)((float)$dolar * (float)$promocion);
         $cuotas_18 = get_field('18_cuotas');
         $dolares = get_field('dolares');
 
@@ -222,6 +223,7 @@ if(in_array(0,$hay_solo_efectivo )){
 var jsonPhp = <?php echo $myJSON; ?>;
 var imgPath = "<?php echo $img_path; ?>";
 var currency = "<?php echo $currency; ?>";
+console.log(jsonPhp);
 
 </script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/js/iphone.js?v=2.1";></script>
