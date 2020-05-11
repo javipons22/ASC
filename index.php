@@ -92,5 +92,15 @@
         </div>
     </div>
 </div>
+
+<div class="popup-back">
+    <div class="popup-newsletter">
+        <h2>Recibe noticias sobre nuestros productos!</h2>
+        <span>Llena el formulario para recibir emails</span>
+        <a href="https://forms.gle/RfFYnwmc9Kw7CMaB6" target="_blank">IR AL FORMULARIO</a>
+        <div class="boton-cerrar">x</div>
+    </div>
+</div>
+
    
 <?php get_footer(); ?>

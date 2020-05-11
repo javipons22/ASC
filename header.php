@@ -1,4 +1,3 @@
-<?php Header("Last-Modified: Sun, 01 Mar 2020 22:17:33 GMT"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
