@@ -279,6 +279,40 @@ function iterador_csv($csv)
 
             }
         }
+    } else if ($campos[0] == "ipad") {
+       
+        borrar_posts_previos("ipads");
+
+        for ($x = 1; $x <= sizeof($csv); $x++) {
+
+            if (!empty(${'ipad' . $x})) {
+
+                $titulo = ${'ipad' . $x} . " - " . ${'capacidad' . $x};
+                $ipad = ${'ipad' . $x};
+                $capacidad = ${'capacidad' . $x};
+                $color = ${'color' . $x};
+                $precio = ${'precio' . $x};
+                $precio_promocion = ${'promocion' . $x};
+
+                if (${'solo-efectivo' . $x} == "si") {
+                    $solo_efectivo = true;
+                } else {
+                    $solo_efectivo = false;
+                }
+                if (${'dolares' . $x} == "si") {
+                    $dolares = true;
+                } else {
+                    $dolares = false;
+                }
+                
+
+                // La categoria tiene que ser un array para que wordpress la acepte
+                $cat = array(11);
+                crear_ipad($titulo, $cat, $ipad, $capacidad, $color, $precio, $solo_efectivo, $precio_promocion,$dolares);
+                $subidos_correctos[] = $titulo;
+                $subidos_error = [];
+            }
+        }
 
     } else if ($campos[0] == "watch") {
         borrar_posts_previos("apple_watch");
@@ -569,6 +603,29 @@ function crear_servicio($titulo, $cat, $iphone, $servicio, $precio)
     update_field('iphone', $iphone, $post_id);
     update_field('servicio', $servicio, $post_id);
     update_field('precio', $precio, $post_id);
+
+}
+
+function crear_ipad($titulo, $cat, $ipad, $capacidad, $color, $precio, $solo_efectivo, $precio_promocion,$dolares)
+{
+
+    $my_post = array(
+        'post_title' => $titulo,
+        'post_category' => $cat,
+        'post_type' => 'ipads',
+        'post_status' => 'publish',
+    );
+
+    // Insert the post into the database
+    $post_id = wp_insert_post($my_post);
+
+    update_field('modelo', $ipad, $post_id);
+    update_field('capacidad', $capacidad, $post_id);
+    update_field('color', $color, $post_id);
+    update_field('precio', $precio, $post_id);
+    update_field('solo_efectivo', $solo_efectivo, $post_id);
+    update_field('precio_promocion', $precio_promocion, $post_id);
+    update_field('dolares', $dolares, $post_id);
 
 }
 

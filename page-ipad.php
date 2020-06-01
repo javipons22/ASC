@@ -1,20 +1,20 @@
 <?php
 /* 
-	Template Name: Mac
+	Template Name: iPad
 */
 get_header(); 
 $img_path = get_site_url() . "/wp-content/uploads";
 
 //echo $myJSON;
 // Guardamos los valores existentes en un array para poder utilizar los condicionales viendo si hay valores repetidos
-$mac_existentes = array();
-$pantallas_existentes = array();
+$ipad_existentes = array();
+$capacidades_existentes = array();
 $array_final = array();
 $precio_max_min = array();
 
 // Hacemos query ya que no es pagina categoria
 $args = array(
-    'post_type' => 'macs',
+    'post_type' => 'ipads',
     'posts_per_page'=> -1
 );
 
@@ -46,30 +46,30 @@ $precio = ${'precio' . $x};
 
 */
 
-$mac = get_field('macbook');
-$pantalla = get_field('pantalla');
+$ipad = get_field('modelo');
+// $pantalla = get_field('pantalla');
 $capacidad = get_field('capacidad');
-$ram = get_field('ram');
+$color = get_field('color');
 $precio = get_field('precio');
 $solo_efectivo = get_field('solo_efectivo');
 $precio_promocion = get_field('precio_promocion');
 $dolares = get_field('dolares');
 
-$ram_precio = array('ram'=> $ram, 'precio'=> $precio , 'soloEfectivo' => $solo_efectivo, 'precioPromocion' => $precio_promocion, 'dolares'=>$dolares);
+$color_precio = array('color'=> $color, 'precio'=> $precio , 'soloEfectivo' => $solo_efectivo, 'precioPromocion' => $precio_promocion, 'dolares'=>$dolares);
 
 
 // Precio max min para el subtitulo de la pagina
 $precio_max_min[] = (int)$precio;
 
 // Si no esta el modelo de mac , agregar al nombre del array data y despues agregar al array_final 
-if(!in_array($mac ,$mac_existentes)){
+if(!in_array($ipad ,$ipad_existentes)){
 
-    $mac_existentes[] = $mac;
-    $pantallas_existentes[] = $pantalla;
-    $data['modelo'] = $mac;
+    $ipad_existentes[] = $ipad;
+    $capacidades_existentes[] = $capacidad;
+    $data['modelo'] = $ipad;
     
     // agrega array associative
-    $data['pantalla'] = array( $pantalla => array($capacidad => array($ram_precio)));
+    $data['capacidad'] = array($capacidad => array($color_precio));
     
 
     $array_final[] = $data;
@@ -78,19 +78,19 @@ if(!in_array($mac ,$mac_existentes)){
     // Ver en que elemento colocar los siguientes valores (capacidad , precio y color)
 
             for ($i = 0; $i < sizeof($array_final); $i++) {
-                if ($array_final[$i]['modelo'] == $mac){
+                if ($array_final[$i]['modelo'] == $ipad){
                     $index = $i; // Es el index del producto actual donde esta el modelo que nos paso wordpress (en el caso de iphone 7 hay 2 , iphone 7 y iphone 7 plus)
                 }
             }
 
-            if(!in_array($pantalla ,$pantallas_existentes)){
+            if(!in_array($capacidad ,$capacidades_existentes)){
                 //Pasamos el index donde esta el elemento actual
-                $array_final[$index]['pantalla'][$pantalla] = array($capacidad => array($ram_precio));
+                $array_final[$index]['capacidad'][$capacidad] = array($color_precio);
                 $capacidades_existentes[] = $capacidad;
 
             } else {
                 // si ya estaba la capacidad subida , agregamos un array color precio a la capacidad repetida
-                $array_final[$index]['pantalla'][$pantalla][$capacidad][] = $ram_precio;
+                $array_final[$index]['capacidad'][$capacidad][] = $color_precio;
             }    
 }
 
@@ -123,14 +123,14 @@ if (in_array(1,$hay_dolares)){
 
 <div class="titulo-pagina">
 <div class="container">
-    <h1>MacBook</h1>
+    <h1>iPad</h1>
 </div>
 </div>
 
 <section>
 <div class="iphone-cat">
     <div class="titulo-iphone-movil">
-        <h1>Compra una MacBook</h1>
+        <h1>Compra un iPad</h1>
         <span>
             <h2><?php
             
@@ -145,11 +145,11 @@ if (in_array(1,$hay_dolares)){
         </span>
     </div>
     <div class="imagen-cat">
-        <img id="imagen" src="<?php echo $img_path . "/mac/macbookprotouchbar.png"; ?>" alt="MacBook">
+        <img id="imagen" src="<?php echo $img_path . "/ipad/ipad.png"; ?>" alt="iPad">
     </div>
     <div class="datos-iphone-cat">
         <div class="titulo-iphone-cat">
-            <h1>Compra una MacBook</h1>
+            <h1>Compra un iPad</h1>
             <span>
                 <h2><?php
                 
@@ -170,18 +170,13 @@ if (in_array(1,$hay_dolares)){
                 <ul>
                 </ul>   
             </li>
-            <li id="pantalla">
-                <h3>Elige la pantalla</h3>
-                <ul>
-                </ul>  
-            </li>
             <li id="capacidad">
                 <h3>Elige capacidad</h3>
                 <ul>
                 </ul>  
             </li>
-            <li id="ram">
-                <h3>Elige RAM</h3>
+            <li id="color">
+                <h3>Elige color</h3>
                 <ul>
                 </ul>  
             </li>
@@ -202,5 +197,5 @@ if (in_array(1,$hay_dolares)){
 var jsonPhp = <?php echo $myJSON; ?>;
 var imgPath = "<?php echo $img_path; ?>";
 </script>
-<script type="text/javascript" src="<?php echo get_template_directory_uri()?>/js/mac.js?v=2.3"></script>
+<script type="text/javascript" src="<?php echo get_template_directory_uri()?>/js/ipad.js"></script>
 <?php get_footer(); ?>
