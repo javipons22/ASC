@@ -7,12 +7,12 @@ Template Name: Cronologico
 $fecha_de_hoy = date('d/m/Y');
 $mensajes = array();
 
-function send_mail($mensaje)
+function send_mail($mensaje,$to)
 {
     ini_set('display_errors', 1);
     error_reporting(E_ALL);
     $from = "info@storecba.com";
-    $to = "info@storecba.com";
+    // $to = "info@storecba.com";
     $subject = "Turnos de hoy para servicio ";
     $message = '<html><head></head><body>';
     $message .= $mensaje;
@@ -57,7 +57,8 @@ foreach ($mensajes as $mensaje) {
 
 if (sizeof($mensajes) > 0) {
     echo $mensaje_email;
-    send_mail($mensaje_email);
+    send_mail($mensaje_email,"info@storecba.com");
+    send_mail($mensaje_email,"cellphonecordoba@gmail.com");
 }
 
 

@@ -30,7 +30,7 @@
     .menu-items>ul {
         text-align: left;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
     }
     .menu-items>ul>li {
         font-size: 14px;
