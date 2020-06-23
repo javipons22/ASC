@@ -458,6 +458,37 @@ footer {
     margin-bottom: 30px;
 }
 
+.banner-black {
+    background: black;
+    color:white;
+}
+
+.banner-black img {
+    margin:0;
+    padding:0;
+}
+
+.banner-black .banner-2-texto {
+    margin-bottom: 0;
+}
+
+.banner-black .banner-black-container {
+    margin-bottom: 60px;
+    margin-top:60px;
+}
+
+.banner-black-container .columna {
+    padding: 60px 30px;
+    border:1px solid white;
+    margin-bottom: 60px;
+    min-width: 270px;
+}
+.banner-black-container img {
+    width:75px;
+    height:75px;
+    margin-bottom: 25px;
+}
+
 
 /* --------------- SUB NAV PRODUCTOS (pagina iphone)  --------------- */
 

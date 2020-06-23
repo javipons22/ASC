@@ -63,17 +63,47 @@
     <?php endwhile; endif;?> 
     
    
-    
+<div class="banner-2 banner-black">
+    <div class="container">
+        <div class="banner-2-texto">
+            <h1>Conseguí el nuevo <strong>iPhone SE</strong> acá!!</h1>
+            <h3>Mirá los precios!</h3>
+            <a href="<?php echo $url_path; ?>/iphone/iphone-se">Ver más ></a>
+            <img src="<?php echo $img_path; ?>/iphone/iphoneseback.png" alt="iphones">
+        </div>
+    </div>
+</div>
     
 
 
 <div class="banner-2">
     <div class="container">
         <div class="banner-2-texto">
-            <h1>iPhone 6, iPhone 7, iPhone 8, iPhone X, iPhone XS o iPhone XR</h1>
+            <h1>iPhone SE 2020, iPhone XR, iPhone 11, iPhone 11 Pro, iPhone 11 Pro MAX</h1>
             <h3>Elegí el tuyo!</h3>
+            <!-- SE 2020, XR, 11, 11 PRO Y 11 PRO MAX -->
             <img src="<?php echo $img_path; ?>/iphone/iphones.png" alt="iphones">
             <a href="<?php echo $url_path; ?>/iphone">Ver todos ></a>
+        </div>
+    </div>
+</div>
+
+<div class="banner-2 banner-black">
+    <div class="container">
+        <div class="banner-black-container">
+            <div class="columna">
+                <img src="<?php echo $img_path; ?>/applewhite.png" alt="logo">
+                <h1>iWatch</h1>
+                <h3>Mirá más que la hora!</h3>
+                <a href="<?php echo $url_path; ?>/watch">Ver más ></a>
+            </div>
+            <div class="columna">
+                <img src="<?php echo $img_path; ?>/applewhite.png" alt="logo">
+                <h1>Nuevos iPad</h1>
+                <h3>Lo más cómodo!</h3>
+                <a href="<?php echo $url_path; ?>/ipad">Ver más ></a>
+            </div>
+            
         </div>
     </div>
 </div>
