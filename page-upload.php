@@ -230,6 +230,9 @@ function iterador_csv($csv)
                     case "iPhone 11 Pro Max":
                         $cat_id = 14;
                         break;
+                    case "iPhone SE":
+                        $cat_id = 15;
+                        break;
                 }
 
                 // La categoria tiene que ser un array para que wordpress la acepte
