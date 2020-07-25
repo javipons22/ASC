@@ -47,6 +47,7 @@ $precio = ${'precio' . $x};
 */
 
 $mac = get_field('macbook');
+$imagen = get_field('imagen');
 $pantalla = get_field('pantalla');
 $capacidad = get_field('capacidad');
 $ram = get_field('ram');
@@ -67,6 +68,7 @@ if(!in_array($mac ,$mac_existentes)){
     $mac_existentes[] = $mac;
     $pantallas_existentes[] = $pantalla;
     $data['modelo'] = $mac;
+    $data['imagen'] = $imagen;
     
     // agrega array associative
     $data['pantalla'] = array( $pantalla => array($capacidad => array($ram_precio)));

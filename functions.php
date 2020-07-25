@@ -54,7 +54,7 @@ function my_post_title_updater($post_id)
 }
 
 // run after ACF saves the $_POST['fields'] data
-add_action('acf/save_post', 'my_post_title_updater', 20);
+// add_action('acf/save_post', 'my_post_title_updater', 20);
 
 function wpse_category_set_post_types($query)
 {

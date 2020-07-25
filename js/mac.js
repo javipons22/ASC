@@ -3,35 +3,13 @@ var indexModeloSeleccionado = 0;
 var pantallaModeloSeleccionado;
 var capacidadModeloSeleccionado;
 var ramSeleccionada;
+var imagenModeloSeleccionado;
 
 console.log(jsonPhp);
 
 
 // ESCONDER CIERTOS DIV
 jQuery("#pantalla, #capacidad, #ram, #precio").hide();
-
-function cargarImagen(link) {
-    var img = new Image();
-    jQuery(img).load(function () {
-        console.log(`imagen de ${link} cargada`);
-    }).attr('src', link);
-}
-
-
-function iteradorLoaderImagenes() {
-    for (var property in jsonPhp) {
-        if (jsonPhp.hasOwnProperty(property)) {
-            var mac = jsonPhp[property].modelo;
-            var str = mac.replace(/\s/g, '');
-            var nombreModelo = str.toLowerCase();
-            cargarImagen(`${imgPath}/mac/${nombreModelo}.png`);
-                
-            
-        }
-    }
-}
-
-iteradorLoaderImagenes();
 
 
 function showNext(val, tipo, el, indexRam) { // El ultimo es id es para el index de la ram
@@ -43,6 +21,14 @@ function showNext(val, tipo, el, indexRam) { // El ultimo es id es para el index
         // cambiar imagen al seleccionar tipo de mac
         var str = val.replace(/\s/g, '');
         var imagen = imgPath + "/mac/" + str.toLowerCase() + ".png";
+        
+        // Si reseleccionamos mac quitar el field de color y de precio
+        jQuery("#ram, #capacidad,#precio").fadeOut("fast");
+
+
+        jQuery("." + id).css("border", "1.5px solid #5e9bff");
+        pantallaMatcher(val);
+        var imagen = imagenModeloSeleccionado;
         jQuery("#imagen").fadeOut();
         setTimeout(function () { jQuery("#imagen").attr('src', imagen); }, 300);
 
@@ -51,12 +37,6 @@ function showNext(val, tipo, el, indexRam) { // El ultimo es id es para el index
             jQuery("#imagen").fadeIn();
         });
 
-        // Si reseleccionamos mac quitar el field de color y de precio
-        jQuery("#ram, #capacidad,#precio").fadeOut("fast");
-
-
-        jQuery("." + id).css("border", "1.5px solid #5e9bff");
-        pantallaMatcher(val);
         jQuery("#pantalla").fadeIn("fast");
 
     } else if (tipo == 'pantalla') {
@@ -276,6 +256,8 @@ function pantallaMatcher(value) {
             indexModeloSeleccionado = property;
             // Seteamos una variable para que en la iteracion , si es el primer elemento iterado ( i == 0) borre los datos anteriores
             var i = 0;
+
+            imagenModeloSeleccionado = jsonPhp[indexModeloSeleccionado].imagen;
 
             // iteramos en las capacidades del modelo matcheado
             for (var val in jsonPhp[property].pantalla) {
