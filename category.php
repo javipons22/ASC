@@ -52,8 +52,9 @@ if ($the_query->have_posts()): while ($the_query->have_posts()): $the_query->the
         $precio_promocion = (int)((float)$dolar * (float)$promocion);
         $cuotas_18 = get_field('18_cuotas');
         $dolares = get_field('dolares');
+        $link = get_post_permalink();
 
-        $color_precio = array('color' => $color, 'precio' => $precio_final, 'precioPromocion' => $precio_promocion, 'soloEfectivo' => $solo_efectivo, '18Cuotas' => $cuotas_18,'dolares'=>$dolares);
+        $color_precio = array('color' => $color, 'precio' => $precio_final, 'precioPromocion' => $precio_promocion, 'soloEfectivo' => $solo_efectivo, '18Cuotas' => $cuotas_18,'dolares'=>$dolares,'link'=>$link);
 
         // Precio max min para el subtitulo de la pagina
         $precio_max_min[] = (int) $precio_final;
@@ -226,6 +227,6 @@ var currency = "<?php echo $currency; ?>";
 console.log(jsonPhp);
 
 </script>
-<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/js/iphone.js?v=2.1";></script>
+<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/js/iphone.2.js";></script>
 
 <?php get_footer();?>

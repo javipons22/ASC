@@ -196,7 +196,7 @@ function crearHTMLColor(color, id, colorClase) {
 
 }
 
-function crearHTMLPrecio(precio, promocion,dolares) {
+function crearHTMLPrecio(precio, promocion,dolares,link) {
 
     if (dolares) {
         var currency = "U$";
@@ -219,6 +219,10 @@ function crearHTMLPrecio(precio, promocion,dolares) {
                             <input id="precio" name="precio" class="radio" type="radio" value="${precioFinal}" onclick="showNext(this.value,this.name,this)"/>
             </label>
         </li>`;
+    htmlString += ` <li id="boton-comprar__container">  
+                        <a class="boton-comprar__boton" href="${link}">COMPRAR!</a> 
+                    </li>
+                    `
 
     return htmlString;
 
@@ -450,14 +454,15 @@ function precioMatcher(color, index, capacidad) {
     for (var val in jsonPhp[index].capacidad[capacidad]) {
         if (jsonPhp[index].capacidad[capacidad][val].color == color) {
             if (i == 0) {
-                jQuery(".precio-iphone, .pagos").remove();
+                jQuery(".precio-iphone, .pagos, #boton-comprar__container").remove();
                 var precio = jsonPhp[index].capacidad[capacidad][val].precio;
                 var promocion = jsonPhp[index].capacidad[capacidad][val].precioPromocion;
                 var soloEfectivo = jsonPhp[index].capacidad[capacidad][val].soloEfectivo;
                 var cuotas18 = jsonPhp[index].capacidad[capacidad][val]['18Cuotas'];
                 var dolares = jsonPhp[index].capacidad[capacidad][val].dolares;
+                var link = jsonPhp[index].capacidad[capacidad][val].link;
 
-                var htmlString = crearHTMLPrecio(precio, promocion,dolares);
+                var htmlString = crearHTMLPrecio(precio, promocion,dolares,link);
                 var htmlString2 = crearHTMLCuotas(soloEfectivo, precio, promocion,cuotas18);
                 jQuery("#precio > ul").append(htmlString);
                 jQuery("#precio > ul").prepend(htmlString2);

@@ -1480,3 +1480,115 @@ tr:last-child {
     border-radius: 0 0 0 15px;
     cursor: pointer;
 }
+
+.checkout {
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 15px 0 15px;
+}
+
+.checkout .col {
+    flex-basis:100%;
+}
+
+.checkout .col-30 {
+    display:flex;
+    justify-content: center;
+    flex-basis:100%;
+    margin-bottom:50px;
+}
+
+.checkout .titulo-iphone-cat {
+    display:inline-block;
+    margin:0;
+    margin-bottom:20px;
+    text-align:center;
+}
+
+.checkout .datos-iphone-cat {
+    text-align:center;
+    margin:0;
+}
+
+.checkout h2 {
+    text-align:center;
+    margin:0 auto;
+}
+
+.checkout .col img {
+    width:100%;
+}
+
+.boton-comprar__container {
+    width:100%;
+    text-align:center;
+}
+
+.boton-comprar__boton {
+    width:100%;
+    display:block;
+    text-align:center;
+    padding: 12px 0;
+    color:white;
+    background: linear-gradient(#42a1ec, #0070c9);
+    border-radius: 7px;
+    margin-top: 20px;
+}
+
+.boton-comprar__boton:hover {
+    text-decoration:none;
+}
+
+
+.popup-pago {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    position:fixed;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right:0;
+    font-size: 0.7em;
+    background: rgba(0,0,0,0.8);
+    z-index:1100;
+}
+
+.popup-pago p {
+    width:80%;
+    display:inline-block;
+    background: #ddd;
+    text-align:center;
+    padding:10px 25px;
+    margin-top:20px;
+    border-radius:7px;
+    font-size:1.1em;
+    word-wrap: break-word;
+
+}
+
+.popup-pago .popup-newsletter > span {
+    font-size:1.2em;
+    display:block;
+
+}
+
+.popup-newsletter span {
+    display:block;
+}
+.popup-pago .popup-newsletter {
+    background:#efefef;
+    padding:55px 20px;
+    border-radius:15px;
+    border: 3px solid #e01e23;
+    margin: 0 20px;
+    position:relative;
+    overflow: hidden;
+
+}
+
+.popup-pago .span-last {
+    padding-top:5px;
+}

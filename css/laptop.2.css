@@ -190,4 +190,54 @@
         height:75px;
         margin-bottom: 25px;
     }
+
+    .checkout {
+        display:flex;
+        flex-direction:row;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin: 70px 15px 0 15px;
+    }
+    
+    .checkout .col {
+        flex-basis:45%;
+    }
+    
+    .checkout .col-30 {
+        display:flex;
+        position:sticky;
+        top:120px;
+        justify-content: center;
+        flex-basis:45%;
+        margin-bottom:0;
+    }
+    
+    .checkout .titulo-iphone-cat {
+        display:block;
+        width:90%;
+        margin:0;
+        margin-bottom:20px;
+        text-align:left;
+    }
+    
+    .checkout .datos-iphone-cat {
+        text-align:left;
+        margin:0;
+    }
+    
+    .checkout h2 {
+        text-align:left;
+        margin:0;
+    }
+    
+    .checkout .col img {
+        width:100%;
+    }
+    .popup-pago {
+        font-size: 0.9em;
+    }
+
+    .popup-pago .popup-newsletter {
+        padding:50px;
+    }
 }

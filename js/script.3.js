@@ -109,4 +109,5 @@ setTimeout(function(){
 
 jQuery(".boton-cerrar").click(function(){
     jQuery(".popup-back").hide();
+    jQuery(".popup-pago").hide();
 });
