@@ -134,7 +134,7 @@ function showNext(val, tipo, el, precio) {
         jQuery(".pagos > li > label").css("border", "1px solid rgba(136,136,136,.4)");
         jQuery("." + id).css("border", "1.5px solid #5e9bff");
 
-        var interes = (val === "1" ? 1 : (val === "3" ? 1.24 : (val === "6" ? 1.36 : (val === "12" ? 1.4 : 1.60)))); // Intereses
+        var interes = (val === "1" ? 1 : (val === "12" ? cuotas12 : cuotas18)); // cuotas12/cuotas18 se obtienen desde category.php
 
         var nuevoPrecio = parseInt(precio * interes / val);
         var textoCuotas = `Pago en ${val} cuotas de`;
@@ -196,15 +196,10 @@ function crearHTMLColor(color, id, colorClase) {
 
 }
 
-function crearHTMLPrecio(precio, promocion,dolares,link) {
+function crearHTMLPrecio(precio, promocion,link) {
 
-    if (dolares) {
-        var currency = "U$";
-    } else {
-        var currency = "$";
-    }
 
-    var promocionString = promocion == 0 || promocion == null ? `<span>${currency}${precio}</span>` : `<span class="precio-tachado">${currency}${precio}</span><span class="precio-promocion">  ${currency}${promocion}</span>`;
+    var promocionString = promocion == 0 || promocion == null ? `<span>$${precio}</span>` : `<span class="precio-tachado">$${precio}</span><span class="precio-promocion">  $${promocion}</span>`;
     var precioFinal = promocion == 0 || promocion == null ? precio : promocion;
     var tituloPromocion = promocion == 0 || promocion == null ? 'Precio de contado' : 'PROMOCION!!';
     htmlString = `
@@ -228,7 +223,7 @@ function crearHTMLPrecio(precio, promocion,dolares,link) {
 
 }
 
-function crearHTMLCuotas(soloEfectivo, precio, promocion,cuotas18) {
+function crearHTMLCuotas(soloEfectivo, precio, promocion) {
     var precioFinal = promocion == 0 ? precio : promocion;
     if (soloEfectivo) {
         htmlString = `
@@ -254,34 +249,17 @@ function crearHTMLCuotas(soloEfectivo, precio, promocion,cuotas18) {
                     </li>
                     <li>
                         <label for="cuotas2" class="cuotas cuotas2">    
-                            <span>3 Cuotas</span>
-                            <input id="cuotas2" name="cuotas" class="radio" type="radio" value="3" onclick="showNext(this.value,this.name,this,${precioFinal})"/>
+                            <span>12 Cuotas</span>
+                            <input id="cuotas2" name="cuotas" class="radio" type="radio" value="12" onclick="showNext(this.value,this.name,this,${precioFinal})"/>
                         </label>
                     </li>
                     <li>
                         <label for="cuotas3" class="cuotas cuotas3">    
-                            <span>6 Cuotas</span>
-                            <input id="cuotas3" name="cuotas" class="radio" type="radio" value="6" onclick="showNext(this.value,this.name,this,${precioFinal})"/>
-                        </label>
-                    </li>
-                    <li>
-                        <label for="cuotas4" class="cuotas cuotas4">    
-                            <span>12 Cuotas</span>
-                            <input id="cuotas4" name="cuotas" class="radio" type="radio" value="12" onclick="showNext(this.value,this.name,this,${precioFinal})"/>
+                            <span>18 Cuotas</span>
+                            <input id="cuotas3" name="cuotas" class="radio" type="radio" value="18" onclick="showNext(this.value,this.name,this,${precioFinal})"/>
                         </label>
                     </li>`;
-                    if(cuotas18) {
-                        htmlString += `
-                        <li id="cuotas18">
-                            <label for="cuotas5" class="cuotas cuotas5">    
-                                <span>18 Cuotas</span>
-                                <input id="cuotas5" name="cuotas" class="radio" type="radio" value="18" onclick="showNext(this.value,this.name,this,${precioFinal})"/>
-                            </label>
-                        </li></ul>`;
-                    } else {
-                        htmlString += `</ul>`;
-                    }
-            
+        htmlString += `</ul>`;
         return htmlString;
     }
 
@@ -458,12 +436,11 @@ function precioMatcher(color, index, capacidad) {
                 var precio = jsonPhp[index].capacidad[capacidad][val].precio;
                 var promocion = jsonPhp[index].capacidad[capacidad][val].precioPromocion;
                 var soloEfectivo = jsonPhp[index].capacidad[capacidad][val].soloEfectivo;
-                var cuotas18 = jsonPhp[index].capacidad[capacidad][val]['18Cuotas'];
-                var dolares = jsonPhp[index].capacidad[capacidad][val].dolares;
+                
                 var link = jsonPhp[index].capacidad[capacidad][val].link;
 
-                var htmlString = crearHTMLPrecio(precio, promocion,dolares,link);
-                var htmlString2 = crearHTMLCuotas(soloEfectivo, precio, promocion,cuotas18);
+                var htmlString = crearHTMLPrecio(precio, promocion,link);
+                var htmlString2 = crearHTMLCuotas(soloEfectivo, precio, promocion);
                 jQuery("#precio > ul").append(htmlString);
                 jQuery("#precio > ul").prepend(htmlString2);
                 i++;
@@ -472,17 +449,14 @@ function precioMatcher(color, index, capacidad) {
                 var precio = jsonPhp[index].capacidad[capacidad][val].precio;
                 var promocion = jsonPhp[index].capacidad[capacidad][val].precioPromocion;
                 var soloEfectivo = jsonPhp[index].capacidad[capacidad][val].soloEfectivo;
-                var cuotas18 = jsonPhp[index].capacidad[capacidad][val]['18Cuotas'];
-                var dolares = jsonPhp[index].capacidad[capacidad][val].dolares;
 
-                var htmlString = crearHTMLPrecio(precio, promocion,dolares);
-                var htmlString2 = crearHTMLCuotas(soloEfectivo, precio, promocion,cuotas18);
+                var htmlString = crearHTMLPrecio(precio, promocion);
+                var htmlString2 = crearHTMLCuotas(soloEfectivo, precio, promocion);
                 jQuery("#precio > ul").append(htmlString);
                 jQuery("#precio > ul").prepend(htmlString2);
                 i++;
             }
         }
-
     }
 }
 

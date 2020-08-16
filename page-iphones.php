@@ -112,11 +112,11 @@ endwhile;endif;
             ${$trimmed_cat . "_solo_efectivo" }[] = 0;
         }
 
-        $cuotas18 = get_field('18_cuotas');
-        if ($cuotas18) {
-            ${$trimmed_cat . "cuotas18" }[] = 1;
+        $cuotas = get_field('cuotas');
+        if ($cuotas) {
+            ${$trimmed_cat . "cuotas" }[] = 1;
         } else {
-            ${$trimmed_cat . "cuotas18" }[] = 0;
+            ${$trimmed_cat . "cuotas" }[] = 0;
         }
     
         // Ordenamos los datos de capacidad para que aparezcan ordenados (ej. 16GB 64GB)
@@ -242,7 +242,14 @@ endwhile;endif;
                                             }
                                         }
                                         if ($promocion == true) {
-                                            echo "<span class='promocion-true'>PROMOCION!!</span>";
+                                            $precio_minimo = min(${ $cat ."_precio" });
+                                            $precio_maximo = max(${ $cat ."_precio" });
+                                            echo "<span class='en-promo-title'>EN PROMO!!</span>";
+                                            if ($precio_minimo == $precio_maximo) {
+                                                echo $currency . $precio_maximo . "*";
+                                            }else {
+                                                echo "<span class='promocion-true'>$". $precio_minimo . " - $" . $precio_maximo ."</span>";
+                                            }
                                         } 
                                      ?>
                                         <span>
@@ -254,7 +261,12 @@ endwhile;endif;
                                                         $currency_detail = '*';
                                                         $precio_minimo = min(${ $cat ."_precio" });
                                                         $precio_maximo = max(${ $cat ."_precio" });
-                                                        echo $currency . $precio_minimo . $currency_detail . " - " . $currency . $precio_maximo . $currency_detail;
+                                                        if ($precio_minimo == $precio_maximo) {
+                                                            echo $currency . $precio_maximo . "*";
+                                                        } else {
+                                                            echo $currency . $precio_minimo . $currency_detail . " - " . $currency . $precio_maximo . $currency_detail;
+                                                        }
+                                                        
                                                     }  else {
                                                         echo $currency . ${ $cat ."_precio" }[0] . $currency_detail;
                                                     }
@@ -262,10 +274,10 @@ endwhile;endif;
                                             ?>
                                         </span>
                                         <?php
-                                            if(in_array("1", ${$cat . "cuotas18" })) {
-                                                echo "<p>en 18 cuotas****, 12 cuotas, 6 cuotas o 3 cuotas**</p>";
+                                            if(in_array("1", ${$cat . "cuotas" })) {
+                                                echo "<p>También en 12 o 18 cuotas**</p>";
                                             } elseif (in_array("0", ${$cat . "_solo_efectivo" })) {
-                                                echo "<p>en 12 cuotas , 6 cuotas o 3 cuotas**</p>";
+                                                echo "<p>También en 12 o 18 cuotas**</p>";
                                             } else {
                                                 echo "<p>Pago solo en contado</p>"; 
                                             }

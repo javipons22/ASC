@@ -22,6 +22,8 @@ $args_cotizacion = array(
 $query_cotizacion = new WP_Query($args_cotizacion);
 if ($query_cotizacion->have_posts()): while ($query_cotizacion->have_posts()): $query_cotizacion->the_post();
     $dolar = get_field("dolar");
+    $cuotas_12 = get_field('12_cuotas');
+    $cuotas_18 = get_field('18_cuotas');
 endwhile;endif;
 // Fin obtener valor del dolar
 
@@ -50,11 +52,10 @@ if ($the_query->have_posts()): while ($the_query->have_posts()): $the_query->the
         $precio_final = (int)((float)$dolar * (float)$precio);
         $solo_efectivo = get_field('solo_efectivo');
         $precio_promocion = (int)((float)$dolar * (float)$promocion);
-        $cuotas_18 = get_field('18_cuotas');
-        $dolares = get_field('dolares');
+        $cuotas = get_field('cuotas');
         $link = get_post_permalink();
 
-        $color_precio = array('color' => $color, 'precio' => $precio_final, 'precioPromocion' => $precio_promocion, 'soloEfectivo' => $solo_efectivo, '18Cuotas' => $cuotas_18,'dolares'=>$dolares,'link'=>$link);
+        $color_precio = array('color' => $color, 'precio' => $precio_final, 'precioPromocion' => $precio_promocion, 'soloEfectivo' => $solo_efectivo, 'cuotas' => $cuotas,'link'=>$link);
 
         // Precio max min para el subtitulo de la pagina
         $precio_max_min[] = (int) $precio_final;
@@ -66,11 +67,6 @@ if ($the_query->have_posts()): while ($the_query->have_posts()): $the_query->the
             array_push($hay_solo_efectivo, 0); 
         }
 
-        if ($dolares) {
-            $hay_dolares[] = 1;
-        } else {
-            $hay_dolares[] = 0;
-        }
 
         // Si no esta el modelo de iphone , agregar al nombre del array data y despues agregar al array_final
         if (!in_array($modelo, $iphones_existentes)) {
@@ -147,16 +143,12 @@ $slug = quita_guiones($term->slug);
             <span>
                 <h2><?php
 
-if (in_array(1,$hay_dolares)) {
-    $currency = 'U$';
-} else {
     $currency = '$';
-}
 
     echo "A partir de " . $currency . min($precio_max_min);
 
 if(in_array(0,$hay_solo_efectivo )){
-    echo "<br>También en 12, 6 o 3 cuotas**</h2>";
+    echo "<br>También en 12 o 18 cuotas**</h2>";
 } else {
     echo "</h2>";
 }
@@ -175,7 +167,7 @@ if(in_array(0,$hay_solo_efectivo )){
     echo "A partir de " . $currency . min($precio_max_min);
 
 if(in_array(0,$hay_solo_efectivo )){
-    echo "<br>También en 12, 6 o 3 cuotas**</h2>";
+    echo "<br>También en 12 o 18 cuotas**</h2>";
 } else {
     echo "</h2>";
 }
@@ -223,10 +215,12 @@ if(in_array(0,$hay_solo_efectivo )){
 // VARIABLES PHP A JS
 var jsonPhp = <?php echo $myJSON; ?>;
 var imgPath = "<?php echo $img_path; ?>";
-var currency = "<?php echo $currency; ?>";
+var currency = "$";
+var cuotas12 = 1.<?php echo $cuotas_12;?>;
+var cuotas18 = 1.<?php echo $cuotas_18;?>;
 console.log(jsonPhp);
 
 </script>
-<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/js/iphone.2.js";></script>
+<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/js/iphone.3.js";></script>
 
 <?php get_footer();?>

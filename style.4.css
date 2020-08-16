@@ -761,9 +761,15 @@ footer {
 }
 
 .promocion-true {
-    color: red;
-    font-weight: 700;
     display: block;
+    margin: 0 0 5px 0;
+}
+
+.en-promo-title {
+    display:block;
+    color: #0798fc;
+    font-size: 0.7em;
+    width:100%;
 }
 
 .color {
@@ -1020,7 +1026,7 @@ footer {
 }
 
 .pagos li {
-    flex-basis: 23%;
+    flex-basis: 31%;
     font-size: 15px;
     font-weight: 300;
     text-align: center;
