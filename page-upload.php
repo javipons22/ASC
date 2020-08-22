@@ -410,6 +410,7 @@ function iterador_csv($csv)
         }
     } else if ($campos[0] == "servicio") {
         borrar_posts_previos("servicios");
+        $subidos_error = [];
         for ($x = 1; $x <= sizeof($csv); $x++) {
 
             if (!empty(${'servicio' . $x})) {
@@ -471,6 +472,7 @@ function iterador_csv($csv)
 
         echo "<p class='success'>" . $subido . "</p>";
     }
+    
 
     foreach ($subidos_error as $error) {
         echo "<p class='error'>" . $error . " (STOCK 0)</p>";

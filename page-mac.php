@@ -5,6 +5,19 @@
 get_header(); 
 $img_path = get_site_url() . "/wp-content/uploads";
 
+// Obtenemos el valor del dolar desde cotizacion
+$args_cotizacion = array(
+    'post_type' => 'cotiz',
+    'posts_per_page' => -1,
+);
+$query_cotizacion = new WP_Query($args_cotizacion);
+if ($query_cotizacion->have_posts()): while ($query_cotizacion->have_posts()): $query_cotizacion->the_post();
+    $dolar = get_field("dolar");
+    $cuotas_12 = get_field('12_cuotas');
+    $cuotas_18 = get_field('18_cuotas');
+endwhile;endif;
+// Fin obtener valor del dolar
+
 //echo $myJSON;
 // Guardamos los valores existentes en un array para poder utilizar los condicionales viendo si hay valores repetidos
 $mac_existentes = array();
@@ -51,12 +64,13 @@ $imagen = get_field('imagen');
 $pantalla = get_field('pantalla');
 $capacidad = get_field('capacidad');
 $ram = get_field('ram');
-$precio = get_field('precio');
+$precio_prev = get_field('precio');
+$precio = (int)((float)$dolar * (float)$precio_prev);
 $solo_efectivo = get_field('solo_efectivo');
-$precio_promocion = get_field('precio_promocion');
-$dolares = get_field('dolares');
+$precio_promocion_prev = get_field('precio_promocion');
+$precio_promocion = (int)((float)$dolar * (float)$precio_promocion_prev);
 
-$ram_precio = array('ram'=> $ram, 'precio'=> $precio , 'soloEfectivo' => $solo_efectivo, 'precioPromocion' => $precio_promocion, 'dolares'=>$dolares);
+$ram_precio = array('ram'=> $ram, 'precio'=> $precio , 'soloEfectivo' => $solo_efectivo, 'precioPromocion' => $precio_promocion);
 
 
 // Precio max min para el subtitulo de la pagina
@@ -96,11 +110,6 @@ if(!in_array($mac ,$mac_existentes)){
             }    
 }
 
-if($dolares) {
-    $hay_dolares[] = 1;
-} else {
-    $hay_dolares[] = 0;
-}
 
 endwhile; endif; 
 
@@ -114,11 +123,7 @@ $cadena = str_replace('-', '', $cadena);
 return $cadena;
 }
 
-if (in_array(1,$hay_dolares)){
-    $currency = "U$";
-} else {
-    $currency = "$";
-}
+$currency = "$";
 
 ?>
 
@@ -204,5 +209,5 @@ if (in_array(1,$hay_dolares)){
 var jsonPhp = <?php echo $myJSON; ?>;
 var imgPath = "<?php echo $img_path; ?>";
 </script>
-<script type="text/javascript" src="<?php echo get_template_directory_uri()?>/js/mac.js?v=2.3"></script>
+<script type="text/javascript" src="<?php echo get_template_directory_uri()?>/js/mac.1.js"></script>
 <?php get_footer(); ?>
